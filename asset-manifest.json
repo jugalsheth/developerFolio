@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/developerFolio/static/css/main.51b4464c.css",
+    "main.js": "/developerFolio/static/js/main.7b7362ca.js",
+    "static/css/64.e9fbf611.chunk.css": "/developerFolio/static/css/64.e9fbf611.chunk.css",
+    "static/js/64.56dc6704.chunk.js": "/developerFolio/static/js/64.56dc6704.chunk.js",
+    "static/css/769.5540726c.chunk.css": "/developerFolio/static/css/769.5540726c.chunk.css",
+    "static/js/769.bda0d7b7.chunk.js": "/developerFolio/static/js/769.bda0d7b7.chunk.js",
+    "static/media/scriptwriter.png": "/developerFolio/static/media/scriptwriter.ef05e7ddac2c41aa9620.png",
+    "static/media/Montserrat-Regular.ttf": "/developerFolio/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
+    "static/media/etlgenie.png": "/developerFolio/static/media/etlgenie.39a81caa8433c827d9b9.png",
+    "static/media/Agustina.woff": "/developerFolio/static/media/Agustina.eb0c59dda4cc308cba96.woff",
+    "static/media/manOnTable.svg": "/developerFolio/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
+    "static/media/hanoverLogo.png": "/developerFolio/static/media/hanoverLogo.94d234b821dbc3efa9e5.png",
+    "static/media/contactMailDark.svg": "/developerFolio/static/media/contactMailDark.1db650d351729a0f17b4e3104e6a7b7a.svg",
+    "static/media/vaynermediaLogo.png": "/developerFolio/static/media/vaynermediaLogo.941f73b827fe61a7679c.png",
+    "static/media/developerActivity.svg": "/developerFolio/static/media/developerActivity.2c0445cae86f4243433a2f5a22b2c031.svg",
+    "static/media/northeasternLogo.png": "/developerFolio/static/media/northeasternLogo.653fd5c192d6a0a6f6c1.png",
+    "static/media/vaynerxLogo.png": "/developerFolio/static/media/vaynerxLogo.5d521bb98416fddc34de.png",
+    "static/media/skill.svg": "/developerFolio/static/media/skill.35a147662ab0a1d15e579690446e0258.svg",
+    "static/media/resume.pdf": "/developerFolio/static/media/resume.f0f733dd3cd732b39262.pdf",
+    "index.html": "/developerFolio/index.html",
+    "static/media/talksCardBack.svg": "/developerFolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
+    "main.51b4464c.css.map": "/developerFolio/static/css/main.51b4464c.css.map",
+    "main.7b7362ca.js.map": "/developerFolio/static/js/main.7b7362ca.js.map",
+    "64.e9fbf611.chunk.css.map": "/developerFolio/static/css/64.e9fbf611.chunk.css.map",
+    "64.56dc6704.chunk.js.map": "/developerFolio/static/js/64.56dc6704.chunk.js.map",
+    "769.5540726c.chunk.css.map": "/developerFolio/static/css/769.5540726c.chunk.css.map",
+    "769.bda0d7b7.chunk.js.map": "/developerFolio/static/js/769.bda0d7b7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.51b4464c.css",
+    "static/js/main.7b7362ca.js"
+  ]
+}
