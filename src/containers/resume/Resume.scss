@@ -1,0 +1,182 @@
+@import "../../_globalColor";
+
+.resume-section {
+  background: $lightBackground2;
+  padding: 2rem 0;
+
+  &.dark-mode {
+    background: $appHeaderBG;
+  }
+}
+
+.resume-download-section {
+  width: 90%;
+  margin: 4rem auto;
+  padding: 20px 10px;
+}
+
+.download-card {
+  background: linear-gradient(135deg, $buttonColor, $buttonHover);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(107, 91, 149, 0.3);
+  max-width: 800px;
+  margin: 0 auto;
+
+  &.dark-mode {
+    background: linear-gradient(135deg, rgba(107, 91, 149, 0.9), rgba(144, 120, 195, 0.9));
+    box-shadow: 0 8px 32px $darkBoxShadow2;
+  }
+}
+
+.download-title {
+  font-size: 36px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+
+  &.dark-mode {
+    color: white;
+  }
+}
+
+.download-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &.dark-mode {
+    color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+.download-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+
+  .download-link-wrapper,
+  .main-button {
+    background: white;
+    color: $buttonColor;
+    border: 3px solid white;
+    padding: 16px 36px;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: white;
+    }
+  }
+
+  button,
+  a button {
+    background: white !important;
+    color: $buttonColor !important;
+    border: 3px solid white !important;
+    padding: 16px 36px !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
+    cursor: pointer;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: white !important;
+      transform: translateY(-4px) scale(1.05) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+      border-color: white !important;
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1380px) {
+  .download-title {
+    font-size: 32px;
+  }
+
+  .download-subtitle {
+    font-size: 17px;
+  }
+
+  .download-buttons button {
+    padding: 14px 30px !important;
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .resume-download-section {
+    width: 95%;
+    margin: 2rem auto;
+  }
+
+  .download-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .download-title {
+    font-size: 26px;
+  }
+
+  .download-subtitle {
+    font-size: 15px;
+  }
+
+  .download-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+
+    button,
+    a button {
+      width: 100% !important;
+      padding: 14px 24px !important;
+      font-size: 15px !important;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .resume-download-section {
+    width: 100%;
+  }
+
+  .download-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .download-title {
+    font-size: 22px;
+  }
+
+  .download-subtitle {
+    font-size: 14px;
+  }
+}
+

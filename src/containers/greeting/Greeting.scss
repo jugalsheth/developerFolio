@@ -40,6 +40,11 @@
 }
 .download-link-button {
   text-decoration: none;
+  
+  &.main-button {
+    display: inline-block;
+    padding: 14px 28px;
+  }
 }
 
 .greeting-text {

@@ -19,8 +19,9 @@ const greeting = {
   username: "Jugal Sheth",
   title: "Hi, I'm Jugal 👋",
   subTitle: "A data engineer crafting modern data platforms, real-time pipelines, and GenAI tools.",
+  resumeLink: true,
   githubProfile: "https://github.com/jugalsheth",
-  displayGreeting: true // 👈🏽 ADD THIS LINE
+  displayGreeting: true
 };
 
 // Social Media Links
@@ -111,25 +112,44 @@ const workExperiences = {
   display: true,
   experience: [
     {
-      role: "Data Engineer",
+      role: "Senior Data Engineer",
       company: "VaynerX",
       companylogo: require("./assets/images/vaynerxLogo.png"),
       date: "Dec 2023 – Present",
-      desc: "Built 20+ modular dbt models, designed SLA alerts, standardized metrics for marketing and HR insights"
+      desc: "Primary contributor to analytics data layer for emerging CRM SaaS; designed and maintained scalable datasets and reporting to surface critical business signals.",
+      descBullets: [
+        "Architected and modeled the core analytics data layer for emerging CRM SaaS, designing and maintaining 50+ scalable datasets surfacing critical business signals from 5+ data sources",
+        "Engineered and optimized ETL/ELT pipelines (Airflow/dbt), reducing cycle time by 40% via query optimization and schema redesign",
+        "Established and governed data governance framework for critical financial KPIs, standardizing definitions, which fed into 15 executive Power BI dashboards used by the Finance team to reduce quarterly forecasting variance by 12%",
+        "Enabled product, data science, and business teams to perform agile, repeatable analysis—resulting in 3 new product features and improved customer acquisition performance by 25%",
+        "Led reporting framework deployment, improving marketing campaign measurement accuracy by 30%",
+        "Mentored 2 junior analysts on data engineering best practices and CI/CD, elevating team code quality and reliability"
+      ]
     },
     {
-      role: "Analytics Associate",
+      role: "Analytics Engineer",
       company: "VaynerMedia",
       companylogo: require("./assets/images/vaynermediaLogo.png"),
       date: "Oct 2021 – Dec 2023",
-      desc: "Built Snowflake pipelines, standardized attribution models, led documentation initiatives"
+      desc: "Partnered with Growth, Marketing, and Product teams to design and evaluate A/B tests and other experiments, providing actionable insights.",
+      descBullets: [
+        "Partnered with Growth, Marketing, and Product teams to design and evaluate A/B tests and other experiments, providing actionable insights that supported over $2M in budget decisions",
+        "Developed and maintained Marketing Performance dashboards in Tableau for 10+ key marketing campaigns, providing granular metrics (ROAS, CPA) that optimized media spend efficiency by 18%",
+        "Designed standardized metric layer and reporting workflows for business strategy org—improved discoverability across projects",
+        "Championed code review and testing culture, enhancing documentation and performance optimization for analytics pipelines"
+      ]
     },
     {
       role: "Claims Data Analyst",
       company: "Optima Global (Client: The Hanover Insurance Group)",
       companylogo: require("./assets/images/hanoverLogo.png"),
       date: "Jun 2021 – Oct 2021",
-      desc: "Automated ADF pipelines and designed metrics in SQL + Power BI"
+      desc: "Streamlined fraud detection analytics and designed project management reports.",
+      descBullets: [
+        "Streamlined fraud detection analytics: implemented deep-dive SQL solutions and query tuning, resulting in 60% reduction in reporting latency",
+        "Designed Project Management reports (Power BI) utilizing PostgreSQL data to track claims processing pipeline efficiency, resource utilization, and SLA adherence, allowing managers to reduce the average claim cycle time by 5 days",
+        "Delivered reliable, actionable insights impacting loss minimization and claim processing efficiency for insurance analytics"
+      ]
     }
   ]
 };
@@ -194,6 +214,153 @@ const podcastSection = {
   display: false
 };
 
+// Visual Resume Section - Comprehensive Data
+const visualResume = {
+  display: true,
+  objective: "Highly experienced Senior Data/Analytics Engineer (5+ years) specializing in designing, scaling, and governing modern ETL/ELT data platforms (Snowflake, Airflow, dbt). Track record of architecting metric layers, championing best practices, and driving business impact—40% pipeline optimization, 12% forecasting accuracy. Seeking to empower strategic decision-making across content, finance, and marketing domains.",
+  
+  impactMetrics: [
+    {
+      value: 40,
+      suffix: "%",
+      label: "Pipeline Optimization",
+      description: "Reduced ETL/ELT cycle time through query optimization",
+      color: "green"
+    },
+    {
+      value: 12,
+      suffix: "%",
+      label: "Forecasting Accuracy",
+      description: "Improved quarterly forecasting variance",
+      color: "blue"
+    },
+    {
+      value: 25,
+      suffix: "%",
+      label: "Customer Acquisition",
+      description: "Enhanced customer acquisition performance",
+      color: "green"
+    },
+    {
+      value: 30,
+      suffix: "%",
+      label: "Campaign Accuracy",
+      description: "Improved marketing campaign measurement",
+      color: "green"
+    },
+    {
+      value: 60,
+      suffix: "%",
+      label: "Latency Reduction",
+      description: "Reduced reporting latency for fraud detection",
+      color: "green"
+    },
+    {
+      value: 2,
+      suffix: "M+",
+      label: "Budget Impact",
+      description: "Supported data-driven budget decisions",
+      color: "blue"
+    }
+  ],
+
+  skills: {
+    "Languages & Data Processing": [
+      "SQL",
+      "Python",
+      "R",
+      "Bash"
+    ],
+    "Data Warehousing & Modeling": [
+      "Snowflake",
+      "PostgreSQL",
+      "Oracle",
+      "SQL Server",
+      "Dimensional Modeling",
+      "OLTP/OLAP Schemas"
+    ],
+    "Pipeline Engineering": [
+      "ETL/ELT Design",
+      "Airflow",
+      "dbt",
+      "Fivetran",
+      "Python Frameworks",
+      "DAG Management"
+    ],
+    "Analytics & Visualization": [
+      "Tableau",
+      "Power BI",
+      "Looker",
+      "Jupyter",
+      "Deep-Dive Analysis",
+      "Reporting Frameworks"
+    ],
+    "Cloud/DevOps": [
+      "AWS",
+      "GCP",
+      "GitHub Actions",
+      "CI/CD"
+    ],
+    "Testing & Reliability": [
+      "Data Quality Checks",
+      "Schema Validation",
+      "Pytest",
+      "Code Reviews",
+      "A/B Test Methodologies"
+    ]
+  },
+
+  detailedProjects: [
+    {
+      name: "SKU Master Ware",
+      subtitle: "Multi-Channel Inventory Management System",
+      date: "Oct 2025",
+      image: require("./assets/images/etlgenie.png"),
+      description: "Production inventory reconciliation system deployed by 3 retail/logistics startups",
+      bullets: [
+        "Architected production PostgreSQL database with 15+ tables and Row-Level Security for multi-channel inventory reconciliation—deployed by 3 retail/logistics startups managing 10K+ SKUs across Amazon, Flipkart, and Myntra",
+        "Engineered serverless DevOps pipeline on Vercel with Vite optimization and Supabase BaaS, achieving zero-downtime deployments, sub-second page loads, and 99.9% uptime",
+        "Built analytics engine computing 40+ real-time KPIs and automated reorder workflows with barcode-driven GRN systems, reducing manual intervention by 80%"
+      ],
+      technologies: ["PostgreSQL", "Vercel", "Vite", "Supabase", "Row-Level Security"],
+      links: [
+        { name: "GitHub", url: "https://github.com/jugalsheth" }
+      ]
+    },
+    {
+      name: "GeoPulse AI",
+      subtitle: "LLM-Powered Analytics Layer",
+      date: "Feb 2025",
+      image: require("./assets/images/querygenie.png"),
+      description: "AI-powered financial news analysis for market performance forecasting",
+      bullets: [
+        "Developed an OpenAI-powered Streamlit app analyzing global financial news to forecast market performance",
+        "Designed dbt-based modular pipelines with explainable metrics, ensuring trustable ML-driven dashboards"
+      ],
+      technologies: ["OpenAI", "Streamlit", "dbt", "Python", "NLP"],
+      links: [
+        { name: "GitHub", url: "https://github.com/jugalsheth/querygenie" }
+      ]
+    },
+    {
+      name: "ETL Real-Time Platform",
+      subtitle: "Kafka, Spark, Snowflake",
+      date: "Jan 2025",
+      image: require("./assets/images/scriptwriter.png"),
+      description: "Real-time order ingestion platform with SLA monitoring and alerts",
+      bullets: [
+        "Simulated live order ingestion via Kafka, PySpark, and Snowflake with SLA monitoring, alerts, and observability",
+        "Delivered dashboards for latency tracking, low-stock alerts, and business-critical event monitoring",
+        "Emphasized fault tolerance and schema evolution, showcasing working knowledge of data warehouse technologies"
+      ],
+      technologies: ["Kafka", "PySpark", "Snowflake", "Airflow", "Real-time Processing"],
+      links: [
+        { name: "GitHub", url: "https://github.com/jugalsheth/etlgenie/tree/main" }
+      ]
+    }
+  ]
+};
+
 const resumeSection = {
   title: "Resume",
   subtitle: "Download my resume to know more about my work",
@@ -232,5 +399,6 @@ export {
   contactInfo,
   twitterDetails,
   isHireable,
-  resumeSection
+  resumeSection,
+  visualResume
 };

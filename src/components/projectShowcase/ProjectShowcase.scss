@@ -1,0 +1,360 @@
+@import "../../_globalColor";
+
+.project-showcase-container {
+  width: 90%;
+  margin: 4rem auto;
+  padding: 20px 10px;
+}
+
+.showcase-title {
+  font-size: 56px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  color: $titleColor;
+}
+
+.showcase-subtitle {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: $subTitle;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-showcase-card {
+  background: $lightBackground1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px $lightBoxShadow;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px $lightBoxShadowDarker;
+  }
+
+  &.dark-mode {
+    background: $darkBackground;
+    box-shadow: 0 4px 16px $darkBoxShadow;
+
+    &:hover {
+      box-shadow: 0 12px 32px $darkBoxShadow2;
+    }
+  }
+}
+
+.project-image-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: $lightBackground3;
+}
+
+.project-showcase-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  .project-showcase-card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.project-date {
+  background: rgba(107, 91, 149, 0.9);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.project-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: $titleColor;
+  margin-bottom: 0.5rem;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.project-subtitle-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: $buttonColor;
+  margin-bottom: 1rem;
+
+  &.dark-mode {
+    color: $buttonHover;
+  }
+}
+
+.project-description {
+  font-size: 15px;
+  color: $cardSubtitle;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+
+  &.dark-mode {
+    color: $subTitle;
+  }
+}
+
+.project-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+
+  &.show {
+    max-height: 800px;
+  }
+}
+
+.project-bullets {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.project-bullet {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 0.8rem;
+  font-size: 14px;
+  color: $cardSubtitle;
+  line-height: 1.5;
+
+  &::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: $buttonColor;
+    font-weight: bold;
+  }
+
+  &.dark-mode {
+    color: $subTitle;
+
+    &::before {
+      color: $buttonHover;
+    }
+  }
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tech-tag {
+  padding: 6px 12px;
+  background: $lightBackground3;
+  border: 1px solid $lightBorder1;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  color: $textColor;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $buttonColor;
+    color: white;
+    border-color: $buttonColor;
+  }
+
+  &.dark-mode {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: $textColorDark;
+
+    &:hover {
+      background: $buttonColor;
+      color: white;
+      border-color: $buttonColor;
+    }
+  }
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid $lightBorder1;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: $buttonColor;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: $buttonHover;
+    transform: translateX(3px);
+  }
+
+  &.dark-mode {
+    color: $buttonHover;
+
+    &:hover {
+      color: $textColorDark;
+    }
+  }
+}
+
+.expand-btn {
+  background: transparent;
+  border: none;
+  color: $buttonColor;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+
+  &:hover {
+    background: $lightBackground3;
+  }
+
+  &.dark-mode {
+    color: $buttonHover;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1380px) {
+  .showcase-title {
+    font-size: 42px;
+  }
+
+  .showcase-subtitle {
+    font-size: 18px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-name {
+    font-size: 22px;
+  }
+
+  .project-subtitle-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-showcase-container {
+    width: 95%;
+    margin: 2rem auto;
+  }
+
+  .showcase-title {
+    font-size: 32px;
+  }
+
+  .showcase-subtitle {
+    font-size: 16px;
+    margin-bottom: 2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-image-container {
+    height: 180px;
+  }
+
+  .project-content {
+    padding: 1.25rem;
+  }
+
+  .project-name {
+    font-size: 20px;
+  }
+
+  .project-subtitle-text {
+    font-size: 14px;
+  }
+
+  .project-description {
+    font-size: 14px;
+  }
+
+  .project-bullet {
+    font-size: 13px;
+  }
+
+  .project-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .project-showcase-container {
+    width: 100%;
+  }
+
+  .project-content {
+    padding: 1rem;
+  }
+
+  .project-name {
+    font-size: 18px;
+  }
+}
+

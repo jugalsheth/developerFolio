@@ -1,0 +1,433 @@
+@import "../../_globalColor";
+
+.career-timeline-container {
+  width: 90%;
+  margin: 4rem auto;
+  padding: 20px 10px;
+}
+
+.timeline-title {
+  font-size: 56px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  color: $titleColor;
+}
+
+.timeline-subtitle {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: $subTitle;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, $buttonColor, $buttonHover);
+    border-radius: 2px;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: flex-start;
+
+  &.timeline-left {
+    justify-content: flex-end;
+    padding-right: 50%;
+    padding-left: 0;
+
+    .timeline-marker {
+      right: -58px;
+      left: auto;
+    }
+
+    .timeline-content {
+      margin-right: 60px;
+    }
+  }
+
+  &.timeline-right {
+    justify-content: flex-start;
+    padding-left: 50%;
+    padding-right: 0;
+
+    .timeline-marker {
+      left: -58px;
+      right: auto;
+    }
+
+    .timeline-content {
+      margin-left: 60px;
+    }
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  background: $buttonColor;
+  border-radius: 50%;
+  border: 4px solid $lightBackground1;
+  box-shadow: 0 0 0 4px $buttonHover;
+  position: absolute;
+}
+
+.timeline-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px $lightBoxShadowDark;
+  overflow: hidden;
+  border: 4px solid $lightBackground2;
+}
+
+.timeline-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.timeline-content {
+  background: $lightBackground1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px $lightBoxShadow;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 500px;
+  border: 2px solid transparent;
+  position: relative;
+
+  &.collapsed {
+    padding: 1.25rem 1.5rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 0 0 2px $buttonColor;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px $lightBoxShadowDarker;
+    border-color: $buttonColor;
+
+    &::after {
+      opacity: 0.3;
+    }
+  }
+
+  &.dark-mode {
+    background: $darkBackground;
+    box-shadow: 0 4px 12px $darkBoxShadow;
+
+    &:hover {
+      box-shadow: 0 8px 24px $darkBoxShadow2;
+      border-color: $buttonHover;
+
+      &::after {
+        box-shadow: 0 0 0 2px $buttonHover;
+      }
+    }
+  }
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.timeline-role {
+  font-size: 22px;
+  font-weight: 600;
+  color: $titleColor;
+  margin-bottom: 0.5rem;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.timeline-company {
+  font-size: 18px;
+  font-weight: 500;
+  color: $buttonColor;
+  margin-bottom: 0;
+
+  &.dark-mode {
+    color: $buttonHover;
+  }
+}
+
+.timeline-date {
+  font-size: 14px;
+  color: $subTitle;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 4px 12px;
+  background: $lightBackground3;
+  border-radius: 20px;
+
+  &.dark-mode {
+    background: rgba(255, 255, 255, 0.1);
+    color: $textColorDark;
+  }
+}
+
+.timeline-expandable {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+
+  &.show {
+    max-height: 2000px;
+    opacity: 1;
+    margin-top: 1rem;
+  }
+}
+
+.timeline-description {
+  font-size: 16px;
+  color: $textColor;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.timeline-bullets {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  .bullet-item {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 0.8rem;
+    font-size: 15px;
+    color: $cardSubtitle;
+    line-height: 1.5;
+
+    &::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: $buttonColor;
+      font-weight: bold;
+    }
+
+    &.dark-mode {
+      color: $subTitle;
+
+      &::before {
+        color: $buttonHover;
+      }
+    }
+  }
+}
+
+.expand-indicator {
+  text-align: center;
+  font-size: 13px;
+  color: $buttonColor;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  user-select: none;
+  padding: 6px 12px;
+  background: $lightBackground3;
+  border-radius: 20px;
+  display: inline-block;
+  width: 100%;
+  transition: all 0.2s ease;
+
+  .timeline-content.collapsed & {
+    margin-top: 0.5rem;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .timeline-content:hover & {
+    background: rgba(107, 91, 149, 0.1);
+    transform: scale(1.02);
+  }
+
+  .dark-mode & {
+    background: rgba(255, 255, 255, 0.05);
+    color: $buttonHover;
+
+    .timeline-content:hover & {
+      background: rgba(155, 120, 195, 0.2);
+    }
+  }
+}
+
+/* Dark Mode Adjustments */
+.dark-mode.timeline-item {
+  .timeline-dot {
+    border-color: $darkBackground;
+    box-shadow: 0 0 0 4px rgba(155, 120, 195, 0.3);
+  }
+
+  .timeline-icon {
+    background: $darkBackground;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1380px) {
+  .timeline-title {
+    font-size: 42px;
+  }
+
+  .timeline-subtitle {
+    font-size: 18px;
+  }
+
+  .timeline-role {
+    font-size: 20px;
+  }
+
+  .timeline-company {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .career-timeline-container {
+    width: 95%;
+    margin: 2rem auto;
+  }
+
+  .timeline-title {
+    font-size: 32px;
+  }
+
+  .timeline-subtitle {
+    font-size: 16px;
+    margin-bottom: 2rem;
+  }
+
+  .timeline {
+    &::before {
+      left: 40px;
+    }
+  }
+
+  .timeline-item {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: flex-start !important;
+
+    &.timeline-left,
+    &.timeline-right {
+      .timeline-marker {
+        left: 0 !important;
+        right: auto !important;
+      }
+
+      .timeline-content {
+        margin-left: 100px !important;
+        margin-right: 0 !important;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .timeline-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .timeline-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline-role {
+    font-size: 18px;
+  }
+
+  .timeline-company {
+    font-size: 15px;
+  }
+
+  .timeline-date {
+    font-size: 13px;
+  }
+
+  .timeline-description {
+    font-size: 14px;
+  }
+
+  .bullet-item {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 320px) {
+  .career-timeline-container {
+    width: 100%;
+  }
+
+  .timeline-item {
+    .timeline-content {
+      margin-left: 80px !important;
+      padding: 1rem;
+    }
+  }
+
+  .timeline-role {
+    font-size: 16px;
+  }
+}
+
