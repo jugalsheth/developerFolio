@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.aba5651c.css",
-    "main.js": "/static/js/main.0a80d1c3.js",
-    "static/media/scriptwriter.png": "/static/media/scriptwriter.ef05e7ddac2c41aa9620.png",
-    "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
-    "static/media/etlgenie.png": "/static/media/etlgenie.39a81caa8433c827d9b9.png",
-    "static/media/resume.pdf": "/static/media/resume.3cc750ecc115437f2da1.pdf",
-    "static/media/Agustina.woff": "/static/media/Agustina.eb0c59dda4cc308cba96.woff",
-    "static/media/manOnTable.svg": "/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
-    "static/media/hanoverLogo.png": "/static/media/hanoverLogo.94d234b821dbc3efa9e5.png",
-    "static/media/vaynermediaLogo.png": "/static/media/vaynermediaLogo.941f73b827fe61a7679c.png",
-    "static/media/developerActivity.svg": "/static/media/developerActivity.2c0445cae86f4243433a2f5a22b2c031.svg",
-    "static/media/northeasternLogo.png": "/static/media/northeasternLogo.653fd5c192d6a0a6f6c1.png",
-    "static/media/vaynerxLogo.png": "/static/media/vaynerxLogo.5d521bb98416fddc34de.png",
-    "static/media/skill.svg": "/static/media/skill.35a147662ab0a1d15e579690446e0258.svg",
-    "index.html": "/index.html",
-    "static/media/talksCardBack.svg": "/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
-    "main.aba5651c.css.map": "/static/css/main.aba5651c.css.map",
-    "main.0a80d1c3.js.map": "/static/js/main.0a80d1c3.js.map"
+    "main.css": "/developerFolio/static/css/main.5f6ae1c0.css",
+    "main.js": "/developerFolio/static/js/main.4ce42d04.js",
+    "static/media/scriptwriter.png": "/developerFolio/static/media/scriptwriter.ef05e7ddac2c41aa9620.png",
+    "static/media/Montserrat-Regular.ttf": "/developerFolio/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
+    "static/media/etlgenie.png": "/developerFolio/static/media/etlgenie.39a81caa8433c827d9b9.png",
+    "static/media/resume.pdf": "/developerFolio/static/media/resume.3cc750ecc115437f2da1.pdf",
+    "static/media/Agustina.woff": "/developerFolio/static/media/Agustina.eb0c59dda4cc308cba96.woff",
+    "static/media/manOnTable.svg": "/developerFolio/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
+    "static/media/hanoverLogo.png": "/developerFolio/static/media/hanoverLogo.94d234b821dbc3efa9e5.png",
+    "static/media/vaynermediaLogo.png": "/developerFolio/static/media/vaynermediaLogo.941f73b827fe61a7679c.png",
+    "static/media/developerActivity.svg": "/developerFolio/static/media/developerActivity.2c0445cae86f4243433a2f5a22b2c031.svg",
+    "static/media/northeasternLogo.png": "/developerFolio/static/media/northeasternLogo.653fd5c192d6a0a6f6c1.png",
+    "static/media/vaynerxLogo.png": "/developerFolio/static/media/vaynerxLogo.5d521bb98416fddc34de.png",
+    "static/media/skill.svg": "/developerFolio/static/media/skill.35a147662ab0a1d15e579690446e0258.svg",
+    "index.html": "/developerFolio/index.html",
+    "static/media/talksCardBack.svg": "/developerFolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
+    "main.5f6ae1c0.css.map": "/developerFolio/static/css/main.5f6ae1c0.css.map",
+    "main.4ce42d04.js.map": "/developerFolio/static/js/main.4ce42d04.js.map"
   },
   "entrypoints": [
-    "static/css/main.aba5651c.css",
-    "static/js/main.0a80d1c3.js"
+    "static/css/main.5f6ae1c0.css",
+    "static/js/main.4ce42d04.js"
   ]
 }
