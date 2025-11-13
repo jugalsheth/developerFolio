@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/developerFolio/static/css/main.3ae7e045.css",
-    "main.js": "/developerFolio/static/js/main.8443a3ab.js",
+    "main.js": "/developerFolio/static/js/main.c857e832.js",
     "static/css/906.8b315c53.chunk.css": "/developerFolio/static/css/906.8b315c53.chunk.css",
     "static/js/906.c0d77222.chunk.js": "/developerFolio/static/js/906.c0d77222.chunk.js",
     "static/css/115.49b4d7f6.chunk.css": "/developerFolio/static/css/115.49b4d7f6.chunk.css",
@@ -39,7 +39,7 @@
     "index.html": "/developerFolio/index.html",
     "static/media/talksCardBack.svg": "/developerFolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
     "main.3ae7e045.css.map": "/developerFolio/static/css/main.3ae7e045.css.map",
-    "main.8443a3ab.js.map": "/developerFolio/static/js/main.8443a3ab.js.map",
+    "main.c857e832.js.map": "/developerFolio/static/js/main.c857e832.js.map",
     "906.8b315c53.chunk.css.map": "/developerFolio/static/css/906.8b315c53.chunk.css.map",
     "906.c0d77222.chunk.js.map": "/developerFolio/static/js/906.c0d77222.chunk.js.map",
     "115.49b4d7f6.chunk.css.map": "/developerFolio/static/css/115.49b4d7f6.chunk.css.map",
@@ -65,6 +65,6 @@
   },
   "entrypoints": [
     "static/css/main.3ae7e045.css",
-    "static/js/main.8443a3ab.js"
+    "static/js/main.c857e832.js"
   ]
 }
