@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/developerFolio/static/css/main.389d41d1.css",
-    "main.js": "/developerFolio/static/js/main.2d78e698.js",
+    "main.css": "/developerFolio/static/css/main.c3dfa1a3.css",
+    "main.js": "/developerFolio/static/js/main.9999120c.js",
     "static/css/906.39b55ec6.chunk.css": "/developerFolio/static/css/906.39b55ec6.chunk.css",
     "static/js/906.c0d77222.chunk.js": "/developerFolio/static/js/906.c0d77222.chunk.js",
     "static/css/115.49b4d7f6.chunk.css": "/developerFolio/static/css/115.49b4d7f6.chunk.css",
@@ -32,14 +32,13 @@
     "static/media/manOnTable.svg": "/developerFolio/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
     "static/media/hanoverLogo.png": "/developerFolio/static/media/hanoverLogo.94d234b821dbc3efa9e5.png",
     "static/media/vaynermediaLogo.png": "/developerFolio/static/media/vaynermediaLogo.941f73b827fe61a7679c.png",
-    "static/media/developerActivity.svg": "/developerFolio/static/media/developerActivity.2c0445cae86f4243433a2f5a22b2c031.svg",
     "static/media/northeasternLogo.png": "/developerFolio/static/media/northeasternLogo.653fd5c192d6a0a6f6c1.png",
     "static/media/vaynerxLogo.png": "/developerFolio/static/media/vaynerxLogo.5d521bb98416fddc34de.png",
     "static/media/skill.svg": "/developerFolio/static/media/skill.35a147662ab0a1d15e579690446e0258.svg",
     "index.html": "/developerFolio/index.html",
     "static/media/talksCardBack.svg": "/developerFolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
-    "main.389d41d1.css.map": "/developerFolio/static/css/main.389d41d1.css.map",
-    "main.2d78e698.js.map": "/developerFolio/static/js/main.2d78e698.js.map",
+    "main.c3dfa1a3.css.map": "/developerFolio/static/css/main.c3dfa1a3.css.map",
+    "main.9999120c.js.map": "/developerFolio/static/js/main.9999120c.js.map",
     "906.39b55ec6.chunk.css.map": "/developerFolio/static/css/906.39b55ec6.chunk.css.map",
     "906.c0d77222.chunk.js.map": "/developerFolio/static/js/906.c0d77222.chunk.js.map",
     "115.49b4d7f6.chunk.css.map": "/developerFolio/static/css/115.49b4d7f6.chunk.css.map",
@@ -64,7 +63,7 @@
     "707.38dc4655.chunk.js.map": "/developerFolio/static/js/707.38dc4655.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.389d41d1.css",
-    "static/js/main.2d78e698.js"
+    "static/css/main.c3dfa1a3.css",
+    "static/js/main.9999120c.js"
   ]
 }
