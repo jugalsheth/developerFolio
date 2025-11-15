@@ -1,0 +1,62 @@
+@import "../../_globalColor";
+
+.project-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 40px 0;
+  padding: 0 20px;
+}
+
+.filter-btn {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 2px solid $primaryColor;
+  background: white;
+  color: $primaryColor;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &.active {
+    background: $primaryColor;
+    color: white;
+    box-shadow: 0 4px 15px rgba(85, 85, 255, 0.3);
+  }
+
+  &.dark-mode {
+    background: $darkBackground;
+    color: $textColorDark;
+    border-color: $primaryColor;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background: $primaryColor;
+      color: white;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-filter-container {
+    gap: 10px;
+  }
+
+  .filter-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+

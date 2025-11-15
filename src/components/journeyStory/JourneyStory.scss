@@ -1,0 +1,129 @@
+@import "../../_globalColor";
+
+.journey-story-container {
+  padding: 60px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.journey-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 12px;
+  color: $textColor;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.journey-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: $subTitle;
+
+  &.dark-mode {
+    color: $subTitleDark;
+  }
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.philosophy-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: $primaryColor;
+  }
+
+  &.dark-mode {
+    background: $darkBackground;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.philosophy-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.philosophy-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  color: $textColor;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.philosophy-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+  color: $subTitle;
+
+  &.dark-mode {
+    color: $subTitleDark;
+  }
+}
+
+.philosophy-highlight {
+  text-align: center;
+  padding-top: 15px;
+  border-top: 2px solid $primaryColor;
+
+  .highlight-text {
+    color: $primaryColor;
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-style: italic;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .journey-story-container {
+    padding: 60px 0;
+  }
+
+  .journey-title {
+    font-size: 2rem;
+  }
+
+  .journey-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .philosophy-card {
+    padding: 30px 20px;
+  }
+}
+

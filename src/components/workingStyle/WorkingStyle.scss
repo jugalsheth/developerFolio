@@ -1,0 +1,172 @@
+@import "../../_globalColor";
+
+.working-style-container {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.working-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 12px;
+  color: $textColor;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.working-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: $subTitle;
+
+  &.dark-mode {
+    color: $subTitleDark;
+  }
+}
+
+.workflow-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  position: relative;
+}
+
+.workflow-card {
+  background: white;
+  border-radius: 15px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  border-left: 5px solid $primaryColor;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-left-color: $buttonHover;
+  }
+
+  &.dark-mode {
+    background: $darkBackground;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.workflow-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.workflow-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.workflow-time {
+  background: $primaryColor;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.workflow-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: $textColor;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.workflow-activities {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-item {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: $subTitle;
+
+  &::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: $primaryColor;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  &.dark-mode {
+    color: $subTitleDark;
+
+    &::before {
+      color: $buttonHover;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .workflow-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .working-style-container {
+    padding: 50px 15px;
+  }
+
+  .working-title {
+    font-size: 2rem;
+  }
+
+  .working-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .workflow-timeline {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .workflow-card {
+    padding: 20px 18px;
+  }
+
+  .workflow-icon {
+    font-size: 2rem;
+  }
+
+  .workflow-title {
+    font-size: 1.1rem;
+  }
+
+  .activity-item {
+    font-size: 0.85rem;
+  }
+}
+

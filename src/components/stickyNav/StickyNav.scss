@@ -1,0 +1,129 @@
+@import "../../_globalColor";
+
+.sticky-nav {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%) translateX(150px);
+  z-index: 1000;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.visible {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  &.dark-mode {
+    .nav-items {
+      background: rgba(30, 39, 46, 0.95);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.nav-items {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: $textColor;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+
+  .dark-mode & {
+    color: $textColorDark;
+  }
+
+  .nav-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .nav-label {
+    opacity: 0;
+    max-width: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  &:hover {
+    background: rgba(107, 91, 149, 0.1);
+    padding-right: 20px;
+
+    .nav-label {
+      opacity: 1;
+      max-width: 100px;
+      margin-left: 4px;
+    }
+  }
+
+  &.active {
+    background: $primaryColor;
+    color: white;
+    box-shadow: 0 4px 12px rgba(107, 91, 149, 0.4);
+
+    .nav-label {
+      opacity: 1;
+      max-width: 100px;
+      margin-left: 4px;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: $primaryColor;
+    border-radius: 0 2px 2px 0;
+    transition: height 0.3s ease;
+  }
+
+  &.active::before {
+    height: 60%;
+  }
+}
+
+/* Responsive - Hide on small screens */
+@media (max-width: 1024px) {
+  .sticky-nav {
+    right: 15px;
+  }
+
+  .nav-item {
+    padding: 10px 12px;
+    
+    .nav-icon {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sticky-nav {
+    display: none;
+  }
+}
+

@@ -1,0 +1,24 @@
+/* Section Reveal/Unlock Effect - Pure CSS */
+
+.section-locked {
+  filter: blur(1px);
+  opacity: 0.6;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-revealed {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Disable on mobile for better performance */
+@media (max-width: 768px) {
+  .section-locked {
+    filter: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+

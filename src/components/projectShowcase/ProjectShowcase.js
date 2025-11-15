@@ -2,14 +2,53 @@ import React, {useState, useContext} from "react";
 import "./ProjectShowcase.scss";
 import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
+import ProjectFilter from "../projectFilter/ProjectFilter";
 
 export default function ProjectShowcase({projects}) {
   const {isDark} = useContext(StyleContext);
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const toggleExpand = index => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
+
+  // Filter projects based on active filter
+  const getFilteredProjects = () => {
+    if (activeFilter === "all") return projects;
+    
+    return projects.filter(project => {
+      const projectName = project.name.toLowerCase();
+      const projectTech = project.technologies?.join(" ").toLowerCase() || "";
+      const projectDesc = project.description.toLowerCase();
+      
+      switch (activeFilter) {
+        case "production":
+          return projectName.includes("procurement") || 
+                 projectName.includes("sku") ||
+                 projectDesc.includes("production") ||
+                 projectTech.includes("nextjs") ||
+                 projectTech.includes("vercel");
+        case "realtime":
+          return projectName.includes("etl") ||
+                 projectDesc.includes("real-time") ||
+                 projectTech.includes("kafka") ||
+                 projectTech.includes("spark");
+        case "genai":
+          return projectName.includes("genie") ||
+                 projectName.includes("geopulse") ||
+                 projectDesc.includes("ai") ||
+                 projectTech.includes("openai");
+        case "automation":
+          return projectDesc.includes("automat") ||
+                 projectDesc.includes("workflow");
+        default:
+          return true;
+      }
+    });
+  };
+
+  const filteredProjects = getFilteredProjects();
 
   return (
     <div className="project-showcase-container">
@@ -28,8 +67,10 @@ export default function ProjectShowcase({projects}) {
         </p>
       </Fade>
 
+      <ProjectFilter activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+
       <div className="projects-grid">
-        {projects.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <Fade
             key={index}
             bottom

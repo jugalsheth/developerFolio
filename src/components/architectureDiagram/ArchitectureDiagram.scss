@@ -1,0 +1,298 @@
+@import "../../_globalColor";
+
+.architecture-diagram-container {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.arch-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 12px;
+  color: $textColor;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.arch-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: $subTitle;
+
+  &.dark-mode {
+    color: $subTitleDark;
+  }
+}
+
+.architecture-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.diagram-container {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 25px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+
+  &.dark-mode {
+    background: $darkBackground;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.architecture-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.flow-layer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+
+  &.horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.flow-arrow {
+  font-size: 1.8rem;
+  color: $primaryColor;
+  font-weight: bold;
+}
+
+.arch-node {
+  background: $lightBackground1;
+  border: 3px solid $lightBorder1;
+  border-radius: 15px;
+  padding: 20px 25px;
+  min-width: 160px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-color: $primaryColor;
+  }
+
+  &.selected {
+    border-color: $primaryColor;
+    border-width: 4px;
+    background: linear-gradient(135deg, rgba(107, 91, 149, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+    box-shadow: 0 8px 25px rgba(107, 91, 149, 0.3);
+  }
+
+  &.users {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    cursor: default;
+
+    .node-label {
+      color: white;
+    }
+  }
+
+  &.dark-mode {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    &.selected {
+      background: rgba(107, 91, 149, 0.2);
+      border-color: $primaryColor;
+    }
+
+    &.users {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+  }
+}
+
+.node-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.node-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $textColor;
+  margin-bottom: 5px;
+
+  .dark-mode & {
+    color: $textColorDark;
+  }
+}
+
+.node-tech {
+  font-size: 0.85rem;
+  color: $subTitle;
+  font-weight: 500;
+
+  .dark-mode & {
+    color: $subTitleDark;
+  }
+}
+
+.details-panel {
+  margin-top: 40px;
+  background: $lightBackground2;
+  border-radius: 12px;
+  padding: 25px;
+  border-left: 5px solid $primaryColor;
+  animation: slideIn 0.3s ease-out;
+
+  &.dark-mode {
+    background: rgba(255, 255, 255, 0.03);
+    border-left-color: $buttonHover;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+
+  h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: $textColor;
+
+    .dark-mode & {
+      color: $textColorDark;
+    }
+  }
+}
+
+.close-detail-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: $lightBackground3;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #f44336;
+    color: white;
+    transform: rotate(90deg);
+  }
+
+  .dark-mode & {
+    background: rgba(255, 255, 255, 0.1);
+    color: $textColorDark;
+
+    &:hover {
+      background: #f44336;
+      color: white;
+    }
+  }
+}
+
+.details-tech {
+  color: $primaryColor;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.details-description {
+  color: $subTitle;
+  line-height: 1.6;
+  margin: 0;
+
+  .dark-mode & {
+    color: $subTitleDark;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .architecture-diagram-container {
+    padding: 50px 15px;
+  }
+
+  .arch-title {
+    font-size: 2rem;
+  }
+
+  .arch-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .diagram-container {
+    padding: 30px 20px;
+  }
+
+  .arch-node {
+    min-width: 140px;
+    padding: 16px 12px;
+  }
+
+  .node-icon {
+    font-size: 1.8rem;
+  }
+
+  .node-label {
+    font-size: 0.9rem;
+  }
+
+  .node-tech {
+    font-size: 0.7rem;
+  }
+
+  .flow-layer.horizontal {
+    gap: 12px;
+  }
+
+  .flow-arrow {
+    font-size: 1.5rem;
+  }
+
+  .details-panel {
+    padding: 20px;
+  }
+
+  .details-header h4 {
+    font-size: 1.2rem;
+  }
+}
+

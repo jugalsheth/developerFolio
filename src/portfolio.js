@@ -18,7 +18,7 @@ const illustration = {
 const greeting = {
   username: "Jugal Sheth",
   title: "Hi, I'm Jugal 👋",
-  subTitle: "A data engineer crafting modern data platforms, real-time pipelines, and GenAI tools.",
+  subTitle: "Full-stack data engineer building production systems used by 200+ users. From real-time pipelines to NextJS apps, I ship what scales.",
   resumeLink: true,
   githubProfile: "https://github.com/jugalsheth",
   displayGreeting: true
@@ -28,7 +28,7 @@ const greeting = {
 
 const socialMediaLinks = {
   github: "https://github.com/jugalsheth",
-  linkedin: "https://www.linkedin.com/in/jugalsheth/",
+  linkedin: "https://www.linkedin.com/in/jugal-sheth/",
   gmail: "jugal.sheth63@gmail.com",
   instagram: "https://www.instagram.com/jugalsheth/",
   displayGreeting: true // 👈🏽 ADD THIS LINE
@@ -37,6 +37,8 @@ const socialMediaLinks = {
 // Skills Section
 
 const skillsSection = {
+  title: "Skills & Expertise",
+  subTitle: "Mastering the tools and technologies that power modern data systems",
   skills: [
     "⚡ Building reliable real-time data pipelines using Kafka + Spark",
     "⚡ Creating dashboards with Streamlit and custom visuals",
@@ -119,6 +121,7 @@ const workExperiences = {
       desc: "Primary contributor to analytics data layer for emerging CRM SaaS; designed and maintained scalable datasets and reporting to surface critical business signals.",
       descBullets: [
         "Architected and modeled the core analytics data layer for emerging CRM SaaS, designing and maintaining 50+ scalable datasets surfacing critical business signals from 5+ data sources",
+        "Designed and implemented Medallion architecture (Bronze/Silver/Gold layers) for data lake, ensuring data quality and governance at scale",
         "Engineered and optimized ETL/ELT pipelines (Airflow/dbt), reducing cycle time by 40% via query optimization and schema redesign",
         "Established and governed data governance framework for critical financial KPIs, standardizing definitions, which fed into 15 executive Power BI dashboards used by the Finance team to reduce quarterly forecasting variance by 12%",
         "Enabled product, data science, and business teams to perform agile, repeatable analysis—resulting in 3 new product features and improved customer acquisition performance by 25%",
@@ -166,13 +169,13 @@ const bigProjects = {
     {
       image: require("./assets/images/etlgenie.png"),
       projectName: "ETLGenie",
-      projectDesc: "Natural language to dbt pipeline generator",
+      projectDesc: "GenAI-powered dbt pipeline generator - transforms natural language to production-ready SQL. Built with OpenAI API and Streamlit.",
       footerLink: [{ name: "GitHub", url: "https://github.com/jugalsheth/etlgenie/tree/main" }]
     },
     {
       image: require("./assets/images/querygenie.png"),
       projectName: "QueryGenie",
-      projectDesc: "AI-powered SQL generation from plain English",
+      projectDesc: "AI SQL assistant turning plain English into optimized queries. Speeds up analysis 10x for non-technical stakeholders.",
       footerLink: [{ name: "GitHub", url: "https://github.com/jugalsheth/querygenie" }]
     },
     {
@@ -261,6 +264,20 @@ const visualResume = {
       label: "Budget Impact",
       description: "Supported data-driven budget decisions",
       color: "blue"
+    },
+    {
+      value: 80,
+      suffix: "%",
+      label: "Manual Work Eliminated",
+      description: "Automated data workflows and processes",
+      color: "green"
+    },
+    {
+      value: 200,
+      suffix: "+",
+      label: "Week 1 Users",
+      description: "Procurement platform adoption",
+      color: "blue"
     }
   ],
 
@@ -295,11 +312,29 @@ const visualResume = {
       "Deep-Dive Analysis",
       "Reporting Frameworks"
     ],
+    "Full-Stack Development": [
+      "NextJS",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "REST APIs",
+      "Server-Side Rendering"
+    ],
+    "System Design & Architecture": [
+      "Multi-Tenant Systems",
+      "Medallion Architecture",
+      "Microservices",
+      "API Design",
+      "Scalability Patterns",
+      "Zero-Downtime Deployments"
+    ],
     "Cloud/DevOps": [
-      "AWS",
-      "GCP",
+      "AWS (Lambda, S3, RDS, Redshift)",
+      "Vercel",
+      "Supabase",
       "GitHub Actions",
-      "CI/CD"
+      "CI/CD Pipelines",
+      "Infrastructure as Code"
     ],
     "Testing & Reliability": [
       "Data Quality Checks",
@@ -311,6 +346,22 @@ const visualResume = {
   },
 
   detailedProjects: [
+    {
+      name: "Procurement Intelligence Platform",
+      subtitle: "Production NextJS App · 200+ Active Users",
+      date: "2024",
+      image: require("./assets/images/etlgenie.png"),
+      description: "Enterprise procurement tool connecting Snowflake DWH to intuitive NextJS frontend, serving 200+ users from week one",
+      bullets: [
+        "Architected full-stack NextJS application with server-side rendering, deployed on AWS with zero-downtime CI/CD pipeline",
+        "Designed RESTful API layer connecting Snowflake data warehouse via Snowflake Connector, enabling real-time procurement analytics",
+        "Implemented role-based access control for multi-department security, supporting 200+ concurrent users across 5 business units",
+        "Built interactive dashboards with Chart.js showing real-time spend analytics, reducing procurement approval time by 50%",
+        "Became company-wide standard for internal tool development, demonstrating production-grade system design at scale"
+      ],
+      technologies: ["NextJS", "Snowflake", "AWS", "TypeScript", "Node.js", "REST API", "CI/CD"],
+      links: []
+    },
     {
       name: "SKU Master Ware",
       subtitle: "Multi-Channel Inventory Management System",

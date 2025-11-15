@@ -1,0 +1,449 @@
+@import "../../_globalColor";
+
+.career-journey-container {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.journey-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.journey-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $textColor;
+  margin-bottom: 12px;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.journey-subtitle {
+  font-size: 1.1rem;
+  color: $subTitle;
+  max-width: 700px;
+  margin: 0 auto;
+
+  &.dark-mode {
+    color: $subTitleDark;
+  }
+}
+
+.journey-timeline {
+  position: relative;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #e74c3c 0%, #3498db 20%, #16a085 40%, #9b59b6 60%, #6b5b95 80%, #667eea 100%);
+    z-index: 0;
+    box-shadow: 0 0 10px rgba(107, 91, 149, 0.3);
+  }
+}
+
+.journey-phase {
+  position: relative;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+
+  &.left {
+    justify-content: flex-end;
+    
+    .phase-content-wrapper {
+      padding-right: 60px;
+    }
+
+    .phase-timeline-marker {
+      order: 2;
+      margin-left: -28px;
+    }
+  }
+
+  &.right {
+    justify-content: flex-start;
+
+    .phase-content-wrapper {
+      padding-left: 60px;
+    }
+
+    .phase-timeline-marker {
+      order: 1;
+      margin-right: -28px;
+    }
+  }
+
+  &.future {
+    .phase-card {
+      border-left-style: dashed;
+      background: rgba(102, 126, 234, 0.08);
+
+      &::after {
+        content: "Future Goal";
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+      }
+
+      &.dark-mode {
+        background: rgba(102, 126, 234, 0.15);
+        border-left-color: #8b9dff;
+      }
+    }
+
+    .phase-timeline-marker {
+      border: 4px dashed white;
+      animation: pulse-future 2s ease-in-out infinite;
+
+      .dark-mode & {
+        border-color: #1e272e;
+      }
+    }
+  }
+}
+
+@keyframes pulse-future {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(102, 126, 234, 0.7);
+  }
+}
+
+.phase-timeline-marker {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  flex-shrink: 0;
+  border: 5px solid white;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.2;
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+
+  .dark-mode & {
+    border-color: #1e272e;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .journey-phase:hover & {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+    &::after {
+      inset: -12px;
+      opacity: 0.3;
+    }
+  }
+}
+
+.phase-icon {
+  font-size: 1.8rem;
+}
+
+.phase-content-wrapper {
+  flex: 1;
+  max-width: 450px;
+}
+
+.phase-card {
+  background: rgba(107, 91, 149, 0.06);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(107, 91, 149, 0.08);
+  }
+
+  &.dark-mode {
+    background: rgba(107, 91, 149, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+    &:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      background: rgba(107, 91, 149, 0.18);
+    }
+  }
+}
+
+.phase-year {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.phase-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $textColor;
+  margin-bottom: 8px;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.phase-role {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.phase-description {
+  font-size: 0.95rem;
+  color: $subTitle;
+  line-height: 1.6;
+  margin-bottom: 15px;
+
+  &.dark-mode {
+    color: $subTitleDark;
+  }
+}
+
+.expand-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  border: 2px solid;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.phase-details {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid $lightBorder1;
+  animation: slideDown 0.3s ease-out;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: $textColor;
+    line-height: 1.5;
+
+    &::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent-color, $primaryColor);
+      font-weight: bold;
+    }
+
+    &.dark-mode {
+      color: $textColorDark;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.journey-cta {
+  text-align: center;
+  margin-top: 60px;
+  padding: 40px 30px;
+  background: linear-gradient(135deg, rgba(107, 91, 149, 0.08) 0%, rgba(102, 126, 234, 0.08) 100%);
+  border-radius: 20px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 3px;
+    background: linear-gradient(135deg, $primaryColor 0%, $buttonHover 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+  }
+
+  &.dark-mode {
+    background: linear-gradient(135deg, rgba(107, 91, 149, 0.15) 0%, rgba(102, 126, 234, 0.15) 100%);
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    color: $textColor;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, $primaryColor 0%, $buttonHover 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    .dark-mode & {
+      background: linear-gradient(135deg, #9078c3 0%, #8b9dff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: $subTitle;
+    margin-bottom: 25px;
+
+    .dark-mode & {
+      color: $subTitleDark;
+    }
+  }
+}
+
+.journey-cta-btn {
+  display: inline-block;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, $primaryColor 0%, $buttonHover 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(107, 91, 149, 0.4);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(107, 91, 149, 0.5);
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .journey-timeline::before {
+    left: 28px;
+  }
+
+  .journey-phase {
+    justify-content: flex-start !important;
+
+    &.left,
+    &.right {
+      .phase-content-wrapper {
+        padding-left: 70px;
+        padding-right: 0;
+      }
+
+      .phase-timeline-marker {
+        order: 1;
+        margin-left: 0;
+        margin-right: 0;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+
+  .phase-content-wrapper {
+    max-width: 100%;
+  }
+
+  .journey-cta {
+    padding: 30px 20px;
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .journey-cta-btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+}
+

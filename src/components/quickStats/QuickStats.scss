@@ -1,0 +1,65 @@
+@import "../../_globalColor";
+
+.quick-stats-container {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, $primaryColor 0%, #667eea 100%);
+  padding: 16px 0;
+  margin: 30px 0;
+  position: relative;
+
+  &.dark-mode {
+    background: linear-gradient(135deg, rgba(85, 85, 85, 0.8) 0%, rgba(68, 68, 68, 0.8) 100%);
+  }
+}
+
+.stats-ticker {
+  display: flex;
+  animation: scroll 30s linear infinite;
+  will-change: transform;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0 40px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+
+  .stat-icon {
+    font-size: 1.4rem;
+    margin-right: 10px;
+  }
+
+  .stat-text {
+    font-weight: 600;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stat-item {
+    font-size: 0.95rem;
+    padding: 0 30px;
+
+    .stat-icon {
+      font-size: 1.2rem;
+    }
+  }
+}
+

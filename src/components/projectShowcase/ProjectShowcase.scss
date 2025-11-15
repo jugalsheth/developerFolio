@@ -30,25 +30,32 @@
 }
 
 .project-showcase-card {
-  background: $lightBackground1;
+  background: rgba(107, 91, 149, 0.05);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 16px $lightBoxShadow;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(107, 91, 149, 0.1);
+  backdrop-filter: blur(10px);
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 32px $lightBoxShadowDarker;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(107, 91, 149, 0.08);
+    border-color: rgba(107, 91, 149, 0.2);
   }
 
   &.dark-mode {
-    background: $darkBackground;
-    box-shadow: 0 4px 16px $darkBoxShadow;
+    background: rgba(107, 91, 149, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    border-color: rgba(144, 120, 195, 0.15);
 
     &:hover {
-      box-shadow: 0 12px 32px $darkBoxShadow2;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      background: rgba(107, 91, 149, 0.18);
+      border-color: rgba(144, 120, 195, 0.25);
     }
   }
 }
@@ -58,7 +65,13 @@
   width: 100%;
   height: 220px;
   overflow: hidden;
-  background: $lightBackground3;
+  background: rgba(107, 91, 149, 0.08);
+  border-bottom: 1px solid rgba(107, 91, 149, 0.1);
+
+  .dark-mode & {
+    background: rgba(107, 91, 149, 0.15);
+    border-bottom-color: rgba(144, 120, 195, 0.15);
+  }
 }
 
 .project-showcase-image {
@@ -102,9 +115,10 @@
 
 .project-name {
   font-size: 24px;
-  font-weight: 600;
-  color: $titleColor;
+  font-weight: 700;
+  color: $textColor;
   margin-bottom: 0.5rem;
+  letter-spacing: 0.3px;
 
   &.dark-mode {
     color: $textColorDark;
@@ -113,23 +127,29 @@
 
 .project-subtitle-text {
   font-size: 16px;
-  font-weight: 500;
-  color: $buttonColor;
+  font-weight: 600;
+  background: linear-gradient(135deg, $primaryColor 0%, $buttonHover 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 1rem;
 
   &.dark-mode {
-    color: $buttonHover;
+    background: linear-gradient(135deg, #9078c3 0%, #bb8fce 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
 .project-description {
   font-size: 15px;
-  color: $cardSubtitle;
+  color: $subTitle;
   line-height: 1.6;
   margin-bottom: 1rem;
 
   &.dark-mode {
-    color: $subTitle;
+    color: $subTitleDark;
   }
 }
 
@@ -154,19 +174,19 @@
   padding-left: 20px;
   margin-bottom: 0.8rem;
   font-size: 14px;
-  color: $cardSubtitle;
+  color: $subTitle;
   line-height: 1.5;
 
   &::before {
-    content: "●";
+    content: "→";
     position: absolute;
     left: 0;
-    color: $buttonColor;
+    color: $primaryColor;
     font-weight: bold;
   }
 
   &.dark-mode {
-    color: $subTitle;
+    color: $subTitleDark;
 
     &::before {
       color: $buttonHover;
@@ -183,30 +203,41 @@
 
 .tech-tag {
   padding: 6px 12px;
-  background: $lightBackground3;
-  border: 1px solid $lightBorder1;
+  background: rgba(107, 91, 149, 0.1);
+  border: 1px solid rgba(107, 91, 149, 0.2);
   border-radius: 15px;
   font-size: 12px;
-  font-weight: 500;
-  color: $textColor;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  color: $primaryColor;
+  transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
-    background: $buttonColor;
-    color: white;
-    border-color: $buttonColor;
+    background: rgba(107, 91, 149, 0.15);
+    border-color: $primaryColor;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(107, 91, 149, 0.2);
   }
 
   &.dark-mode {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-    color: $textColorDark;
+    background: rgba(144, 120, 195, 0.15);
+    border-color: rgba(144, 120, 195, 0.25);
+    color: #bb8fce;
 
     &:hover {
-      background: $buttonColor;
-      color: white;
-      border-color: $buttonColor;
+      background: rgba(144, 120, 195, 0.25);
+      border-color: #bb8fce;
+      box-shadow: 0 2px 8px rgba(144, 120, 195, 0.3);
     }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.08);
+  }
+  50% {
+    transform: scale(1.12);
   }
 }
 
@@ -216,7 +247,11 @@
   align-items: center;
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid $lightBorder1;
+  border-top: 1px solid rgba(107, 91, 149, 0.15);
+
+  .dark-mode & {
+    border-top-color: rgba(144, 120, 195, 0.2);
+  }
 }
 
 .project-links {
@@ -227,44 +262,50 @@
 .project-link {
   font-size: 14px;
   font-weight: 600;
-  color: $buttonColor;
+  background: linear-gradient(135deg, $primaryColor 0%, $buttonHover 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: $buttonHover;
     transform: translateX(3px);
+    opacity: 0.8;
   }
 
   &.dark-mode {
-    color: $buttonHover;
-
-    &:hover {
-      color: $textColorDark;
-    }
+    background: linear-gradient(135deg, #9078c3 0%, #bb8fce 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
 .expand-btn {
   background: transparent;
-  border: none;
-  color: $buttonColor;
+  border: 2px solid rgba(107, 91, 149, 0.3);
+  color: $primaryColor;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   padding: 6px 12px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   border-radius: 8px;
 
   &:hover {
-    background: $lightBackground3;
+    background: rgba(107, 91, 149, 0.1);
+    border-color: $primaryColor;
+    transform: translateY(-2px);
   }
 
   &.dark-mode {
     color: $buttonHover;
+    border-color: rgba(144, 120, 195, 0.3);
 
     &:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(144, 120, 195, 0.15);
+      border-color: $buttonHover;
     }
   }
 }

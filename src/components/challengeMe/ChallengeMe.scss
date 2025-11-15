@@ -1,0 +1,493 @@
+@import "../../_globalColor";
+
+.challenge-me-container {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.challenge-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 12px;
+  color: $textColor;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.challenge-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: $subTitle;
+
+  &.dark-mode {
+    color: $subTitleDark;
+  }
+}
+
+.challenge-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.challenge-preview-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(135deg, $primaryColor 0%, $buttonHover 100%);
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: $primaryColor;
+  }
+
+  &.dark-mode {
+    background: $darkBackground;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.preview-number {
+  display: inline-block;
+  background: $primaryColor;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.preview-question {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: $textColor;
+  line-height: 1.5;
+  min-height: 80px;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.preview-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background: $primaryColor;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $buttonHover;
+    transform: translateX(5px);
+  }
+
+  &.dark-mode {
+    background: $primaryColor;
+
+    &:hover {
+      background: $buttonHover;
+    }
+  }
+}
+
+/* Modal Styles */
+.challenge-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(5px);
+  overflow-y: auto;
+
+  &.dark-mode {
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.challenge-modal {
+  background: white;
+  border-radius: 20px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+  &.dark-mode {
+    background: $darkBackground;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: $lightBackground2;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $textColor;
+  z-index: 10;
+
+  &:hover {
+    background: #f44336;
+    color: white;
+    transform: rotate(90deg);
+  }
+
+  .dark-mode & {
+    background: rgba(255, 255, 255, 0.1);
+    color: $textColorDark;
+
+    &:hover {
+      background: #f44336;
+      color: white;
+    }
+  }
+}
+
+.modal-content {
+  padding: 60px 40px 40px;
+}
+
+.modal-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid $primaryColor;
+}
+
+.modal-question {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $textColor;
+  line-height: 1.5;
+  margin: 0;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.next-challenge-btn {
+  padding: 12px 28px;
+  background: $primaryColor;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: $buttonHover;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(85, 85, 255, 0.3);
+  }
+
+  &.dark-mode {
+    background: $primaryColor;
+
+    &:hover {
+      background: $buttonHover;
+    }
+  }
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  background: $lightBackground1;
+  border: 2px solid $lightBorder1;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: left;
+  font-size: 1rem;
+
+  &:hover:not(:disabled) {
+    border-color: $primaryColor;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.correct {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: #4caf50;
+
+    .option-label {
+      background: #4caf50;
+    }
+  }
+
+  &.incorrect {
+    background: rgba(244, 67, 54, 0.1);
+    border-color: #f44336;
+
+    .option-label {
+      background: #f44336;
+    }
+  }
+
+  &.dark-mode {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: $textColorDark;
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: $primaryColor;
+    }
+
+    &.correct {
+      background: rgba(76, 175, 80, 0.2);
+    }
+
+    &.incorrect {
+      background: rgba(244, 67, 54, 0.2);
+    }
+  }
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background: $primaryColor;
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.option-text {
+  flex: 1;
+  line-height: 1.5;
+}
+
+.feedback {
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  animation: slideDown 0.3s ease-out;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  &.correct {
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid #4caf50;
+    color: #2e7d32;
+  }
+
+  &.incorrect {
+    background: rgba(244, 67, 54, 0.1);
+    border: 2px solid #f44336;
+    color: #c62828;
+  }
+
+  &.dark-mode {
+    &.correct {
+      background: rgba(76, 175, 80, 0.2);
+      color: #81c784;
+    }
+
+    &.incorrect {
+      background: rgba(244, 67, 54, 0.2);
+      color: #e57373;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reset-btn {
+  margin-top: 15px;
+  padding: 10px 25px;
+  background: $primaryColor;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: $buttonHover;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(85, 85, 255, 0.3);
+  }
+
+  &.dark-mode {
+    background: $primaryColor;
+
+    &:hover {
+      background: $buttonHover;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .challenge-me-container {
+    padding: 50px 15px;
+  }
+
+  .challenge-title {
+    font-size: 2rem;
+  }
+
+  .challenge-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .challenge-preview-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .challenge-preview-card {
+    padding: 25px;
+  }
+
+  .preview-question {
+    font-size: 1rem;
+    min-height: 70px;
+  }
+
+  .modal-content {
+    padding: 50px 25px 30px;
+  }
+
+  .modal-question {
+    font-size: 1.2rem;
+  }
+
+  .option-btn {
+    padding: 15px;
+    font-size: 0.95rem;
+  }
+
+  .option-label {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+

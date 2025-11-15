@@ -2,10 +2,124 @@
 
 .resume-section {
   background: $lightBackground2;
-  padding: 2rem 0;
+  padding: 60px 0;
 
   &.dark-mode {
     background: $appHeaderBG;
+  }
+}
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.resume-main-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: $textColor;
+  margin-bottom: 15px;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+}
+
+.resume-main-subtitle {
+  font-size: 1.2rem;
+  color: $subTitle;
+  max-width: 700px;
+  margin: 0 auto;
+
+  &.dark-mode {
+    color: $subTitleDark;
+  }
+}
+
+.resume-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+
+.resume-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: white;
+  border: 3px solid $lightBorder1;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  color: $textColor;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: $primaryColor;
+    background: $lightBackground3;
+  }
+
+  &.active {
+    background: $primaryColor;
+    color: white;
+    border-color: $primaryColor;
+    box-shadow: 0 8px 24px rgba(107, 91, 149, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &.dark-mode {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: $textColorDark;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: $primaryColor;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    &.active {
+      background: $primaryColor;
+      color: white;
+      border-color: $primaryColor;
+    }
+  }
+}
+
+.tab-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.tab-label {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.resume-tab-content {
+  min-height: 500px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -115,6 +229,19 @@
 
 /* Responsive Design */
 @media (max-width: 1380px) {
+  .resume-main-title {
+    font-size: 2.5rem;
+  }
+
+  .resume-main-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .resume-tab {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+
   .download-title {
     font-size: 32px;
   }
@@ -130,6 +257,40 @@
 }
 
 @media (max-width: 768px) {
+  .resume-section {
+    padding: 40px 0;
+  }
+
+  .resume-header {
+    margin-bottom: 30px;
+  }
+
+  .resume-main-title {
+    font-size: 2rem;
+  }
+
+  .resume-main-subtitle {
+    font-size: 1rem;
+  }
+
+  .resume-tabs {
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .resume-tab {
+    padding: 12px 20px;
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .tab-icon {
+    font-size: 1.2rem;
+  }
+
+  .resume-tab-content {
+    min-height: 400px;
+  }
 
   .resume-download-section {
     width: 95%;
