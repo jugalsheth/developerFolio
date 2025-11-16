@@ -1,0 +1,273 @@
+@import "../../_globalColor";
+
+.hero-background-modern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.background-media-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.media-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  &.next {
+    z-index: 0;
+  }
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.4) blur(0px);
+  transform: scale(1.05);
+  transition: transform 20s ease-out, filter 1s ease;
+
+  .active & {
+    filter: brightness(0.5) blur(0px);
+    transform: scale(1);
+  }
+
+  .dark-mode & {
+    filter: brightness(0.3) blur(0px);
+
+    .active & {
+      filter: brightness(0.35) blur(0px);
+    }
+  }
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
+  transform: scale(1.05);
+  transition: transform 20s ease-out, filter 1s ease;
+
+  .active & {
+    filter: brightness(0.5);
+    transform: scale(1);
+  }
+
+  .dark-mode & {
+    filter: brightness(0.3);
+
+    .active & {
+      filter: brightness(0.35);
+    }
+  }
+}
+
+.background-reel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  .reel-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    transform: scale(1.1);
+    transition: transform 20s ease-out;
+    opacity: 0.6;
+
+    .active & {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+  }
+}
+
+.media-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+
+  .dark-mode & {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+}
+
+.media-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+  }
+
+  &.active {
+    width: 30px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .dark-mode & {
+    border-color: rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    &.active {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+.media-caption {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+  text-align: center;
+  max-width: 80%;
+
+  p {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    margin: 0;
+  }
+}
+
+// Split-screen layout - Right side background
+.hero-background-modern.split-screen {
+  right: 0;
+  left: auto;
+  width: 50%;
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+
+  @media (max-width: 968px) {
+    width: 100%;
+    clip-path: none;
+  }
+}
+
+// Full background mode
+.hero-background-modern.full-background {
+  // Already full by default
+}
+
+// Content overlay mode (subtle background)
+.hero-background-modern.content-overlay {
+  .background-image,
+  .background-video {
+    filter: brightness(0.2) blur(2px);
+    transform: scale(1.1);
+
+    .active & {
+      filter: brightness(0.25) blur(1px);
+    }
+  }
+
+  .media-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(107, 91, 149, 0.1) 0%,
+      rgba(102, 126, 234, 0.1) 100%
+    );
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 968px) {
+  .media-caption {
+    bottom: 60px;
+    font-size: 14px;
+  }
+
+  .media-indicators {
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .background-image,
+  .background-video {
+    filter: brightness(0.3) !important;
+
+    .dark-mode & {
+      filter: brightness(0.2) !important;
+    }
+  }
+
+  .media-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ) !important;
+  }
+}
+

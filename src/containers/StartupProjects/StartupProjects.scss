@@ -118,9 +118,124 @@
   }
 }
 
+// Embedded dashboard styles
+.project-card-embed {
+  grid-column: 1 / -1; // Full width for embedded dashboards
+  
+  .project-embed-container {
+    width: 100%;
+    height: 700px;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    background: rgba(107, 91, 149, 0.05);
+    border: 1px solid rgba(107, 91, 149, 0.1);
+    position: relative;
+    
+    .dark-mode & {
+      background: rgba(107, 91, 149, 0.12);
+      border-color: rgba(144, 120, 195, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+  }
+  
+  .project-embed-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    background: rgba(107, 91, 149, 0.05);
+  }
+  
+  .iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(107, 91, 149, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: opacity 0.3s ease;
+    pointer-events: auto;
+    
+    &:hover {
+      background: rgba(107, 91, 149, 0.98);
+    }
+    
+    .iframe-overlay-content {
+      text-align: center;
+      padding: 2rem;
+      color: white;
+      
+      h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: white;
+      }
+      
+      p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+      }
+      
+      .iframe-open-button {
+        display: inline-block;
+        padding: 12px 24px;
+        background: white;
+        color: #667eea;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+          background: #f0f0f0;
+        }
+      }
+    }
+    
+    .dark-mode & {
+      background: rgba(20, 20, 30, 0.95);
+      
+      &:hover {
+        background: rgba(20, 20, 30, 0.98);
+      }
+    }
+  }
+  
+  // Hide overlay if iframe content loads successfully
+  .project-embed-container:has(iframe[src*="streamlit"]:not([src=""])) {
+    .iframe-overlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    
+    &:hover .iframe-overlay {
+      opacity: 0.95;
+      pointer-events: auto;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .project-subtitle {
     font-size: 16px;
     text-align: center;
+  }
+  
+  .project-card-embed {
+    .project-embed-container {
+      height: 500px;
+    }
   }
 }

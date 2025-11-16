@@ -1,0 +1,508 @@
+@import "../../_globalColor";
+
+.personal-gallery {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+
+  * {
+    pointer-events: auto;
+  }
+}
+
+// ===== FLOATING MODE =====
+.floating-mode {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-photo {
+  position: absolute;
+  width: 180px;
+  height: 240px;
+  animation: floatPhoto 6s ease-in-out infinite;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+
+  &:hover {
+    z-index: 100 !important;
+    transform: scale(1.15) !important;
+  }
+
+  &.dark-mode {
+    filter: brightness(0.9);
+  }
+}
+
+.photo-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(107, 91, 149, 0.1);
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  .dark-mode & {
+    background: rgba(30, 39, 46, 0.95);
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(102, 126, 234, 0.2);
+  }
+
+  .floating-photo:hover & {
+    box-shadow: 
+      0 20px 50px rgba(107, 91, 149, 0.4),
+      0 0 0 2px rgba(107, 91, 149, 0.3);
+    transform: rotateY(5deg) rotateX(-5deg);
+
+    .dark-mode & {
+      box-shadow: 
+        0 20px 50px rgba(102, 126, 234, 0.3),
+        0 0 0 2px rgba(102, 126, 234, 0.4);
+    }
+  }
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInCaption 0.3s ease forwards;
+  pointer-events: none;
+}
+
+.photo-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.floating-photo:hover .photo-shine {
+  left: 100%;
+}
+
+@keyframes floatPhoto {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+}
+
+@keyframes fadeInCaption {
+  to {
+    opacity: 1;
+  }
+}
+
+// ===== CAROUSEL MODE (Instagram Reels) =====
+.carousel-mode {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.reels-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 177.78%; // 9:16 aspect ratio
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  background: #000;
+
+  .dark-mode & {
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+  }
+}
+
+.reels-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.reel-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.reel-video,
+.reel-embed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+.reel-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 20px;
+  color: white;
+}
+
+.reel-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reel-icon {
+  font-size: 20px;
+}
+
+.reel-caption {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  color: $primaryColor;
+
+  .dark-mode & {
+    background: rgba(30, 39, 46, 0.9);
+    color: #8b9dff;
+  }
+
+  &:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(107, 91, 149, 0.3);
+
+    .dark-mode & {
+      background: rgba(30, 39, 46, 1);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+  }
+
+  &.prev {
+    left: 10px;
+  }
+
+  &.next {
+    right: 10px;
+  }
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(107, 91, 149, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  .dark-mode & {
+    background: rgba(102, 126, 234, 0.3);
+  }
+
+  &.active {
+    width: 24px;
+    border-radius: 4px;
+    background: $primaryColor;
+
+    .dark-mode & {
+      background: #8b9dff;
+    }
+  }
+
+  &:hover {
+    background: $primaryColor;
+    transform: scale(1.2);
+
+    .dark-mode & {
+      background: #8b9dff;
+    }
+  }
+}
+
+// ===== GRID MODE =====
+.grid-mode {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.grid-photo-item {
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.grid-photo-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.grid-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  opacity: 0;
+
+  &.active {
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+  }
+}
+
+.grid-caption {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  padding: 8px;
+  margin: 0;
+}
+
+.grid-photo-item:hover .grid-image {
+  transform: scale(1.1);
+}
+
+// ===== POLAROID MODE =====
+.polaroid-mode {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.polaroid-photo {
+  position: absolute;
+  width: 220px;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+
+  &:hover {
+    z-index: 100 !important;
+    transform: scale(1.2) rotate(0deg) !important;
+  }
+}
+
+.polaroid-frame {
+  background: white;
+  padding: 16px 16px 60px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  transition: box-shadow 0.3s ease;
+
+  .dark-mode & {
+    background: rgba(30, 39, 46, 0.95);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .polaroid-photo:hover & {
+    box-shadow: 0 12px 40px rgba(107, 91, 149, 0.3);
+
+    .dark-mode & {
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+    }
+  }
+}
+
+.polaroid-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1px;
+}
+
+.polaroid-caption {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  margin: 0;
+
+  .dark-mode & {
+    color: #ccc;
+  }
+}
+
+// ===== RESPONSIVE DESIGN =====
+@media (max-width: 968px) {
+  .floating-photo {
+    width: 140px;
+    height: 180px;
+  }
+
+  .carousel-mode {
+    max-width: 300px;
+  }
+
+  .photo-grid {
+    gap: 6px;
+  }
+
+  .polaroid-photo {
+    width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-photo {
+    width: 120px;
+    height: 160px;
+  }
+
+  .carousel-mode {
+    max-width: 280px;
+  }
+
+  .carousel-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+
+    &.prev {
+      left: 5px;
+    }
+
+    &.next {
+      right: 5px;
+    }
+  }
+
+  .polaroid-mode {
+    max-width: 250px;
+    height: 350px;
+  }
+
+  .polaroid-photo {
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-mode {
+    display: none; // Hide floating photos on very small screens
+  }
+
+  .carousel-mode {
+    max-width: 100%;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

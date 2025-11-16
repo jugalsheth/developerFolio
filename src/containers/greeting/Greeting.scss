@@ -16,11 +16,11 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(107, 91, 149, 0.02) 0%, rgba(102, 126, 234, 0.02) 100%);
+  background: transparent;
 }
 
-/* Animated Background */
-.hero-background {
+/* Modern Data Engineering Background */
+.hero-background-modern {
   position: absolute;
   top: 0;
   left: 0;
@@ -29,83 +29,104 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  background: transparent;
 }
 
-.gradient-mesh {
-  position: absolute;
-  width: 120%;
-  height: 120%;
-  top: -10%;
-  left: -10%;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(107, 91, 149, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(107, 91, 149, 0.05) 0%, transparent 70%);
-  animation: gradientShift 15s ease-in-out infinite;
-  opacity: 0.6;
-}
-
-@keyframes gradientShift {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-2%, -2%) scale(1.05);
-  }
-}
-
-.data-particles {
+.data-flow-visualization {
   position: absolute;
   width: 100%;
   height: 100%;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(107, 91, 149, 0.3);
-  border-radius: 50%;
-  animation: float infinite ease-in-out;
-  pointer-events: none;
+  opacity: 0.03;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(107, 91, 149, 0.1) 2px, rgba(107, 91, 149, 0.1) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(102, 126, 234, 0.1) 2px, rgba(102, 126, 234, 0.1) 4px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
 
   .dark-mode & {
-    background: rgba(102, 126, 234, 0.4);
+    opacity: 0.05;
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(102, 126, 234, 0.15) 2px, rgba(102, 126, 234, 0.15) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(107, 91, 149, 0.15) 2px, rgba(107, 91, 149, 0.15) 4px);
   }
 }
 
-@keyframes float {
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(40px, 40px);
+  }
+}
+
+.code-grid-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  background-image: 
+    linear-gradient(rgba(107, 91, 149, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(102, 126, 234, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: codeFlow 30s ease-in-out infinite;
+
+  .dark-mode & {
+    opacity: 0.04;
+    background-image: 
+      linear-gradient(rgba(102, 126, 234, 0.2) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(107, 91, 149, 0.2) 1px, transparent 1px);
+  }
+}
+
+@keyframes codeFlow {
   0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.3;
+    transform: translate(0, 0) scale(1);
+    opacity: 0.02;
   }
   50% {
-    transform: translateY(-20px) translateX(10px);
-    opacity: 0.6;
+    transform: translate(-10px, -10px) scale(1.02);
+    opacity: 0.03;
   }
 }
 
 .greeting-main {
   display: flex;
-  width: 90%;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
   position: relative;
-  z-index: 1;
-  gap: 60px;
+  z-index: 2;
   align-items: center;
+  justify-content: center;
+
+  &.centered-content {
+    .greeting-text-div {
+      max-width: 900px;
+      text-align: center;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .greeting-image-div {
+      display: none;
+    }
+  }
 }
 
 .greeting-text-div {
-  flex: 1;
-  z-index: 2;
+  z-index: 3;
+  position: relative;
+  width: 100%;
 }
 
 .greeting-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
+  align-items: center;
+  text-align: center;
 }
 
 .subTitle {
@@ -117,6 +138,8 @@
   display: inline-block;
   margin-bottom: 8px;
   animation: fadeInDown 0.8s ease-out;
+  text-align: center;
+  width: 100%;
 }
 
 .badge-text {
@@ -140,11 +163,12 @@
 
 /* Main Title */
 .greeting-text {
-  font-size: 72px;
+  font-size: clamp(42px, 8vw, 96px);
   line-height: 1.1;
   color: $textColor !important;
-  font-weight: 700;
+  font-weight: 800;
   margin: 0;
+  letter-spacing: -0.02em;
   background: linear-gradient(135deg, $textColor 0%, $primaryColor 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -194,22 +218,24 @@
 
 /* Subtitle */
 .greeting-text-p {
-  font-size: 22px;
-  line-height: 1.6;
-  margin: 0;
-  max-width: 600px;
+  font-size: clamp(18px, 2.5vw, 24px);
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 800px;
   animation: fadeInUp 0.8s ease-out 0.4s both;
   font-weight: 400;
+  color: $subTitle;
 }
 
 /* Rotating Role */
 .rotating-role-container {
   margin-top: 8px;
   margin-bottom: 0;
-  font-size: 26px;
+  font-size: clamp(20px, 3vw, 28px);
   font-weight: 600;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
   animation: fadeInUp 0.8s ease-out 0.6s both;
@@ -228,6 +254,7 @@
 .hero-tech-badges {
   margin-top: 8px;
   animation: fadeInUp 0.8s ease-out 0.8s both;
+  width: 100%;
 }
 
 .tech-badges-container {
@@ -235,6 +262,7 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 12px;
+  justify-content: center;
 }
 
 .tech-badge {
@@ -310,6 +338,8 @@
   flex-direction: column;
   gap: 24px;
   animation: fadeInUp 0.8s ease-out 1s both;
+  align-items: center;
+  width: 100%;
 }
 
 .button-greeting-div {
@@ -344,6 +374,16 @@
   > img {
     max-width: 100%;
     height: auto;
+  }
+
+  // For carousel, grid, and polaroid modes, position them within the image div
+  .carousel-mode,
+  .grid-mode,
+  .polaroid-mode {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -385,43 +425,11 @@
 
 @media (max-width: 968px) {
   .greeting-main {
-    flex-direction: column;
-    gap: 40px;
     padding: 40px 20px;
   }
 
-  .greeting-text-div {
-    text-align: center;
-    width: 100%;
-  }
-
   .greeting-content {
-    align-items: center;
-  }
-
-  .greeting-text-p {
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .rotating-role-container {
-    justify-content: center;
-  }
-
-  .hero-tech-badges {
-    width: 100%;
-  }
-
-  .tech-badges-container {
-    justify-content: center;
-  }
-
-  .hero-actions {
-    align-items: center;
-  }
-
-  .button-greeting-div {
-    justify-content: center;
+    gap: 24px;
   }
 }
 
@@ -432,7 +440,10 @@
 
   .greeting-main {
     padding: 30px 20px;
-    gap: 30px;
+  }
+
+  .greeting-content {
+    gap: 20px;
   }
 
   .greeting-text {

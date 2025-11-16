@@ -21,7 +21,32 @@ const greeting = {
   subTitle: "Full-stack data engineer building production systems used by 200+ users. From real-time pipelines to NextJS apps, I ship what scales.",
   resumeLink: true,
   githubProfile: "https://github.com/jugalsheth",
-  displayGreeting: true
+  displayGreeting: true,
+  // Instagram Reels Grid - Three vertical columns of videos as full-screen background
+  personalGallery: {
+    display: false, // Set to false to hide the video background
+    // Video Reels - Add your video files here (will be distributed across 3 columns)
+    // Videos will autoplay, loop, and be muted as transparent background
+    reels: [
+      {
+        type: "video",
+        url: require("./assets/videos/video1_compressed.mp4"),
+        caption: "Building something awesome! 🚀"
+      },
+      {
+        type: "video",
+        url: require("./assets/videos/video2_compressed.mp4"),
+        caption: "Behind the scenes! 🎬"
+      },
+      {
+        type: "video",
+        url: require("./assets/videos/video3_compressed.mp4"),
+        caption: "Check out my latest project! ⚡"
+      },
+    ],
+    // Configuration options
+    autoPlay: true // Auto-rotate through videos in each column (every 4 seconds)
+  }
 };
 
 // Social Media Links
@@ -166,6 +191,16 @@ const bigProjects = {
   title: "Projects",
   subtitle: "Showcasing real-time data platforms and GenAI tools",
   projects: [
+    {
+      image: require("./assets/images/etlgenie.png"),
+      projectName: "Real-Time Analytics Dashboard",
+      projectDesc: "Live monitoring dashboard for data pipelines with real-time metrics, throughput visualization, and system resource tracking. Built with Streamlit and Plotly.",
+      embedUrl: "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app",
+      footerLink: [
+        { name: "Live Demo", url: "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app" },
+        { name: "GitHub", url: "https://github.com/jugalsheth/real-time-dashboard" }
+      ]
+    },
     {
       image: require("./assets/images/etlgenie.png"),
       projectName: "ETLGenie",

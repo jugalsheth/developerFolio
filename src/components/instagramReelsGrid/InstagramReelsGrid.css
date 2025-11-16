@@ -1,0 +1,30 @@
+/* Global styles to hide Instagram embed UI elements */
+/* Note: Instagram embeds are in iframes, so we can't directly style their content */
+/* These styles work by hiding the container elements that Instagram adds */
+
+/* Hide Instagram embed UI overlay elements */
+.instagram-reels-grid iframe {
+  /* Make iframe non-interactive so clicks pass through to the link */
+  pointer-events: none;
+}
+
+/* Style for Instagram embed containers */
+.instagram-reels-grid .reel-container {
+  /* Ensure container can receive clicks */
+  position: relative;
+}
+
+/* Hide any Instagram UI that might appear outside the iframe */
+.instagram-reels-grid .reel-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  pointer-events: auto;
+  /* This overlay makes the entire reel clickable */
+  background: transparent;
+}
+
