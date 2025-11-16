@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/developerFolio/static/css/main.c3dfa1a3.css",
-    "main.js": "/developerFolio/static/js/main.9999120c.js",
-    "static/css/906.39b55ec6.chunk.css": "/developerFolio/static/css/906.39b55ec6.chunk.css",
-    "static/js/906.c0d77222.chunk.js": "/developerFolio/static/js/906.c0d77222.chunk.js",
+    "main.css": "/developerFolio/static/css/main.b15c03bb.css",
+    "main.js": "/developerFolio/static/js/main.37de2d32.js",
+    "static/css/906.ea324531.chunk.css": "/developerFolio/static/css/906.ea324531.chunk.css",
+    "static/js/906.99be06da.chunk.js": "/developerFolio/static/js/906.99be06da.chunk.js",
     "static/css/115.49b4d7f6.chunk.css": "/developerFolio/static/css/115.49b4d7f6.chunk.css",
     "static/js/115.f10dba1a.chunk.js": "/developerFolio/static/js/115.f10dba1a.chunk.js",
     "static/css/302.12f48f29.chunk.css": "/developerFolio/static/css/302.12f48f29.chunk.css",
@@ -24,12 +24,14 @@
     "static/js/957.4bcf4485.chunk.js": "/developerFolio/static/js/957.4bcf4485.chunk.js",
     "static/css/707.08ef9caf.chunk.css": "/developerFolio/static/css/707.08ef9caf.chunk.css",
     "static/js/707.38dc4655.chunk.js": "/developerFolio/static/js/707.38dc4655.chunk.js",
+    "static/media/video1_compressed.mp4": "/developerFolio/static/media/video1_compressed.b5d0bda762f7c43e6071.mp4",
+    "static/media/video2_compressed.mp4": "/developerFolio/static/media/video2_compressed.8ca83813233ec68ed656.mp4",
+    "static/media/video3_compressed.mp4": "/developerFolio/static/media/video3_compressed.7b19d0b88f0a7036770b.mp4",
     "static/media/scriptwriter.png": "/developerFolio/static/media/scriptwriter.ef05e7ddac2c41aa9620.png",
     "static/media/Montserrat-Regular.ttf": "/developerFolio/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/etlgenie.png": "/developerFolio/static/media/etlgenie.39a81caa8433c827d9b9.png",
     "static/media/resume.pdf": "/developerFolio/static/media/resume.3cc750ecc115437f2da1.pdf",
     "static/media/Agustina.woff": "/developerFolio/static/media/Agustina.eb0c59dda4cc308cba96.woff",
-    "static/media/manOnTable.svg": "/developerFolio/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
     "static/media/hanoverLogo.png": "/developerFolio/static/media/hanoverLogo.94d234b821dbc3efa9e5.png",
     "static/media/vaynermediaLogo.png": "/developerFolio/static/media/vaynermediaLogo.941f73b827fe61a7679c.png",
     "static/media/northeasternLogo.png": "/developerFolio/static/media/northeasternLogo.653fd5c192d6a0a6f6c1.png",
@@ -37,10 +39,10 @@
     "static/media/skill.svg": "/developerFolio/static/media/skill.35a147662ab0a1d15e579690446e0258.svg",
     "index.html": "/developerFolio/index.html",
     "static/media/talksCardBack.svg": "/developerFolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
-    "main.c3dfa1a3.css.map": "/developerFolio/static/css/main.c3dfa1a3.css.map",
-    "main.9999120c.js.map": "/developerFolio/static/js/main.9999120c.js.map",
-    "906.39b55ec6.chunk.css.map": "/developerFolio/static/css/906.39b55ec6.chunk.css.map",
-    "906.c0d77222.chunk.js.map": "/developerFolio/static/js/906.c0d77222.chunk.js.map",
+    "main.b15c03bb.css.map": "/developerFolio/static/css/main.b15c03bb.css.map",
+    "main.37de2d32.js.map": "/developerFolio/static/js/main.37de2d32.js.map",
+    "906.ea324531.chunk.css.map": "/developerFolio/static/css/906.ea324531.chunk.css.map",
+    "906.99be06da.chunk.js.map": "/developerFolio/static/js/906.99be06da.chunk.js.map",
     "115.49b4d7f6.chunk.css.map": "/developerFolio/static/css/115.49b4d7f6.chunk.css.map",
     "115.f10dba1a.chunk.js.map": "/developerFolio/static/js/115.f10dba1a.chunk.js.map",
     "302.12f48f29.chunk.css.map": "/developerFolio/static/css/302.12f48f29.chunk.css.map",
@@ -63,7 +65,7 @@
     "707.38dc4655.chunk.js.map": "/developerFolio/static/js/707.38dc4655.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c3dfa1a3.css",
-    "static/js/main.9999120c.js"
+    "static/css/main.b15c03bb.css",
+    "static/js/main.37de2d32.js"
   ]
 }
