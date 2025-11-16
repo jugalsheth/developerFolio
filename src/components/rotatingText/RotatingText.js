@@ -21,4 +21,3 @@ export default function RotatingText({roles}) {
     <span className={`rotating-text ${fadeClass}`}>{roles[currentIndex]}</span>
   );
 }
-

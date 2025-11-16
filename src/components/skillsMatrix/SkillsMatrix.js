@@ -47,14 +47,17 @@ export default function SkillsMatrix({skills}) {
               activeCategory === category ? "active" : ""
             }`}
           >
-            <Fade bottom duration={800} distance="20px" when={activeCategory === category}>
+            <Fade
+              bottom
+              duration={800}
+              distance="20px"
+              when={activeCategory === category}
+            >
               <div className="skills-tags">
                 {skills[category].map((skill, skillIndex) => (
                   <span
                     key={skillIndex}
-                    className={
-                      isDark ? "skill-tag dark-mode" : "skill-tag"
-                    }
+                    className={isDark ? "skill-tag dark-mode" : "skill-tag"}
                     style={{animationDelay: `${skillIndex * 50}ms`}}
                   >
                     {skill}
@@ -68,4 +71,3 @@ export default function SkillsMatrix({skills}) {
     </div>
   );
 }
-

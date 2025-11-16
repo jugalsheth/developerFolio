@@ -16,7 +16,7 @@
 
 /* Hide any Instagram UI that might appear outside the iframe */
 .instagram-reels-grid .reel-item::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -27,4 +27,3 @@
   /* This overlay makes the entire reel clickable */
   background: transparent;
 }
-

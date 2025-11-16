@@ -3,10 +3,30 @@ import "./MilestoneToasts.scss";
 import StyleContext from "../../contexts/StyleContext";
 
 const milestones = [
-  {percent: 25, message: "You're getting the hang of it!", icon: "📊", emoji: "🎯"},
-  {percent: 50, message: "Halfway there! The best is yet to come", icon: "🚀", emoji: "💪"},
-  {percent: 75, message: "Almost done! You're thorough", icon: "💪", emoji: "🔥"},
-  {percent: 100, message: "You made it! You're one of the few! 🎉", icon: "🎉", emoji: "🏆"}
+  {
+    percent: 25,
+    message: "You're getting the hang of it!",
+    icon: "📊",
+    emoji: "🎯"
+  },
+  {
+    percent: 50,
+    message: "Halfway there! The best is yet to come",
+    icon: "🚀",
+    emoji: "💪"
+  },
+  {
+    percent: 75,
+    message: "Almost done! You're thorough",
+    icon: "💪",
+    emoji: "🔥"
+  },
+  {
+    percent: 100,
+    message: "You made it! You're one of the few! 🎉",
+    icon: "🎉",
+    emoji: "🏆"
+  }
 ];
 
 export default function MilestoneToasts() {
@@ -21,12 +41,15 @@ export default function MilestoneToasts() {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       const scrollTop = window.scrollY;
-      
+
       const totalScroll = documentHeight - windowHeight;
       const progress = Math.floor((scrollTop / totalScroll) * 100);
 
       milestones.forEach(milestone => {
-        if (progress >= milestone.percent && !shownMilestones.has(milestone.percent)) {
+        if (
+          progress >= milestone.percent &&
+          !shownMilestones.has(milestone.percent)
+        ) {
           // Show toast
           setActiveToast(milestone);
           setShownMilestones(prev => new Set([...prev, milestone.percent]));
@@ -66,4 +89,3 @@ export default function MilestoneToasts() {
     </div>
   );
 }
-

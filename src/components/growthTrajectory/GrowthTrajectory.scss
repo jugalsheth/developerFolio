@@ -215,7 +215,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.3;
   }
@@ -318,7 +319,8 @@
 }
 
 @keyframes squeeze {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -624,7 +626,7 @@
   transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
   position: relative;
-  
+
   &::after {
     content: "";
     position: absolute;
@@ -732,7 +734,8 @@
 }
 
 @keyframes flicker {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     filter: brightness(1);
   }
@@ -954,7 +957,8 @@
 }
 
 @keyframes pulse-bar {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(244, 67, 54, 0.6);
   }
   50% {
@@ -975,7 +979,11 @@
   display: flex;
   justify-content: space-around;
   padding: 30px 20px;
-  background: linear-gradient(135deg, rgba(107, 91, 149, 0.08) 0%, rgba(102, 126, 234, 0.08) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(107, 91, 149, 0.08) 0%,
+    rgba(102, 126, 234, 0.08) 100%
+  );
   border-radius: 16px;
   margin-top: 40px;
   border: 2px solid rgba(107, 91, 149, 0.2);
@@ -983,7 +991,11 @@
   gap: 20px;
 
   &.dark-mode {
-    background: linear-gradient(135deg, rgba(107, 91, 149, 0.15) 0%, rgba(102, 126, 234, 0.15) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(107, 91, 149, 0.15) 0%,
+      rgba(102, 126, 234, 0.15) 100%
+    );
     border-color: rgba(144, 120, 195, 0.25);
   }
 }
@@ -1078,4 +1090,3 @@
     flex-direction: column;
   }
 }
-

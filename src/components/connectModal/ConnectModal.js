@@ -16,7 +16,9 @@ export default function ConnectModal({isOpen, onClose}) {
     if (isOpen) {
       document.body.style.overflow = "hidden";
       // Focus trap
-      const firstFocusable = modalRef.current?.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const firstFocusable = modalRef.current?.querySelector(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
       firstFocusable?.focus();
     } else {
       document.body.style.overflow = "";
@@ -28,7 +30,7 @@ export default function ConnectModal({isOpen, onClose}) {
   }, [isOpen]);
 
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleEscape = e => {
       if (e.key === "Escape" && isOpen) {
         onClose();
       }
@@ -39,7 +41,7 @@ export default function ConnectModal({isOpen, onClose}) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -47,16 +49,18 @@ export default function ConnectModal({isOpen, onClose}) {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     // Create mailto link with all form data
-    const subject = encodeURIComponent(`Contact from ${formData.name} - Portfolio`);
+    const subject = encodeURIComponent(
+      `Contact from ${formData.name} - Portfolio`
+    );
     const body = encodeURIComponent(
       `Hi Jugal,\n\n` +
-      `My name is ${formData.name}.\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}\n\n` +
-      `---\n` +
-      `This message was sent from your portfolio website.`
+        `My name is ${formData.name}.\n` +
+        `Email: ${formData.email}\n\n` +
+        `Message:\n${formData.message}\n\n` +
+        `---\n` +
+        `This message was sent from your portfolio website.`
     );
-    
+
     // Open email client with pre-filled data
     window.location.href = `mailto:${contactInfo.email_address}?subject=${subject}&body=${body}`;
 
@@ -76,7 +80,8 @@ export default function ConnectModal({isOpen, onClose}) {
       label: "Email",
       icon: "✉️",
       color: "#3b82f6",
-      action: () => window.location.href = `mailto:${contactInfo.email_address}`
+      action: () =>
+        (window.location.href = `mailto:${contactInfo.email_address}`)
     },
     {
       id: "linkedin",
@@ -97,17 +102,17 @@ export default function ConnectModal({isOpen, onClose}) {
       label: "Phone",
       icon: "📞",
       color: "#10b981",
-      action: () => window.location.href = `tel:${contactInfo.number}`
+      action: () => (window.location.href = `tel:${contactInfo.number}`)
     }
   ];
 
   return (
-    <div 
+    <div
       className={`connect-modal-overlay ${isDark ? "dark-mode" : ""}`}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
+      onClick={e => e.target === e.currentTarget && onClose()}
     >
       <Fade bottom duration={400}>
-        <div 
+        <div
           ref={modalRef}
           className={`connect-modal ${isDark ? "dark-mode" : ""}`}
           role="dialog"
@@ -120,7 +125,12 @@ export default function ConnectModal({isOpen, onClose}) {
             onClick={onClose}
             aria-label="Close modal"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -131,17 +141,17 @@ export default function ConnectModal({isOpen, onClose}) {
             <h2 id="connect-modal-title" className="modal-title">
               Let's Connect! 🚀
             </h2>
-            <p className="modal-subtitle">
-              Choose how you'd like to reach out
-            </p>
+            <p className="modal-subtitle">Choose how you'd like to reach out</p>
           </div>
 
           {/* Connection Options Grid */}
           <div className="connection-options">
-            {connectionOptions.map((option) => (
+            {connectionOptions.map(option => (
               <button
                 key={option.id}
-                className={`connection-option ${activeTab === option.id ? "active" : ""}`}
+                className={`connection-option ${
+                  activeTab === option.id ? "active" : ""
+                }`}
                 onClick={() => {
                   setActiveTab(option.id);
                   if (option.action) {
@@ -168,7 +178,9 @@ export default function ConnectModal({isOpen, onClose}) {
                   type="text"
                   placeholder="Your Name"
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={e =>
+                    setFormData({...formData, name: e.target.value})
+                  }
                   required
                   className="form-input"
                 />
@@ -178,7 +190,9 @@ export default function ConnectModal({isOpen, onClose}) {
                   type="email"
                   placeholder="Your Email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={e =>
+                    setFormData({...formData, email: e.target.value})
+                  }
                   required
                   className="form-input"
                 />
@@ -187,7 +201,9 @@ export default function ConnectModal({isOpen, onClose}) {
                 <textarea
                   placeholder="Your Message"
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  onChange={e =>
+                    setFormData({...formData, message: e.target.value})
+                  }
                   required
                   rows="4"
                   className="form-textarea"
@@ -195,7 +211,9 @@ export default function ConnectModal({isOpen, onClose}) {
               </div>
               <button
                 type="submit"
-                className={`form-submit-btn ${isSubmitting ? "submitting" : ""} ${submitted ? "submitted" : ""}`}
+                className={`form-submit-btn ${
+                  isSubmitting ? "submitting" : ""
+                } ${submitted ? "submitted" : ""}`}
                 disabled={isSubmitting || submitted}
               >
                 {submitted ? (
@@ -262,4 +280,3 @@ export default function ConnectModal({isOpen, onClose}) {
     </div>
   );
 }
-

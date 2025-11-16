@@ -134,7 +134,9 @@
   top: -25%; // Position to center the video content
   left: -25%;
   // Aggressively crop to hide all Instagram UI elements
-  clip-path: inset(15% 15% 35% 15%); // Hide top header (15%) and bottom UI (35%)
+  clip-path: inset(
+    15% 15% 35% 15%
+  ); // Hide top header (15%) and bottom UI (35%)
   transform: scale(1);
   transform-origin: center center;
   // Additional cropping
@@ -312,7 +314,7 @@
 
 // Add overlay to make entire reel clickable (completely covers Instagram UI)
 .reel-item::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -330,7 +332,7 @@
 
 // Additional overlay inside container to ensure UI is hidden
 .reel-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -357,4 +359,3 @@
     pointer-events: none;
   }
 }
-

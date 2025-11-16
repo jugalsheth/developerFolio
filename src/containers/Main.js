@@ -29,11 +29,17 @@ import "../components/sectionReveal/SectionReveal.scss";
 
 // Lazy load below-the-fold components
 const StartupProject = lazy(() => import("./StartupProjects/StartupProject"));
-const WorkingStyle = lazy(() => import("../components/workingStyle/WorkingStyle"));
-const ArchitectureDiagram = lazy(() => import("../components/architectureDiagram/ArchitectureDiagram"));
+const WorkingStyle = lazy(() =>
+  import("../components/workingStyle/WorkingStyle")
+);
+const ArchitectureDiagram = lazy(() =>
+  import("../components/architectureDiagram/ArchitectureDiagram")
+);
 const ChallengeMe = lazy(() => import("../components/challengeMe/ChallengeMe"));
 const TechRadar = lazy(() => import("../components/techRadar/TechRadar"));
-const CodeSnippets = lazy(() => import("../components/codeSnippets/CodeSnippets"));
+const CodeSnippets = lazy(() =>
+  import("../components/codeSnippets/CodeSnippets")
+);
 // const Testimonials = lazy(() => import("../components/testimonials/Testimonials")); // Hidden until real testimonials available
 const Achievement = lazy(() => import("./achievement/Achievement"));
 const Blogs = lazy(() => import("./blogs/Blogs"));
@@ -94,7 +100,7 @@ const Main = () => {
               <Podcast />
             </Suspense>
             <Footer />
-            
+
             {/* Gamification Components */}
             <ScrollProgress />
             <MilestoneToasts />

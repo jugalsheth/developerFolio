@@ -11,16 +11,76 @@ export default function GameMode() {
   const [showStats, setShowStats] = useState(false);
 
   const missions = [
-    {id: "scroll_50", name: "Explorer", description: "Scroll to 50%", xp: 100, emoji: "🗺️"},
-    {id: "scroll_100", name: "Completionist", description: "Reach the bottom", xp: 200, emoji: "🏁"},
-    {id: "resume_tab", name: "Tab Master", description: "Click all 4 Resume tabs", xp: 150, emoji: "📊"},
-    {id: "code_copied", name: "Code Ninja", description: "Copy a code snippet", xp: 100, emoji: "💻"},
-    {id: "challenge_opened", name: "Challenger", description: "Open a Challenge modal", xp: 150, emoji: "🎯"},
-    {id: "dark_mode", name: "Theme Explorer", description: "Toggle dark mode", xp: 50, emoji: "🌓"},
-    {id: "project_filter", name: "Filter Pro", description: "Use project filter", xp: 75, emoji: "🔍"},
-    {id: "arch_clicked", name: "Architect", description: "Click architecture nodes", xp: 100, emoji: "🏗️"},
-    {id: "tech_radar", name: "Tech Scout", description: "Explore Tech Radar", xp: 100, emoji: "📡"},
-    {id: "sticky_nav", name: "Navigator", description: "Use sticky navigation", xp: 75, emoji: "🧭"}
+    {
+      id: "scroll_50",
+      name: "Explorer",
+      description: "Scroll to 50%",
+      xp: 100,
+      emoji: "🗺️"
+    },
+    {
+      id: "scroll_100",
+      name: "Completionist",
+      description: "Reach the bottom",
+      xp: 200,
+      emoji: "🏁"
+    },
+    {
+      id: "resume_tab",
+      name: "Tab Master",
+      description: "Click all 4 Resume tabs",
+      xp: 150,
+      emoji: "📊"
+    },
+    {
+      id: "code_copied",
+      name: "Code Ninja",
+      description: "Copy a code snippet",
+      xp: 100,
+      emoji: "💻"
+    },
+    {
+      id: "challenge_opened",
+      name: "Challenger",
+      description: "Open a Challenge modal",
+      xp: 150,
+      emoji: "🎯"
+    },
+    {
+      id: "dark_mode",
+      name: "Theme Explorer",
+      description: "Toggle dark mode",
+      xp: 50,
+      emoji: "🌓"
+    },
+    {
+      id: "project_filter",
+      name: "Filter Pro",
+      description: "Use project filter",
+      xp: 75,
+      emoji: "🔍"
+    },
+    {
+      id: "arch_clicked",
+      name: "Architect",
+      description: "Click architecture nodes",
+      xp: 100,
+      emoji: "🏗️"
+    },
+    {
+      id: "tech_radar",
+      name: "Tech Scout",
+      description: "Explore Tech Radar",
+      xp: 100,
+      emoji: "📡"
+    },
+    {
+      id: "sticky_nav",
+      name: "Navigator",
+      description: "Use sticky navigation",
+      xp: 75,
+      emoji: "🧭"
+    }
   ];
 
   const totalPossibleXP = missions.reduce((sum, m) => sum + m.xp, 0);
@@ -32,8 +92,11 @@ export default function GameMode() {
     // Mission listeners
     const checkMissions = () => {
       // Scroll missions
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      
+      const scrollPercent =
+        (window.scrollY /
+          (document.documentElement.scrollHeight - window.innerHeight)) *
+        100;
+
       if (scrollPercent >= 50 && !completedMissions.has("scroll_50")) {
         completeMission("scroll_50");
       }
@@ -43,8 +106,8 @@ export default function GameMode() {
     };
 
     // Resume tab click listener
-    const handleResumeTabClick = (e) => {
-      if (e.target.closest('.resume-tab')) {
+    const handleResumeTabClick = e => {
+      if (e.target.closest(".resume-tab")) {
         if (!completedMissions.has("resume_tab")) {
           completeMission("resume_tab");
         }
@@ -52,8 +115,8 @@ export default function GameMode() {
     };
 
     // Code copy listener
-    const handleCodeCopy = (e) => {
-      if (e.target.closest('.copy-btn')) {
+    const handleCodeCopy = e => {
+      if (e.target.closest(".copy-btn")) {
         if (!completedMissions.has("code_copied")) {
           completeMission("code_copied");
         }
@@ -61,8 +124,11 @@ export default function GameMode() {
     };
 
     // Challenge modal listener
-    const handleChallengeClick = (e) => {
-      if (e.target.closest('.challenge-preview-card') || e.target.closest('.challenge-modal')) {
+    const handleChallengeClick = e => {
+      if (
+        e.target.closest(".challenge-preview-card") ||
+        e.target.closest(".challenge-modal")
+      ) {
         if (!completedMissions.has("challenge_opened")) {
           completeMission("challenge_opened");
         }
@@ -70,8 +136,8 @@ export default function GameMode() {
     };
 
     // Dark mode listener
-    const handleThemeToggle = (e) => {
-      if (e.target.closest('.toggle-switch')) {
+    const handleThemeToggle = e => {
+      if (e.target.closest(".toggle-switch")) {
         if (!completedMissions.has("dark_mode")) {
           completeMission("dark_mode");
         }
@@ -79,8 +145,8 @@ export default function GameMode() {
     };
 
     // Project filter listener
-    const handleFilterClick = (e) => {
-      if (e.target.closest('.filter-btn')) {
+    const handleFilterClick = e => {
+      if (e.target.closest(".filter-btn")) {
         if (!completedMissions.has("project_filter")) {
           completeMission("project_filter");
         }
@@ -88,8 +154,8 @@ export default function GameMode() {
     };
 
     // Architecture node listener
-    const handleArchClick = (e) => {
-      if (e.target.closest('.arch-node')) {
+    const handleArchClick = e => {
+      if (e.target.closest(".arch-node")) {
         if (!completedMissions.has("arch_clicked")) {
           completeMission("arch_clicked");
         }
@@ -97,8 +163,8 @@ export default function GameMode() {
     };
 
     // Tech radar listener
-    const handleTechRadarClick = (e) => {
-      if (e.target.closest('.tech-item')) {
+    const handleTechRadarClick = e => {
+      if (e.target.closest(".tech-item")) {
         if (!completedMissions.has("tech_radar")) {
           completeMission("tech_radar");
         }
@@ -106,8 +172,8 @@ export default function GameMode() {
     };
 
     // Sticky nav listener
-    const handleStickyNavClick = (e) => {
-      if (e.target.closest('.nav-item')) {
+    const handleStickyNavClick = e => {
+      if (e.target.closest(".nav-item")) {
         if (!completedMissions.has("sticky_nav")) {
           completeMission("sticky_nav");
         }
@@ -148,15 +214,15 @@ export default function GameMode() {
     };
   }, [isGameMode, completedMissions]);
 
-  const completeMission = (missionId) => {
+  const completeMission = missionId => {
     const mission = missions.find(m => m.id === missionId);
     if (mission && !completedMissions.has(missionId)) {
       setCompletedMissions(prev => new Set([...prev, missionId]));
       setScore(prev => prev + mission.xp);
-      
+
       // Show mission complete notification
       showMissionNotification(mission);
-      
+
       // Level up every 300 XP
       const newLevel = Math.floor((score + mission.xp) / 300) + 1;
       if (newLevel > level) {
@@ -166,9 +232,11 @@ export default function GameMode() {
     }
   };
 
-  const showMissionNotification = (mission) => {
+  const showMissionNotification = mission => {
     const notification = document.createElement("div");
-    notification.className = `mission-notification ${isDark ? "dark-mode" : ""}`;
+    notification.className = `mission-notification ${
+      isDark ? "dark-mode" : ""
+    }`;
     notification.innerHTML = `
       <div class="mission-complete-content">
         <span class="mission-emoji">${mission.emoji}</span>
@@ -179,13 +247,15 @@ export default function GameMode() {
       </div>
     `;
     document.body.appendChild(notification);
-    
+
     setTimeout(() => notification.remove(), 3000);
   };
 
-  const showLevelUpNotification = (newLevel) => {
+  const showLevelUpNotification = newLevel => {
     const notification = document.createElement("div");
-    notification.className = `level-up-notification ${isDark ? "dark-mode" : ""}`;
+    notification.className = `level-up-notification ${
+      isDark ? "dark-mode" : ""
+    }`;
     notification.innerHTML = `
       <div class="level-up-content">
         <div class="level-up-title">LEVEL UP! 🎉</div>
@@ -193,7 +263,7 @@ export default function GameMode() {
       </div>
     `;
     document.body.appendChild(notification);
-    
+
     setTimeout(() => notification.remove(), 4000);
   };
 
@@ -216,8 +286,12 @@ export default function GameMode() {
   };
 
   const shareResults = () => {
-    const text = `🎮 I just explored @jugalsheth's portfolio in Game Mode!\n\n🏆 Level ${level} ${getRank()}\n📊 ${score} XP earned\n✅ ${completedMissions.size}/${missions.length} missions complete\n\nTry it yourself: https://jugalsheth.github.io/developerFolio/`;
-    
+    const text = `🎮 I just explored @jugalsheth's portfolio in Game Mode!\n\n🏆 Level ${level} ${getRank()}\n📊 ${score} XP earned\n✅ ${
+      completedMissions.size
+    }/${
+      missions.length
+    } missions complete\n\nTry it yourself: https://jugalsheth.github.io/developerFolio/`;
+
     if (navigator.share) {
       navigator.share({
         title: "Portfolio Game Mode Challenge",
@@ -233,7 +307,9 @@ export default function GameMode() {
     <>
       {/* Toggle Button */}
       <button
-        className={`game-mode-toggle ${isGameMode ? "active" : ""} ${isDark ? "dark-mode" : ""}`}
+        className={`game-mode-toggle ${isGameMode ? "active" : ""} ${
+          isDark ? "dark-mode" : ""
+        }`}
         onClick={toggleGameMode}
         title={isGameMode ? "Exit Game Mode" : "Activate Game Mode"}
       >
@@ -245,9 +321,11 @@ export default function GameMode() {
         <div className={`game-mode-hud ${isDark ? "dark-mode" : ""}`}>
           <div className="hud-header">
             <div className="hud-title">🎮 GAME MODE</div>
-            <button className="hud-close" onClick={toggleGameMode}>×</button>
+            <button className="hud-close" onClick={toggleGameMode}>
+              ×
+            </button>
           </div>
-          
+
           <div className="hud-stats">
             <div className="stat-item">
               <div className="stat-label">Level</div>
@@ -269,12 +347,16 @@ export default function GameMode() {
           </div>
 
           <div className="missions-list">
-            <div className="missions-header">Missions ({completedMissions.size}/{missions.length})</div>
+            <div className="missions-header">
+              Missions ({completedMissions.size}/{missions.length})
+            </div>
             <div className="missions-scroll">
               {missions.map(mission => (
                 <div
                   key={mission.id}
-                  className={`mission-item ${completedMissions.has(mission.id) ? "completed" : ""}`}
+                  className={`mission-item ${
+                    completedMissions.has(mission.id) ? "completed" : ""
+                  }`}
                 >
                   <span className="mission-emoji">{mission.emoji}</span>
                   <div className="mission-info">
@@ -282,7 +364,9 @@ export default function GameMode() {
                     <div className="mission-desc">{mission.description}</div>
                   </div>
                   <div className="mission-xp">
-                    {completedMissions.has(mission.id) ? "✓" : `${mission.xp} XP`}
+                    {completedMissions.has(mission.id)
+                      ? "✓"
+                      : `${mission.xp} XP`}
                   </div>
                 </div>
               ))}
@@ -296,7 +380,10 @@ export default function GameMode() {
           )}
 
           {progress === 100 && (
-            <button className="view-stats-btn" onClick={() => setShowStats(true)}>
+            <button
+              className="view-stats-btn"
+              onClick={() => setShowStats(true)}
+            >
               View Final Stats 📊
             </button>
           )}
@@ -307,14 +394,21 @@ export default function GameMode() {
       {showStats && (
         <div className={`stats-modal-overlay ${isDark ? "dark-mode" : ""}`}>
           <div className={`stats-modal ${isDark ? "dark-mode" : ""}`}>
-            <button className="stats-close-btn" onClick={() => setShowStats(false)}>×</button>
-            
+            <button
+              className="stats-close-btn"
+              onClick={() => setShowStats(false)}
+            >
+              ×
+            </button>
+
             <div className="stats-content">
               <h2 className="stats-title">🎉 Game Mode Complete!</h2>
-              
+
               <div className="final-rank">
                 <div className="rank-badge">🏆</div>
-                <div className="rank-title">Level {level} {getRank()}</div>
+                <div className="rank-title">
+                  Level {level} {getRank()}
+                </div>
               </div>
 
               <div className="final-stats-grid">
@@ -323,7 +417,9 @@ export default function GameMode() {
                   <div className="final-stat-label">Total XP</div>
                 </div>
                 <div className="final-stat">
-                  <div className="final-stat-value">{completedMissions.size}/{missions.length}</div>
+                  <div className="final-stat-value">
+                    {completedMissions.size}/{missions.length}
+                  </div>
                   <div className="final-stat-label">Missions</div>
                 </div>
                 <div className="final-stat">
@@ -347,7 +443,10 @@ export default function GameMode() {
                 </div>
               </div>
 
-              <button className="share-results-btn large" onClick={shareResults}>
+              <button
+                className="share-results-btn large"
+                onClick={shareResults}
+              >
                 Share My Results 🎉
               </button>
 
@@ -361,4 +460,3 @@ export default function GameMode() {
     </>
   );
 }
-

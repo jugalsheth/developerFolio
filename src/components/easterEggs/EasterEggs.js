@@ -11,7 +11,7 @@ export default function EasterEggs() {
     let usersClickTimer = null;
 
     // Easter Egg 1: Type "data" anywhere
-    const handleKeyPress = (e) => {
+    const handleKeyPress = e => {
       const newBuffer = (inputBuffer + e.key).slice(-4);
       setInputBuffer(newBuffer);
 
@@ -22,26 +22,32 @@ export default function EasterEggs() {
     };
 
     // Easter Egg 2: Triple-click logo
-    const handleLogoClick = (e) => {
-      if (e.target.closest('a[href="#greeting"]') || e.target.closest('.greeting-text')) {
+    const handleLogoClick = e => {
+      if (
+        e.target.closest('a[href="#greeting"]') ||
+        e.target.closest(".greeting-text")
+      ) {
         setLogoClickCount(prev => prev + 1);
-        
+
         clearTimeout(logoClickTimer);
         logoClickTimer = setTimeout(() => setLogoClickCount(0), 1000);
 
         if (logoClickCount + 1 >= 3) {
-          showToast("SELECT * FROM career WHERE growth = 'exponential' 😄", "💻");
+          showToast(
+            "SELECT * FROM career WHERE growth = 'exponential' 😄",
+            "💻"
+          );
           setLogoClickCount(0);
         }
       }
     };
 
     // Easter Egg 3: Click "200+ Users" 5 times
-    const handleUsersClick = (e) => {
-      const quickStatsText = e.target.closest('.stat-text');
+    const handleUsersClick = e => {
+      const quickStatsText = e.target.closest(".stat-text");
       if (quickStatsText && quickStatsText.textContent.includes("200+ Users")) {
         setUsersClickCount(prev => prev + 1);
-        
+
         clearTimeout(usersClickTimer);
         usersClickTimer = setTimeout(() => setUsersClickCount(0), 2000);
 
@@ -118,9 +124,9 @@ export default function EasterEggs() {
 
     // Close button
     modal.querySelector(".chart-close-btn").onclick = () => modal.remove();
-    
+
     // Click outside to close
-    modal.onclick = (e) => {
+    modal.onclick = e => {
       if (e.target === modal) modal.remove();
     };
 
@@ -132,4 +138,3 @@ export default function EasterEggs() {
 
   return null;
 }
-

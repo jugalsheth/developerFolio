@@ -93,7 +93,11 @@
   &.selected {
     border-color: $primaryColor;
     border-width: 4px;
-    background: linear-gradient(135deg, rgba(107, 91, 149, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(107, 91, 149, 0.1) 0%,
+      rgba(102, 126, 234, 0.1) 100%
+    );
     box-shadow: 0 8px 25px rgba(107, 91, 149, 0.3);
   }
 
@@ -295,4 +299,3 @@
     font-size: 1.2rem;
   }
 }
-

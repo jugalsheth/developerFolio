@@ -51,21 +51,13 @@ export default function WorkingStyle() {
       time: "Evening",
       icon: "👥",
       title: "Collaboration",
-      activities: [
-        "Code reviews",
-        "Mentor engineers",
-        "Knowledge sharing"
-      ]
+      activities: ["Code reviews", "Mentor engineers", "Knowledge sharing"]
     },
     {
       time: "Continuous",
       icon: "🔄",
       title: "Learning",
-      activities: [
-        "Explore new tech",
-        "Read documentation",
-        "Side projects"
-      ]
+      activities: ["Explore new tech", "Read documentation", "Side projects"]
     }
   ];
 
@@ -75,25 +67,48 @@ export default function WorkingStyle() {
         <h2 className={isDark ? "dark-mode working-title" : "working-title"}>
           How I Work
         </h2>
-        <p className={isDark ? "dark-mode working-subtitle subTitle" : "working-subtitle subTitle"}>
+        <p
+          className={
+            isDark
+              ? "dark-mode working-subtitle subTitle"
+              : "working-subtitle subTitle"
+          }
+        >
           A typical day building production data systems
         </p>
       </Fade>
 
       <div className="workflow-timeline">
         {workflow.map((phase, index) => (
-          <Fade key={index} bottom duration={1000} distance="20px" delay={index * 100}>
-            <div className={isDark ? "workflow-card dark-mode" : "workflow-card"}>
+          <Fade
+            key={index}
+            bottom
+            duration={1000}
+            distance="20px"
+            delay={index * 100}
+          >
+            <div
+              className={isDark ? "workflow-card dark-mode" : "workflow-card"}
+            >
               <div className="workflow-header">
                 <div className="workflow-icon">{phase.icon}</div>
                 <div className="workflow-time">{phase.time}</div>
               </div>
-              <h3 className={isDark ? "dark-mode workflow-title" : "workflow-title"}>
+              <h3
+                className={
+                  isDark ? "dark-mode workflow-title" : "workflow-title"
+                }
+              >
                 {phase.title}
               </h3>
               <ul className="workflow-activities">
                 {phase.activities.map((activity, idx) => (
-                  <li key={idx} className={isDark ? "dark-mode activity-item" : "activity-item"}>
+                  <li
+                    key={idx}
+                    className={
+                      isDark ? "dark-mode activity-item" : "activity-item"
+                    }
+                  >
                     {activity}
                   </li>
                 ))}
@@ -105,4 +120,3 @@ export default function WorkingStyle() {
     </div>
   );
 }
-

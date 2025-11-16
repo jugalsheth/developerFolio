@@ -11,29 +11,34 @@ export default function ChallengeMe() {
   const challenges = [
     {
       id: 1,
-      question: "Design a real-time order processing system for an e-commerce platform handling 10K orders/day",
+      question:
+        "Design a real-time order processing system for an e-commerce platform handling 10K orders/day",
       options: [
         {
           id: "a",
           text: "Batch processing every hour with SQL queries",
-          feedback: "Batching works for low-volume but won't achieve real-time freshness for 10K orders/day"
+          feedback:
+            "Batching works for low-volume but won't achieve real-time freshness for 10K orders/day"
         },
         {
           id: "b",
           text: "Kafka + Spark Streaming + Snowflake with medallion architecture",
-          feedback: "✓ Correct! This is exactly what I built. Kafka ingests events, Spark processes in micro-batches, and Snowflake stores in Bronze/Silver/Gold layers for analytics",
+          feedback:
+            "✓ Correct! This is exactly what I built. Kafka ingests events, Spark processes in micro-batches, and Snowflake stores in Bronze/Silver/Gold layers for analytics",
           isCorrect: true
         },
         {
           id: "c",
           text: "Direct writes to data warehouse from application",
-          feedback: "Direct writes create tight coupling and won't scale with high throughput"
+          feedback:
+            "Direct writes create tight coupling and won't scale with high throughput"
         }
       ]
     },
     {
       id: 2,
-      question: "You need to support 200+ users querying a Snowflake warehouse. How do you optimize costs?",
+      question:
+        "You need to support 200+ users querying a Snowflake warehouse. How do you optimize costs?",
       options: [
         {
           id: "a",
@@ -43,7 +48,8 @@ export default function ChallengeMe() {
         {
           id: "b",
           text: "Create aggregated views + clustering keys + query result caching + separate warehouses by workload",
-          feedback: "✓ Exactly my approach! Pre-aggregate common queries, use clustering for large tables, enable result caching, and separate analytical vs operational workloads",
+          feedback:
+            "✓ Exactly my approach! Pre-aggregate common queries, use clustering for large tables, enable result caching, and separate analytical vs operational workloads",
           isCorrect: true
         },
         {
@@ -55,7 +61,8 @@ export default function ChallengeMe() {
     },
     {
       id: 3,
-      question: "How would you ensure data quality in a multi-source ETL pipeline?",
+      question:
+        "How would you ensure data quality in a multi-source ETL pipeline?",
       options: [
         {
           id: "a",
@@ -65,13 +72,15 @@ export default function ChallengeMe() {
         {
           id: "b",
           text: "Automated dbt tests + Great Expectations + schema validation + SLA monitoring with alerts",
-          feedback: "✓ This is the way! Automate schema checks, uniqueness tests, freshness SLAs, and alerting for anomalies. Prevention > detection",
+          feedback:
+            "✓ This is the way! Automate schema checks, uniqueness tests, freshness SLAs, and alerting for anomalies. Prevention > detection",
           isCorrect: true
         },
         {
           id: "c",
           text: "Trust the source systems",
-          feedback: "Source systems change unexpectedly. Always validate at ingestion"
+          feedback:
+            "Source systems change unexpectedly. Always validate at ingestion"
         }
       ]
     }
@@ -104,10 +113,18 @@ export default function ChallengeMe() {
   return (
     <div className="challenge-me-container">
       <Fade bottom duration={1000} distance="20px">
-        <h2 className={isDark ? "dark-mode challenge-title" : "challenge-title"}>
+        <h2
+          className={isDark ? "dark-mode challenge-title" : "challenge-title"}
+        >
           Challenge Me
         </h2>
-        <p className={isDark ? "dark-mode challenge-subtitle subTitle" : "challenge-subtitle subTitle"}>
+        <p
+          className={
+            isDark
+              ? "dark-mode challenge-subtitle subTitle"
+              : "challenge-subtitle subTitle"
+          }
+        >
           Test my system design thinking with real-world scenarios
         </p>
       </Fade>
@@ -115,16 +132,32 @@ export default function ChallengeMe() {
       {/* Compact Preview Cards */}
       <div className="challenge-preview-grid">
         {challenges.map((challenge, index) => (
-          <Fade key={challenge.id} bottom duration={1000} distance="20px" delay={index * 100}>
+          <Fade
+            key={challenge.id}
+            bottom
+            duration={1000}
+            distance="20px"
+            delay={index * 100}
+          >
             <div
-              className={isDark ? "challenge-preview-card dark-mode" : "challenge-preview-card"}
+              className={
+                isDark
+                  ? "challenge-preview-card dark-mode"
+                  : "challenge-preview-card"
+              }
               onClick={() => openModal(challenge.id)}
             >
               <div className="preview-number">#{challenge.id}</div>
-              <h3 className={isDark ? "dark-mode preview-question" : "preview-question"}>
+              <h3
+                className={
+                  isDark ? "dark-mode preview-question" : "preview-question"
+                }
+              >
                 {challenge.question}
               </h3>
-              <button className={isDark ? "preview-btn dark-mode" : "preview-btn"}>
+              <button
+                className={isDark ? "preview-btn dark-mode" : "preview-btn"}
+              >
                 Take Challenge →
               </button>
             </div>
@@ -134,15 +167,27 @@ export default function ChallengeMe() {
 
       {/* Fullscreen Modal */}
       {activeModal && activeChallenge && (
-        <div className={isDark ? "challenge-modal-overlay dark-mode" : "challenge-modal-overlay"}>
-          <div className={isDark ? "challenge-modal dark-mode" : "challenge-modal"}>
+        <div
+          className={
+            isDark
+              ? "challenge-modal-overlay dark-mode"
+              : "challenge-modal-overlay"
+          }
+        >
+          <div
+            className={isDark ? "challenge-modal dark-mode" : "challenge-modal"}
+          >
             <button className="modal-close-btn" onClick={closeModal}>
               ×
             </button>
 
             <div className="modal-content">
               <div className="modal-header">
-                <h3 className={isDark ? "dark-mode modal-question" : "modal-question"}>
+                <h3
+                  className={
+                    isDark ? "dark-mode modal-question" : "modal-question"
+                  }
+                >
                   Scenario {activeChallenge.id}: {activeChallenge.question}
                 </h3>
               </div>
@@ -159,10 +204,16 @@ export default function ChallengeMe() {
                           : "incorrect"
                         : ""
                     } ${isDark ? "dark-mode" : ""}`}
-                    onClick={() => handleAnswerSelect(activeChallenge.id, option.id)}
-                    disabled={selectedAnswer?.challengeId === activeChallenge.id}
+                    onClick={() =>
+                      handleAnswerSelect(activeChallenge.id, option.id)
+                    }
+                    disabled={
+                      selectedAnswer?.challengeId === activeChallenge.id
+                    }
                   >
-                    <span className="option-label">{option.id.toUpperCase()}</span>
+                    <span className="option-label">
+                      {option.id.toUpperCase()}
+                    </span>
                     <span className="option-text">{option.text}</span>
                   </button>
                 ))}
@@ -171,7 +222,9 @@ export default function ChallengeMe() {
               {getSelectedOption(activeChallenge.id) && (
                 <div
                   className={`feedback ${
-                    getSelectedOption(activeChallenge.id).isCorrect ? "correct" : "incorrect"
+                    getSelectedOption(activeChallenge.id).isCorrect
+                      ? "correct"
+                      : "incorrect"
                   } ${isDark ? "dark-mode" : ""}`}
                 >
                   <p>{getSelectedOption(activeChallenge.id).feedback}</p>
@@ -187,9 +240,14 @@ export default function ChallengeMe() {
                     Try Again
                   </button>
                   <button
-                    className={isDark ? "next-challenge-btn dark-mode" : "next-challenge-btn"}
+                    className={
+                      isDark
+                        ? "next-challenge-btn dark-mode"
+                        : "next-challenge-btn"
+                    }
                     onClick={() => {
-                      const nextId = (activeChallenge.id % challenges.length) + 1;
+                      const nextId =
+                        (activeChallenge.id % challenges.length) + 1;
                       setActiveModal(nextId);
                       setSelectedAnswer(null);
                     }}
@@ -205,4 +263,3 @@ export default function ChallengeMe() {
     </div>
   );
 }
-

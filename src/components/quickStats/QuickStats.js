@@ -14,7 +14,11 @@ export default function QuickStats() {
   ];
 
   return (
-    <div className={isDark ? "quick-stats-container dark-mode" : "quick-stats-container"}>
+    <div
+      className={
+        isDark ? "quick-stats-container dark-mode" : "quick-stats-container"
+      }
+    >
       <div className="stats-ticker">
         {stats.map((stat, index) => (
           <div key={index} className="stat-item">
@@ -33,4 +37,3 @@ export default function QuickStats() {
     </div>
   );
 }
-

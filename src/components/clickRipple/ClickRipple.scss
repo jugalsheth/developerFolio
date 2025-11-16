@@ -5,7 +5,11 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(107, 91, 149, 0.4) 0%, rgba(107, 91, 149, 0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(107, 91, 149, 0.4) 0%,
+    rgba(107, 91, 149, 0) 70%
+  );
   transform: translate(-50%, -50%) scale(0);
   animation: ripple-animation 0.8s ease-out;
   pointer-events: none;
@@ -22,4 +26,3 @@
     opacity: 0;
   }
 }
-

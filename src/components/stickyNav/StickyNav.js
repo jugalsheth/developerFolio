@@ -22,13 +22,13 @@ export default function StickyNav() {
 
       // Determine active section
       const scrollPosition = window.scrollY + 100;
-      
+
       for (const section of sections) {
         const element = document.getElementById(section.id);
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetBottom = offsetTop + element.offsetHeight;
-          
+
           if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
             setActiveSection(section.id);
             break;
@@ -49,12 +49,18 @@ export default function StickyNav() {
   };
 
   return (
-    <nav className={`sticky-nav ${isVisible ? "visible" : ""} ${isDark ? "dark-mode" : ""}`}>
+    <nav
+      className={`sticky-nav ${isVisible ? "visible" : ""} ${
+        isDark ? "dark-mode" : ""
+      }`}
+    >
       <div className="nav-items">
         {sections.map(section => (
           <button
             key={section.id}
-            className={`nav-item ${activeSection === section.id ? "active" : ""}`}
+            className={`nav-item ${
+              activeSection === section.id ? "active" : ""
+            }`}
             onClick={() => scrollToSection(section.id)}
             title={section.label}
           >
@@ -66,4 +72,3 @@ export default function StickyNav() {
     </nav>
   );
 }
-

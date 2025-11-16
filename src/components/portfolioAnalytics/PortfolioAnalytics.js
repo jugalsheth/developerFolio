@@ -61,10 +61,16 @@ export default function PortfolioAnalytics() {
     <div className="portfolio-analytics-container">
       <Fade bottom duration={1000} distance="20px">
         <div className="analytics-header">
-          <h2 className={isDark ? "dark-mode analytics-title" : "analytics-title"}>
+          <h2
+            className={isDark ? "dark-mode analytics-title" : "analytics-title"}
+          >
             Portfolio Analytics
           </h2>
-          <p className={isDark ? "dark-mode analytics-subtitle" : "analytics-subtitle"}>
+          <p
+            className={
+              isDark ? "dark-mode analytics-subtitle" : "analytics-subtitle"
+            }
+          >
             Because data engineers track everything (even their portfolios) 📊
           </p>
         </div>
@@ -72,12 +78,26 @@ export default function PortfolioAnalytics() {
 
       <div className="analytics-grid">
         {stats.map((stat, index) => (
-          <Fade key={index} bottom duration={1000} distance="20px" delay={index * 50}>
-            <div className={isDark ? "analytics-card dark-mode" : "analytics-card"}>
+          <Fade
+            key={index}
+            bottom
+            duration={1000}
+            distance="20px"
+            delay={index * 50}
+          >
+            <div
+              className={isDark ? "analytics-card dark-mode" : "analytics-card"}
+            >
               <div className="analytics-icon">{stat.icon}</div>
               <div className="analytics-value">{stat.value}</div>
               <div className="analytics-label">{stat.label}</div>
-              <div className={isDark ? "dark-mode analytics-description" : "analytics-description"}>
+              <div
+                className={
+                  isDark
+                    ? "dark-mode analytics-description"
+                    : "analytics-description"
+                }
+              >
                 {stat.description}
               </div>
             </div>
@@ -86,11 +106,15 @@ export default function PortfolioAnalytics() {
       </div>
 
       <Fade bottom duration={1000} distance="20px" delay={400}>
-        <div className={isDark ? "analytics-footer dark-mode" : "analytics-footer"}>
-          <p>Built with React, SCSS, and a lot of iteration. Zero template used - every pixel custom crafted.</p>
+        <div
+          className={isDark ? "analytics-footer dark-mode" : "analytics-footer"}
+        >
+          <p>
+            Built with React, SCSS, and a lot of iteration. Zero template used -
+            every pixel custom crafted.
+          </p>
         </div>
       </Fade>
     </div>
   );
 }
-

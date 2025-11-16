@@ -69,7 +69,8 @@
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -109,4 +110,3 @@
     font-size: 1.1rem;
   }
 }
-

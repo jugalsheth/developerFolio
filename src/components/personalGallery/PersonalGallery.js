@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
-import { Fade } from "react-reveal";
+import React, {useState, useEffect, useContext, useRef} from "react";
+import {Fade} from "react-reveal";
 import "./PersonalGallery.scss";
 import StyleContext from "../../contexts/StyleContext";
 
-export default function PersonalGallery({ photos = [], reels = [], displayMode = "floating" }) {
-  const { isDark } = useContext(StyleContext);
+export default function PersonalGallery({
+  photos = [],
+  reels = [],
+  displayMode = "floating"
+}) {
+  const {isDark} = useContext(StyleContext);
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredPhoto, setHoveredPhoto] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -15,7 +19,7 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
   useEffect(() => {
     if (displayMode === "carousel" && reels.length > 0) {
       intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % reels.length);
+        setActiveIndex(prev => (prev + 1) % reels.length);
       }, 5000);
       return () => clearInterval(intervalRef.current);
     }
@@ -25,7 +29,7 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
   useEffect(() => {
     if (displayMode !== "floating" || !containerRef.current) return;
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = e => {
       const container = containerRef.current;
       const rect = container.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -61,10 +65,10 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
             <div
               className={`floating-photo ${isDark ? "dark-mode" : ""}`}
               style={{
-                left: `${15 + (index * 12)}%`,
+                left: `${15 + index * 12}%`,
                 top: `${20 + (index % 3) * 25}%`,
                 animationDelay: `${index * 0.3}s`,
-                zIndex: 10 - index,
+                zIndex: 10 - index
               }}
               onMouseEnter={() => setHoveredPhoto(index)}
               onMouseLeave={() => setHoveredPhoto(null)}
@@ -90,11 +94,15 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
   // Instagram Reels Carousel Mode
   if (displayMode === "carousel" && reels.length > 0) {
     return (
-      <div className={`personal-gallery carousel-mode ${isDark ? "dark-mode" : ""}`}>
+      <div
+        className={`personal-gallery carousel-mode ${
+          isDark ? "dark-mode" : ""
+        }`}
+      >
         <div className="reels-container">
           <div
             className="reels-track"
-            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+            style={{transform: `translateX(-${activeIndex * 100}%)`}}
           >
             {reels.map((reel, index) => (
               <div key={index} className="reel-slide">
@@ -121,7 +129,9 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
                   <div className="reel-overlay">
                     <div className="reel-info">
                       <span className="reel-icon">📸</span>
-                      {reel.caption && <p className="reel-caption">{reel.caption}</p>}
+                      {reel.caption && (
+                        <p className="reel-caption">{reel.caption}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -133,14 +143,16 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
           <>
             <button
               className="carousel-nav prev"
-              onClick={() => setActiveIndex((prev) => (prev - 1 + reels.length) % reels.length)}
+              onClick={() =>
+                setActiveIndex(prev => (prev - 1 + reels.length) % reels.length)
+              }
               aria-label="Previous reel"
             >
               ‹
             </button>
             <button
               className="carousel-nav next"
-              onClick={() => setActiveIndex((prev) => (prev + 1) % reels.length)}
+              onClick={() => setActiveIndex(prev => (prev + 1) % reels.length)}
               aria-label="Next reel"
             >
               ›
@@ -164,7 +176,9 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
   // Photo Grid Mode - Compact grid with hover effects
   if (displayMode === "grid" && photos.length > 0) {
     return (
-      <div className={`personal-gallery grid-mode ${isDark ? "dark-mode" : ""}`}>
+      <div
+        className={`personal-gallery grid-mode ${isDark ? "dark-mode" : ""}`}
+      >
         <div className="photo-grid">
           {photos.slice(0, 9).map((photo, index) => (
             <Fade key={index} delay={index * 100} duration={800}>
@@ -179,8 +193,14 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
                     alt={photo.alt || `Photo ${index + 1}`}
                     className="grid-image"
                   />
-                  <div className={`grid-overlay ${hoveredPhoto === index ? "active" : ""}`}>
-                    {photo.caption && <p className="grid-caption">{photo.caption}</p>}
+                  <div
+                    className={`grid-overlay ${
+                      hoveredPhoto === index ? "active" : ""
+                    }`}
+                  >
+                    {photo.caption && (
+                      <p className="grid-caption">{photo.caption}</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -194,14 +214,20 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
   // Polaroid Stack Mode - Photos stacked like polaroids
   if (displayMode === "polaroid" && photos.length > 0) {
     return (
-      <div className={`personal-gallery polaroid-mode ${isDark ? "dark-mode" : ""}`}>
+      <div
+        className={`personal-gallery polaroid-mode ${
+          isDark ? "dark-mode" : ""
+        }`}
+      >
         {photos.slice(0, 5).map((photo, index) => (
           <Fade key={index} delay={index * 150} duration={1000}>
             <div
               className="polaroid-photo"
               style={{
-                transform: `rotate(${-5 + index * 2.5}deg) translateY(${index * 10}px)`,
-                zIndex: photos.length - index,
+                transform: `rotate(${-5 + index * 2.5}deg) translateY(${
+                  index * 10
+                }px)`,
+                zIndex: photos.length - index
               }}
               onMouseEnter={() => setHoveredPhoto(index)}
               onMouseLeave={() => setHoveredPhoto(null)}
@@ -225,4 +251,3 @@ export default function PersonalGallery({ photos = [], reels = [], displayMode =
 
   return null;
 }
-

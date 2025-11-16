@@ -16,32 +16,39 @@ export default function ProjectShowcase({projects}) {
   // Filter projects based on active filter
   const getFilteredProjects = () => {
     if (activeFilter === "all") return projects;
-    
+
     return projects.filter(project => {
       const projectName = project.name.toLowerCase();
       const projectTech = project.technologies?.join(" ").toLowerCase() || "";
       const projectDesc = project.description.toLowerCase();
-      
+
       switch (activeFilter) {
         case "production":
-          return projectName.includes("procurement") || 
-                 projectName.includes("sku") ||
-                 projectDesc.includes("production") ||
-                 projectTech.includes("nextjs") ||
-                 projectTech.includes("vercel");
+          return (
+            projectName.includes("procurement") ||
+            projectName.includes("sku") ||
+            projectDesc.includes("production") ||
+            projectTech.includes("nextjs") ||
+            projectTech.includes("vercel")
+          );
         case "realtime":
-          return projectName.includes("etl") ||
-                 projectDesc.includes("real-time") ||
-                 projectTech.includes("kafka") ||
-                 projectTech.includes("spark");
+          return (
+            projectName.includes("etl") ||
+            projectDesc.includes("real-time") ||
+            projectTech.includes("kafka") ||
+            projectTech.includes("spark")
+          );
         case "genai":
-          return projectName.includes("genie") ||
-                 projectName.includes("geopulse") ||
-                 projectDesc.includes("ai") ||
-                 projectTech.includes("openai");
+          return (
+            projectName.includes("genie") ||
+            projectName.includes("geopulse") ||
+            projectDesc.includes("ai") ||
+            projectTech.includes("openai")
+          );
         case "automation":
-          return projectDesc.includes("automat") ||
-                 projectDesc.includes("workflow");
+          return (
+            projectDesc.includes("automat") || projectDesc.includes("workflow")
+          );
         default:
           return true;
       }
@@ -67,7 +74,10 @@ export default function ProjectShowcase({projects}) {
         </p>
       </Fade>
 
-      <ProjectFilter activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+      <ProjectFilter
+        activeFilter={activeFilter}
+        setActiveFilter={setActiveFilter}
+      />
 
       <div className="projects-grid">
         {filteredProjects.map((project, index) => (
@@ -98,11 +108,7 @@ export default function ProjectShowcase({projects}) {
 
               <div className="project-content">
                 <h3
-                  className={
-                    isDark
-                      ? "dark-mode project-name"
-                      : "project-name"
-                  }
+                  className={isDark ? "dark-mode project-name" : "project-name"}
                 >
                   {project.name}
                 </h3>
@@ -153,9 +159,7 @@ export default function ProjectShowcase({projects}) {
                     {project.technologies.map((tech, idx) => (
                       <span
                         key={idx}
-                        className={
-                          isDark ? "tech-tag dark-mode" : "tech-tag"
-                        }
+                        className={isDark ? "tech-tag dark-mode" : "tech-tag"}
                       >
                         {tech}
                       </span>
@@ -173,9 +177,7 @@ export default function ProjectShowcase({projects}) {
                           target="_blank"
                           rel="noopener noreferrer"
                           className={
-                            isDark
-                              ? "project-link dark-mode"
-                              : "project-link"
+                            isDark ? "project-link dark-mode" : "project-link"
                           }
                         >
                           {link.name} →
@@ -186,11 +188,7 @@ export default function ProjectShowcase({projects}) {
 
                   {project.bullets && (
                     <button
-                      className={
-                        isDark
-                          ? "expand-btn dark-mode"
-                          : "expand-btn"
-                      }
+                      className={isDark ? "expand-btn dark-mode" : "expand-btn"}
                       onClick={() => toggleExpand(index)}
                     >
                       {expandedIndex === index ? "Show Less ▲" : "Read More ▼"}
@@ -205,4 +203,3 @@ export default function ProjectShowcase({projects}) {
     </div>
   );
 }
-

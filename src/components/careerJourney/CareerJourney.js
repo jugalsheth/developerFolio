@@ -52,7 +52,8 @@ export default function CareerJourney() {
       title: "The Analytics Era",
       icon: "📊",
       role: "Analytics Engineer @ VaynerMedia",
-      description: "Media analytics, paid/organic campaigns, storytelling with data",
+      description:
+        "Media analytics, paid/organic campaigns, storytelling with data",
       details: [
         "Social insights analyst managing media buying & planning",
         "Paid media analytics across multiple platforms",
@@ -106,7 +107,8 @@ export default function CareerJourney() {
       title: "The Vision",
       icon: "🎯",
       role: "Solutions Engineer",
-      description: "Where I'm heading: Bridging technical depth with customer impact",
+      description:
+        "Where I'm heading: Bridging technical depth with customer impact",
       details: [
         "Leverage data engineering + full-stack skills",
         "Design solutions for customer data problems",
@@ -121,7 +123,7 @@ export default function CareerJourney() {
     }
   ];
 
-  const togglePhase = (phaseId) => {
+  const togglePhase = phaseId => {
     setExpandedPhase(expandedPhase === phaseId ? null : phaseId);
   };
 
@@ -132,8 +134,13 @@ export default function CareerJourney() {
           <h2 className={isDark ? "dark-mode journey-title" : "journey-title"}>
             My Journey
           </h2>
-          <p className={isDark ? "dark-mode journey-subtitle" : "journey-subtitle"}>
-            From mechanical engineer to full-stack data engineer - a story of continuous evolution
+          <p
+            className={
+              isDark ? "dark-mode journey-subtitle" : "journey-subtitle"
+            }
+          >
+            From mechanical engineer to full-stack data engineer - a story of
+            continuous evolution
           </p>
         </div>
       </Fade>
@@ -141,42 +148,88 @@ export default function CareerJourney() {
       <div className="journey-timeline">
         {journeyPhases.map((phase, index) => {
           const phaseColor = isDark ? phase.colorDark : phase.colorLight;
-          
+
           return (
-            <Fade key={phase.id} left={index % 2 === 0} right={index % 2 === 1} duration={1000} distance="50px">
-              <div 
-                className={`journey-phase ${index % 2 === 0 ? "left" : "right"} ${phase.isFuture ? "future" : ""} ${isDark ? "dark-mode" : ""}`}
+            <Fade
+              key={phase.id}
+              left={index % 2 === 0}
+              right={index % 2 === 1}
+              duration={1000}
+              distance="50px"
+            >
+              <div
+                className={`journey-phase ${
+                  index % 2 === 0 ? "left" : "right"
+                } ${phase.isFuture ? "future" : ""} ${
+                  isDark ? "dark-mode" : ""
+                }`}
                 onClick={() => togglePhase(phase.id)}
               >
-                <div className="phase-timeline-marker" style={{background: phase.gradient}}>
+                <div
+                  className="phase-timeline-marker"
+                  style={{background: phase.gradient}}
+                >
                   <div className="phase-icon">{phase.icon}</div>
                 </div>
 
                 <div className="phase-content-wrapper">
-                  <div className="phase-card" style={{borderLeftColor: phaseColor}}>
-                    <div className="phase-year" style={{color: phaseColor}}>{phase.year}</div>
-                    <h3 className={isDark ? "dark-mode phase-title" : "phase-title"}>{phase.title}</h3>
-                    <div className="phase-role" style={{color: phaseColor}}>{phase.role}</div>
-                    <p className={isDark ? "dark-mode phase-description" : "phase-description"}>
+                  <div
+                    className="phase-card"
+                    style={{borderLeftColor: phaseColor}}
+                  >
+                    <div className="phase-year" style={{color: phaseColor}}>
+                      {phase.year}
+                    </div>
+                    <h3
+                      className={
+                        isDark ? "dark-mode phase-title" : "phase-title"
+                      }
+                    >
+                      {phase.title}
+                    </h3>
+                    <div className="phase-role" style={{color: phaseColor}}>
+                      {phase.role}
+                    </div>
+                    <p
+                      className={
+                        isDark
+                          ? "dark-mode phase-description"
+                          : "phase-description"
+                      }
+                    >
                       {phase.description}
                     </p>
 
-                    <button 
-                      className={`expand-btn ${expandedPhase === phase.id ? "expanded" : ""}`}
+                    <button
+                      className={`expand-btn ${
+                        expandedPhase === phase.id ? "expanded" : ""
+                      }`}
                       style={{
                         borderColor: phaseColor,
-                        color: expandedPhase === phase.id ? "white" : phaseColor,
-                        background: expandedPhase === phase.id ? phaseColor : "transparent"
+                        color:
+                          expandedPhase === phase.id ? "white" : phaseColor,
+                        background:
+                          expandedPhase === phase.id
+                            ? phaseColor
+                            : "transparent"
                       }}
                     >
-                      {expandedPhase === phase.id ? "Show Less ▲" : "Learn More ▼"}
+                      {expandedPhase === phase.id
+                        ? "Show Less ▲"
+                        : "Learn More ▼"}
                     </button>
 
                     {expandedPhase === phase.id && (
                       <div className="phase-details">
                         <ul>
                           {phase.details.map((detail, idx) => (
-                            <li key={idx} className={isDark ? "dark-mode" : ""} style={{"--accent-color": phaseColor}}>{detail}</li>
+                            <li
+                              key={idx}
+                              className={isDark ? "dark-mode" : ""}
+                              style={{"--accent-color": phaseColor}}
+                            >
+                              {detail}
+                            </li>
                           ))}
                         </ul>
                       </div>
@@ -192,7 +245,10 @@ export default function CareerJourney() {
       <Fade bottom duration={1000} distance="20px">
         <div className={isDark ? "journey-cta dark-mode" : "journey-cta"}>
           <h3>The Journey Continues...</h3>
-          <p>Every day I'm learning, building, and shipping. Want to be part of the next chapter?</p>
+          <p>
+            Every day I'm learning, building, and shipping. Want to be part of
+            the next chapter?
+          </p>
           <Button
             text="Let's Connect"
             variant="gradient"
@@ -212,4 +268,3 @@ export default function CareerJourney() {
     </div>
   );
 }
-

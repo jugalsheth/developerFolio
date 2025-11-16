@@ -139,7 +139,11 @@
   margin: 0 auto;
 
   &.dark-mode {
-    background: linear-gradient(135deg, rgba(107, 91, 149, 0.9), rgba(144, 120, 195, 0.9));
+    background: linear-gradient(
+      135deg,
+      rgba(107, 91, 149, 0.9),
+      rgba(144, 120, 195, 0.9)
+    );
     box-shadow: 0 8px 32px $darkBoxShadow2;
   }
 }
@@ -340,4 +344,3 @@
     font-size: 14px;
   }
 }
-

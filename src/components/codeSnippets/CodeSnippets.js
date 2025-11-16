@@ -148,7 +148,13 @@ with DAG(
         <h2 className={isDark ? "dark-mode snippets-title" : "snippets-title"}>
           Code Snippets
         </h2>
-        <p className={isDark ? "dark-mode snippets-subtitle subTitle" : "snippets-subtitle subTitle"}>
+        <p
+          className={
+            isDark
+              ? "dark-mode snippets-subtitle subTitle"
+              : "snippets-subtitle subTitle"
+          }
+        >
           Practical code examples from real projects
         </p>
       </Fade>
@@ -158,7 +164,9 @@ with DAG(
         {snippets.map((snippet, index) => (
           <button
             key={index}
-            className={`snippet-tab ${activeTab === index ? "active" : ""} ${isDark ? "dark-mode" : ""}`}
+            className={`snippet-tab ${activeTab === index ? "active" : ""} ${
+              isDark ? "dark-mode" : ""
+            }`}
             onClick={() => setActiveTab(index)}
           >
             {snippet.language.toUpperCase()}
@@ -171,21 +179,31 @@ with DAG(
         <div className={isDark ? "snippet-card dark-mode" : "snippet-card"}>
           <div className="snippet-header">
             <div className="snippet-info">
-              <h3 className={isDark ? "dark-mode snippet-title" : "snippet-title"}>
+              <h3
+                className={isDark ? "dark-mode snippet-title" : "snippet-title"}
+              >
                 {currentSnippet.title}
               </h3>
-              <p className={isDark ? "dark-mode snippet-description" : "snippet-description"}>
+              <p
+                className={
+                  isDark
+                    ? "dark-mode snippet-description"
+                    : "snippet-description"
+                }
+              >
                 {currentSnippet.description}
               </p>
             </div>
             <button
-              className={`copy-btn ${copiedIndex === activeTab ? "copied" : ""} ${isDark ? "dark-mode" : ""}`}
+              className={`copy-btn ${
+                copiedIndex === activeTab ? "copied" : ""
+              } ${isDark ? "dark-mode" : ""}`}
               onClick={() => copyToClipboard(currentSnippet.code, activeTab)}
             >
               {copiedIndex === activeTab ? "✓ Copied" : "Copy"}
             </button>
           </div>
-          
+
           <div className={isDark ? "code-block dark-mode" : "code-block"}>
             <div className="code-language">{currentSnippet.language}</div>
             <pre>
@@ -197,4 +215,3 @@ with DAG(
     </div>
   );
 }
-

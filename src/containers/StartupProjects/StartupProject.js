@@ -47,7 +47,9 @@ export default function StartupProject() {
                   >
                     <div className="project-detail">
                       <h5
-                        className={isDark ? "dark-mode card-title" : "card-title"}
+                        className={
+                          isDark ? "dark-mode card-title" : "card-title"
+                        }
                       >
                         {project.projectName}
                       </h5>
@@ -69,11 +71,11 @@ export default function StartupProject() {
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                           sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
                           loading="eager"
-                          style={{ minHeight: '700px', width: '100%' }}
+                          style={{minHeight: "700px", width: "100%"}}
                           onLoad={() => {
                             console.log("Iframe loaded successfully");
                           }}
-                          onError={(e) => {
+                          onError={e => {
                             console.error("Iframe failed to load:", e);
                           }}
                         ></iframe>
@@ -82,9 +84,9 @@ export default function StartupProject() {
                           <div className="iframe-overlay-content">
                             <h4>📊 Real-Time Dashboard</h4>
                             <p>Click below to view the interactive dashboard</p>
-                            <a 
-                              href={project.embedUrl} 
-                              target="_blank" 
+                            <a
+                              href={project.embedUrl}
+                              target="_blank"
                               rel="noopener noreferrer"
                               className="iframe-open-button"
                             >
@@ -100,7 +102,9 @@ export default function StartupProject() {
                               <span
                                 key={i}
                                 className={
-                                  isDark ? "dark-mode project-tag" : "project-tag"
+                                  isDark
+                                    ? "dark-mode project-tag"
+                                    : "project-tag"
                                 }
                                 onClick={() => openUrlInNewTab(link.url)}
                               >
@@ -114,7 +118,7 @@ export default function StartupProject() {
                   </div>
                 );
               }
-              
+
               // Regular project card (no embed)
               return (
                 <div

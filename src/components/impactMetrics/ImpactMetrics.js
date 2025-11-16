@@ -69,7 +69,13 @@ export default function ImpactMetrics({metrics}) {
       </Fade>
       <div className="metrics-grid">
         {metrics.map((metric, index) => (
-          <Fade bottom duration={1000} distance="20px" delay={index * 100} key={index}>
+          <Fade
+            bottom
+            duration={1000}
+            distance="20px"
+            delay={index * 100}
+            key={index}
+          >
             <div
               className={
                 isDark
@@ -90,4 +96,3 @@ export default function ImpactMetrics({metrics}) {
     </div>
   );
 }
-

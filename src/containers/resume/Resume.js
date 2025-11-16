@@ -25,14 +25,25 @@ export default function Resume() {
   ];
 
   return (
-    <div className={isDark ? "dark-mode resume-section" : "resume-section"} id="resume">
+    <div
+      className={isDark ? "dark-mode resume-section" : "resume-section"}
+      id="resume"
+    >
       {/* Section Header */}
       <Fade bottom duration={1000} distance="20px">
         <div className="resume-header">
-          <h2 className={isDark ? "dark-mode resume-main-title" : "resume-main-title"}>
+          <h2
+            className={
+              isDark ? "dark-mode resume-main-title" : "resume-main-title"
+            }
+          >
             Professional Portfolio
           </h2>
-          <p className={isDark ? "dark-mode resume-main-subtitle" : "resume-main-subtitle"}>
+          <p
+            className={
+              isDark ? "dark-mode resume-main-subtitle" : "resume-main-subtitle"
+            }
+          >
             Explore my experience, skills, and impact through interactive tabs
           </p>
         </div>
@@ -43,7 +54,9 @@ export default function Resume() {
         {tabs.map(tab => (
           <button
             key={tab.id}
-            className={`resume-tab ${activeTab === tab.id ? "active" : ""} ${isDark ? "dark-mode" : ""}`}
+            className={`resume-tab ${activeTab === tab.id ? "active" : ""} ${
+              isDark ? "dark-mode" : ""
+            }`}
             onClick={() => setActiveTab(tab.id)}
           >
             <span className="tab-icon">{tab.icon}</span>
@@ -54,41 +67,55 @@ export default function Resume() {
 
       {/* Tab Content */}
       <div className="resume-tab-content">
-        {activeTab === "impact" && visualResume.impactMetrics && visualResume.impactMetrics.length > 0 && (
-          <Fade key="impact" duration={500}>
-            <ImpactMetrics metrics={visualResume.impactMetrics} />
-          </Fade>
-        )}
+        {activeTab === "impact" &&
+          visualResume.impactMetrics &&
+          visualResume.impactMetrics.length > 0 && (
+            <Fade key="impact" duration={500}>
+              <ImpactMetrics metrics={visualResume.impactMetrics} />
+            </Fade>
+          )}
 
-        {activeTab === "experience" && workExperiences.experience && workExperiences.experience.length > 0 && (
-          <Fade key="experience" duration={500}>
-            <CareerTimeline experiences={workExperiences.experience} />
-          </Fade>
-        )}
+        {activeTab === "experience" &&
+          workExperiences.experience &&
+          workExperiences.experience.length > 0 && (
+            <Fade key="experience" duration={500}>
+              <CareerTimeline experiences={workExperiences.experience} />
+            </Fade>
+          )}
 
-        {activeTab === "skills" && visualResume.skills && Object.keys(visualResume.skills).length > 0 && (
-          <Fade key="skills" duration={500}>
-            <SkillsMatrix skills={visualResume.skills} />
-          </Fade>
-        )}
+        {activeTab === "skills" &&
+          visualResume.skills &&
+          Object.keys(visualResume.skills).length > 0 && (
+            <Fade key="skills" duration={500}>
+              <SkillsMatrix skills={visualResume.skills} />
+            </Fade>
+          )}
 
-        {activeTab === "projects" && visualResume.detailedProjects && visualResume.detailedProjects.length > 0 && (
-          <Fade key="projects" duration={500}>
-            <ProjectShowcase projects={visualResume.detailedProjects} />
-          </Fade>
-        )}
+        {activeTab === "projects" &&
+          visualResume.detailedProjects &&
+          visualResume.detailedProjects.length > 0 && (
+            <Fade key="projects" duration={500}>
+              <ProjectShowcase projects={visualResume.detailedProjects} />
+            </Fade>
+          )}
       </div>
 
       {/* Download Resume CTA */}
       <div className="resume-download-section">
         <Fade bottom duration={1000} distance="20px">
           <div className={isDark ? "dark-mode download-card" : "download-card"}>
-            <h2 className={isDark ? "dark-mode download-title" : "download-title"}>
+            <h2
+              className={isDark ? "dark-mode download-title" : "download-title"}
+            >
               Want the Full Details?
             </h2>
-            <p className={isDark ? "dark-mode download-subtitle" : "download-subtitle"}>
-              Download my complete resume in PDF format for a comprehensive view of my experience,
-              skills, and achievements.
+            <p
+              className={
+                isDark ? "dark-mode download-subtitle" : "download-subtitle"
+              }
+            >
+              Download my complete resume in PDF format for a comprehensive view
+              of my experience, skills, and achievements.
             </p>
             <div className="download-buttons">
               <a
@@ -106,4 +133,3 @@ export default function Resume() {
     </div>
   );
 }
-

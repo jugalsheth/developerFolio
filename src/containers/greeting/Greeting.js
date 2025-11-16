@@ -22,13 +22,17 @@ export default function Greeting() {
   return (
     <div className="greet-main" id="greeting">
       {/* Three-column Instagram Reels Grid Background */}
-      {greeting.personalGallery?.display && greeting.personalGallery.reels?.length > 0 && (
-        <InstagramReelsGrid
-          reels={greeting.personalGallery.reels || []}
-          autoPlay={greeting.personalGallery.autoPlay !== false}
-          instagramAccount={socialMediaLinks.instagram || "https://www.instagram.com/jugalsheth/"}
-        />
-      )}
+      {greeting.personalGallery?.display &&
+        greeting.personalGallery.reels?.length > 0 && (
+          <InstagramReelsGrid
+            reels={greeting.personalGallery.reels || []}
+            autoPlay={greeting.personalGallery.autoPlay !== false}
+            instagramAccount={
+              socialMediaLinks.instagram ||
+              "https://www.instagram.com/jugalsheth/"
+            }
+          />
+        )}
 
       {/* Modern Data Engineering Background */}
       <div className="hero-background-modern">
@@ -42,7 +46,9 @@ export default function Greeting() {
             <div className="greeting-content">
               {/* Badge */}
               <div className="hero-badge">
-                <span className="badge-text">🚀 Building Production Systems</span>
+                <span className="badge-text">
+                  🚀 Building Production Systems
+                </span>
               </div>
 
               {/* Main Title */}
@@ -66,7 +72,9 @@ export default function Greeting() {
 
               {/* Rotating Role */}
               <div className="rotating-role-container">
-                <span className={isDark ? "dark-mode role-label" : "role-label"}>
+                <span
+                  className={isDark ? "dark-mode role-label" : "role-label"}
+                >
                   I'm a{" "}
                 </span>
                 <RotatingText
@@ -87,15 +95,19 @@ export default function Greeting() {
               <div className="hero-tech-badges">
                 <Fade bottom duration={800} delay={200}>
                   <div className="tech-badges-container">
-                    {skillsSection.softwareSkills.slice(0, 5).map((skill, index) => (
-                      <div 
-                        key={index} 
-                        className={`tech-badge ${isDark ? "dark-mode" : ""}`}
-                        title={skill.skillName}
-                      >
-                        <span className="tech-badge-name">{skill.skillName}</span>
-                      </div>
-                    ))}
+                    {skillsSection.softwareSkills
+                      .slice(0, 5)
+                      .map((skill, index) => (
+                        <div
+                          key={index}
+                          className={`tech-badge ${isDark ? "dark-mode" : ""}`}
+                          title={skill.skillName}
+                        >
+                          <span className="tech-badge-name">
+                            {skill.skillName}
+                          </span>
+                        </div>
+                      ))}
                   </div>
                 </Fade>
               </div>
@@ -104,8 +116,8 @@ export default function Greeting() {
               <div className="hero-actions">
                 <SocialMedia />
                 <div className="button-greeting-div">
-                  <Button 
-                    text="Let's Connect" 
+                  <Button
+                    text="Let's Connect"
                     variant="gradient"
                     size="large"
                     icon="💬"
@@ -130,10 +142,9 @@ export default function Greeting() {
             </div>
           </div>
         </Fade>
-
       </div>
       <ScrollIndicator />
-      
+
       <ConnectModal
         isOpen={isConnectModalOpen}
         onClose={() => setIsConnectModalOpen(false)}

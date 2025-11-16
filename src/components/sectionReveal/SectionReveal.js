@@ -4,9 +4,9 @@ export default function SectionReveal() {
   useEffect(() => {
     // Select all major section containers
     const sections = document.querySelectorAll(
-      '.resume-section, .skills-main, .journey-story-container, ' +
-      '.working-style-container, .architecture-diagram-container, ' +
-      '.challenge-me-container, .tech-radar-container, .code-snippets-container'
+      ".resume-section, .skills-main, .journey-story-container, " +
+        ".working-style-container, .architecture-diagram-container, " +
+        ".challenge-me-container, .tech-radar-container, .code-snippets-container"
     );
 
     const observerOptions = {
@@ -15,7 +15,7 @@ export default function SectionReveal() {
       threshold: 0.15
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("section-revealed");
@@ -35,4 +35,3 @@ export default function SectionReveal() {
 
   return null; // This component only adds observers
 }
-

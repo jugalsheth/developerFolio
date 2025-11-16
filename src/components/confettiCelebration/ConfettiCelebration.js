@@ -14,7 +14,7 @@ export default function ConfettiCelebration() {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       const scrollTop = window.scrollY;
-      
+
       const totalScroll = documentHeight - windowHeight;
       const progress = (scrollTop / totalScroll) * 100;
 
@@ -48,14 +48,22 @@ export default function ConfettiCelebration() {
     for (let i = 0; i < 100; i++) {
       const confetti = document.createElement("div");
       confetti.className = "confetti-piece";
-      
+
       // Random properties
-      const colors = ["#6b5b95", "#9078c3", "#667eea", "#4caf50", "#2196f3", "#ff9800"];
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      const colors = [
+        "#6b5b95",
+        "#9078c3",
+        "#667eea",
+        "#4caf50",
+        "#2196f3",
+        "#ff9800"
+      ];
+      confetti.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
       confetti.style.left = Math.random() * 100 + "%";
       confetti.style.animationDelay = Math.random() * 3 + "s";
       confetti.style.animationDuration = Math.random() * 3 + 3 + "s";
-      
+
       confettiContainer.appendChild(confetti);
     }
 
@@ -80,4 +88,3 @@ export default function ConfettiCelebration() {
 
   return null;
 }
-

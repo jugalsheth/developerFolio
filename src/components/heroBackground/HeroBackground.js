@@ -1,25 +1,25 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Fade } from "react-reveal";
+import React, {useState, useEffect, useContext} from "react";
+import {Fade} from "react-reveal";
 import "./HeroBackground.scss";
 import StyleContext from "../../contexts/StyleContext";
 
-export default function HeroBackground({ 
-  images = [], 
-  videos = [], 
+export default function HeroBackground({
+  images = [],
+  videos = [],
   reels = [],
   autoPlay = true,
   transitionDuration = 3000,
-  showOverlay = true 
+  showOverlay = true
 }) {
-  const { isDark } = useContext(StyleContext);
+  const {isDark} = useContext(StyleContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  
+
   // Combine all media sources
   const mediaItems = [
-    ...images.map(img => ({ type: 'image', ...img })),
-    ...videos.map(vid => ({ type: 'video', ...vid })),
-    ...reels.map(reel => ({ type: 'reel', ...reel }))
+    ...images.map(img => ({type: "image", ...img})),
+    ...videos.map(vid => ({type: "video", ...vid})),
+    ...reels.map(reel => ({type: "reel", ...reel}))
   ];
 
   // Auto-rotate through media
@@ -29,7 +29,7 @@ export default function HeroBackground({
     const interval = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
+        setCurrentIndex(prev => (prev + 1) % mediaItems.length);
         setIsTransitioning(false);
       }, 500); // Half of transition duration for smooth fade
     }, transitionDuration);
@@ -50,22 +50,24 @@ export default function HeroBackground({
         {mediaItems.map((item, index) => {
           const isActive = index === currentIndex;
           const isNext = index === (currentIndex + 1) % mediaItems.length;
-          
+
           return (
             <div
               key={index}
-              className={`media-slide ${isActive ? "active" : ""} ${isNext ? "next" : ""}`}
+              className={`media-slide ${isActive ? "active" : ""} ${
+                isNext ? "next" : ""
+              }`}
             >
-              {item.type === 'image' && (
-                <div 
+              {item.type === "image" && (
+                <div
                   className="background-image"
                   style={{
-                    backgroundImage: `url(${item.url || item})`,
+                    backgroundImage: `url(${item.url || item})`
                   }}
                 />
               )}
-              
-              {item.type === 'video' && (
+
+              {item.type === "video" && (
                 <video
                   className="background-video"
                   src={item.url}
@@ -75,8 +77,8 @@ export default function HeroBackground({
                   playsInline
                 />
               )}
-              
-              {item.type === 'reel' && item.embedUrl && (
+
+              {item.type === "reel" && item.embedUrl && (
                 <div className="background-reel">
                   <iframe
                     src={item.embedUrl}
@@ -87,11 +89,9 @@ export default function HeroBackground({
                   />
                 </div>
               )}
-              
+
               {/* Gradient Overlay */}
-              {showOverlay && (
-                <div className="media-overlay" />
-              )}
+              {showOverlay && <div className="media-overlay" />}
             </div>
           );
         })}
@@ -103,7 +103,9 @@ export default function HeroBackground({
           {mediaItems.map((_, index) => (
             <button
               key={index}
-              className={`indicator-dot ${index === currentIndex ? "active" : ""}`}
+              className={`indicator-dot ${
+                index === currentIndex ? "active" : ""
+              }`}
               onClick={() => {
                 setIsTransitioning(true);
                 setTimeout(() => {
@@ -128,4 +130,3 @@ export default function HeroBackground({
     </div>
   );
 }
-

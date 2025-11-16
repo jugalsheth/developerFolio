@@ -34,7 +34,8 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
@@ -67,7 +68,7 @@
   z-index: 9993;
   max-width: 320px;
   animation: slideInLeft 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-             slideOutLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) 4.6s;
+    slideOutLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) 4.6s;
   border-left: 4px solid $primaryColor;
 
   &.dark-mode {
@@ -126,4 +127,3 @@
     display: none;
   }
 }
-

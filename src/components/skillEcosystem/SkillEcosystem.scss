@@ -243,7 +243,8 @@
 }
 
 @keyframes pointPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -307,7 +308,8 @@
 }
 
 @keyframes centerPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     r: 6;
   }
@@ -471,7 +473,8 @@
 }
 
 @keyframes nodeGlow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
     transform: scale(1);
   }
@@ -511,7 +514,8 @@
 }
 
 @keyframes linkPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     stroke-width: 1;
   }
@@ -716,7 +720,8 @@
 }
 
 @keyframes ringGlow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
   }
   50% {

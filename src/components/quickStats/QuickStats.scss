@@ -9,7 +9,11 @@
   position: relative;
 
   &.dark-mode {
-    background: linear-gradient(135deg, rgba(85, 85, 85, 0.8) 0%, rgba(68, 68, 68, 0.8) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(85, 85, 85, 0.8) 0%,
+      rgba(68, 68, 68, 0.8) 100%
+    );
   }
 }
 
@@ -62,4 +66,3 @@
     }
   }
 }
-

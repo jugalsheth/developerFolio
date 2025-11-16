@@ -11,27 +11,32 @@ export default function ArchitectureDiagram() {
     frontend: {
       title: "NextJS Frontend",
       tech: "React, TypeScript, SSR",
-      details: "Server-side rendered React application with Chart.js dashboards. Deployed on AWS with zero-downtime CI/CD pipeline."
+      details:
+        "Server-side rendered React application with Chart.js dashboards. Deployed on AWS with zero-downtime CI/CD pipeline."
     },
     api: {
       title: "REST API Layer",
       tech: "Node.js, Express",
-      details: "RESTful API endpoints with Snowflake Connector integration. Handles authentication, authorization, and data transformation."
+      details:
+        "RESTful API endpoints with Snowflake Connector integration. Handles authentication, authorization, and data transformation."
     },
     auth: {
       title: "Authentication",
       tech: "Role-Based Access Control",
-      details: "Multi-department security supporting 200+ concurrent users across 5 business units with granular permissions."
+      details:
+        "Multi-department security supporting 200+ concurrent users across 5 business units with granular permissions."
     },
     snowflake: {
       title: "Snowflake DWH",
       tech: "Data Warehouse",
-      details: "Enterprise data warehouse storing procurement analytics. Optimized with clustering keys and result caching for performance."
+      details:
+        "Enterprise data warehouse storing procurement analytics. Optimized with clustering keys and result caching for performance."
     },
     cicd: {
       title: "CI/CD Pipeline",
       tech: "GitHub Actions, AWS",
-      details: "Automated testing and deployment pipeline ensuring zero-downtime releases. Deployed 47+ times with 99.9% uptime."
+      details:
+        "Automated testing and deployment pipeline ensuring zero-downtime releases. Deployed 47+ times with 99.9% uptime."
     }
   };
 
@@ -41,14 +46,24 @@ export default function ArchitectureDiagram() {
         <h2 className={isDark ? "dark-mode arch-title" : "arch-title"}>
           System Architecture
         </h2>
-        <p className={isDark ? "dark-mode arch-subtitle subTitle" : "arch-subtitle subTitle"}>
+        <p
+          className={
+            isDark
+              ? "dark-mode arch-subtitle subTitle"
+              : "arch-subtitle subTitle"
+          }
+        >
           Procurement Intelligence Platform - Production Architecture
         </p>
       </Fade>
 
       <div className="architecture-wrapper">
         <Fade bottom duration={1000} distance="20px" delay={100}>
-          <div className={isDark ? "diagram-container dark-mode" : "diagram-container"}>
+          <div
+            className={
+              isDark ? "diagram-container dark-mode" : "diagram-container"
+            }
+          >
             {/* Flow Diagram */}
             <div className="architecture-flow">
               {/* Users */}
@@ -65,8 +80,14 @@ export default function ArchitectureDiagram() {
               {/* Frontend Layer */}
               <div className="flow-layer">
                 <div
-                  className={`arch-node frontend ${selectedNode === "frontend" ? "selected" : ""} ${isDark ? "dark-mode" : ""}`}
-                  onClick={() => setSelectedNode(selectedNode === "frontend" ? null : "frontend")}
+                  className={`arch-node frontend ${
+                    selectedNode === "frontend" ? "selected" : ""
+                  } ${isDark ? "dark-mode" : ""}`}
+                  onClick={() =>
+                    setSelectedNode(
+                      selectedNode === "frontend" ? null : "frontend"
+                    )
+                  }
                 >
                   <div className="node-icon">⚛️</div>
                   <div className="node-label">NextJS Frontend</div>
@@ -80,8 +101,12 @@ export default function ArchitectureDiagram() {
               {/* Middle Layer - API + Auth + CI/CD */}
               <div className="flow-layer horizontal">
                 <div
-                  className={`arch-node api ${selectedNode === "api" ? "selected" : ""} ${isDark ? "dark-mode" : ""}`}
-                  onClick={() => setSelectedNode(selectedNode === "api" ? null : "api")}
+                  className={`arch-node api ${
+                    selectedNode === "api" ? "selected" : ""
+                  } ${isDark ? "dark-mode" : ""}`}
+                  onClick={() =>
+                    setSelectedNode(selectedNode === "api" ? null : "api")
+                  }
                 >
                   <div className="node-icon">🔌</div>
                   <div className="node-label">REST API</div>
@@ -89,8 +114,12 @@ export default function ArchitectureDiagram() {
                 </div>
 
                 <div
-                  className={`arch-node auth ${selectedNode === "auth" ? "selected" : ""} ${isDark ? "dark-mode" : ""}`}
-                  onClick={() => setSelectedNode(selectedNode === "auth" ? null : "auth")}
+                  className={`arch-node auth ${
+                    selectedNode === "auth" ? "selected" : ""
+                  } ${isDark ? "dark-mode" : ""}`}
+                  onClick={() =>
+                    setSelectedNode(selectedNode === "auth" ? null : "auth")
+                  }
                 >
                   <div className="node-icon">🔐</div>
                   <div className="node-label">Auth & RBAC</div>
@@ -98,8 +127,12 @@ export default function ArchitectureDiagram() {
                 </div>
 
                 <div
-                  className={`arch-node cicd ${selectedNode === "cicd" ? "selected" : ""} ${isDark ? "dark-mode" : ""}`}
-                  onClick={() => setSelectedNode(selectedNode === "cicd" ? null : "cicd")}
+                  className={`arch-node cicd ${
+                    selectedNode === "cicd" ? "selected" : ""
+                  } ${isDark ? "dark-mode" : ""}`}
+                  onClick={() =>
+                    setSelectedNode(selectedNode === "cicd" ? null : "cicd")
+                  }
                 >
                   <div className="node-icon">🚀</div>
                   <div className="node-label">CI/CD</div>
@@ -113,8 +146,14 @@ export default function ArchitectureDiagram() {
               {/* Data Layer */}
               <div className="flow-layer">
                 <div
-                  className={`arch-node snowflake ${selectedNode === "snowflake" ? "selected" : ""} ${isDark ? "dark-mode" : ""}`}
-                  onClick={() => setSelectedNode(selectedNode === "snowflake" ? null : "snowflake")}
+                  className={`arch-node snowflake ${
+                    selectedNode === "snowflake" ? "selected" : ""
+                  } ${isDark ? "dark-mode" : ""}`}
+                  onClick={() =>
+                    setSelectedNode(
+                      selectedNode === "snowflake" ? null : "snowflake"
+                    )
+                  }
                 >
                   <div className="node-icon">❄️</div>
                   <div className="node-label">Snowflake DWH</div>
@@ -126,7 +165,11 @@ export default function ArchitectureDiagram() {
             {/* Details Panel */}
             {selectedNode && (
               <Fade duration={400}>
-                <div className={isDark ? "details-panel dark-mode" : "details-panel"}>
+                <div
+                  className={
+                    isDark ? "details-panel dark-mode" : "details-panel"
+                  }
+                >
                   <div className="details-header">
                     <h4>{nodes[selectedNode].title}</h4>
                     <button
@@ -137,7 +180,9 @@ export default function ArchitectureDiagram() {
                     </button>
                   </div>
                   <div className="details-tech">{nodes[selectedNode].tech}</div>
-                  <p className="details-description">{nodes[selectedNode].details}</p>
+                  <p className="details-description">
+                    {nodes[selectedNode].details}
+                  </p>
                 </div>
               </Fade>
             )}
@@ -147,4 +192,3 @@ export default function ArchitectureDiagram() {
     </div>
   );
 }
-

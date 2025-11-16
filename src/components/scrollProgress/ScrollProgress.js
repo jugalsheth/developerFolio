@@ -9,10 +9,10 @@ export default function ScrollProgress() {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       const scrollTop = window.scrollY;
-      
+
       const totalScroll = documentHeight - windowHeight;
       const progress = (scrollTop / totalScroll) * 100;
-      
+
       setScrollProgress(Math.min(progress, 100));
     };
 
@@ -36,11 +36,10 @@ export default function ScrollProgress() {
 
   return (
     <div className="scroll-progress-container">
-      <div 
-        className="scroll-progress-bar" 
+      <div
+        className="scroll-progress-bar"
         style={{width: `${scrollProgress}%`}}
       />
     </div>
   );
 }
-

@@ -30,7 +30,8 @@ export default function LiveVisitors() {
 
     // Show activity feed every 10-20 seconds
     const activityInterval = setInterval(() => {
-      const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+      const randomActivity =
+        activities[Math.floor(Math.random() * activities.length)];
       setRecentActivity(randomActivity);
       setShowActivity(true);
 
@@ -68,4 +69,3 @@ export default function LiveVisitors() {
     </>
   );
 }
-

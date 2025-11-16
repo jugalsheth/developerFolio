@@ -1,4 +1,11 @@
-import React, {useState, useEffect, useRef, useContext, useMemo, useCallback} from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useMemo,
+  useCallback
+} from "react";
 import "./SkillEcosystem.scss";
 import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
@@ -21,32 +28,69 @@ export default function SkillEcosystem({skills}) {
       "Cloud/DevOps": 80,
       "Testing & Reliability": 85
     };
-    return Math.max(75, baseMastery[category] - (index * 2));
+    return Math.max(75, baseMastery[category] - index * 2);
   }, []);
 
   // Category positions for radar chart
-  const categoryPositions = useMemo(() => ({
-    "Languages & Data Processing": {angle: 0, color: "#3b82f6", gradient: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)"},
-    "Data Warehousing & Modeling": {angle: 45, color: "#06b6d4", gradient: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)"},
-    "Pipeline Engineering": {angle: 90, color: "#ef4444", gradient: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)"},
-    "Analytics & Visualization": {angle: 135, color: "#10b981", gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)"},
-    "Full-Stack Development": {angle: 180, color: "#f59e0b", gradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)"},
-    "System Design & Architecture": {angle: 225, color: "#8b5cf6", gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)"},
-    "Cloud/DevOps": {angle: 270, color: "#ec4899", gradient: "linear-gradient(135deg, #ec4899 0%, #db2777 100%)"},
-    "Testing & Reliability": {angle: 315, color: "#14b8a6", gradient: "linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)"}
-  }), []);
+  const categoryPositions = useMemo(
+    () => ({
+      "Languages & Data Processing": {
+        angle: 0,
+        color: "#3b82f6",
+        gradient: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)"
+      },
+      "Data Warehousing & Modeling": {
+        angle: 45,
+        color: "#06b6d4",
+        gradient: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)"
+      },
+      "Pipeline Engineering": {
+        angle: 90,
+        color: "#ef4444",
+        gradient: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)"
+      },
+      "Analytics & Visualization": {
+        angle: 135,
+        color: "#10b981",
+        gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)"
+      },
+      "Full-Stack Development": {
+        angle: 180,
+        color: "#f59e0b",
+        gradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)"
+      },
+      "System Design & Architecture": {
+        angle: 225,
+        color: "#8b5cf6",
+        gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)"
+      },
+      "Cloud/DevOps": {
+        angle: 270,
+        color: "#ec4899",
+        gradient: "linear-gradient(135deg, #ec4899 0%, #db2777 100%)"
+      },
+      "Testing & Reliability": {
+        angle: 315,
+        color: "#14b8a6",
+        gradient: "linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)"
+      }
+    }),
+    []
+  );
 
   // Memoize skills with metadata
-  const skillsWithMetadata = useMemo(() => 
-    Object.entries(skills).flatMap(([category, skillList]) =>
-      skillList.map((skill, index) => ({
-        name: skill,
-        category,
-        mastery: getSkillMastery(category, index),
-        ...categoryPositions[category],
-        index
-      }))
-    ), [skills, getSkillMastery, categoryPositions]
+  const skillsWithMetadata = useMemo(
+    () =>
+      Object.entries(skills).flatMap(([category, skillList]) =>
+        skillList.map((skill, index) => ({
+          name: skill,
+          category,
+          mastery: getSkillMastery(category, index),
+          ...categoryPositions[category],
+          index
+        }))
+      ),
+    [skills, getSkillMastery, categoryPositions]
   );
 
   return (
@@ -83,8 +127,8 @@ export default function SkillEcosystem({skills}) {
       {viewMode === "radar" && (
         <Fade bottom duration={600} distance="20px">
           <div className="skill-radar-view">
-            <SkillRadarChart 
-              skills={skillsWithMetadata} 
+            <SkillRadarChart
+              skills={skillsWithMetadata}
               isDark={isDark}
               hoveredCategory={hoveredCategory}
               setHoveredCategory={setHoveredCategory}
@@ -99,8 +143,8 @@ export default function SkillEcosystem({skills}) {
       {viewMode === "network" && (
         <Fade bottom duration={600} distance="20px">
           <div className="skill-network-view">
-            <SkillNetworkGraph 
-              skills={skillsWithMetadata} 
+            <SkillNetworkGraph
+              skills={skillsWithMetadata}
               isDark={isDark}
               hoveredCategory={hoveredCategory}
               setHoveredCategory={setHoveredCategory}
@@ -113,8 +157,8 @@ export default function SkillEcosystem({skills}) {
       {viewMode === "mastery" && (
         <Fade bottom duration={600} distance="20px">
           <div className="skill-mastery-view">
-            <SkillMasteryRings 
-              skills={skillsWithMetadata} 
+            <SkillMasteryRings
+              skills={skillsWithMetadata}
               isDark={isDark}
               hoveredCategory={hoveredCategory}
               setHoveredCategory={setHoveredCategory}
@@ -125,14 +169,21 @@ export default function SkillEcosystem({skills}) {
 
       {/* Category Tooltip */}
       {hoveredCategory && (
-        <div className="category-tooltip" style={{
-          top: `${hoveredCategory.y}px`,
-          left: `${hoveredCategory.x}px`
-        }}>
+        <div
+          className="category-tooltip"
+          style={{
+            top: `${hoveredCategory.y}px`,
+            left: `${hoveredCategory.x}px`
+          }}
+        >
           <div className="tooltip-header">{hoveredCategory.category}</div>
           <div className="tooltip-content">
-            <div className="tooltip-mastery">{hoveredCategory.avgMastery}% Mastery</div>
-            <div className="tooltip-skills">{hoveredCategory.skillCount} Skills</div>
+            <div className="tooltip-mastery">
+              {hoveredCategory.avgMastery}% Mastery
+            </div>
+            <div className="tooltip-skills">
+              {hoveredCategory.skillCount} Skills
+            </div>
           </div>
         </div>
       )}
@@ -141,7 +192,14 @@ export default function SkillEcosystem({skills}) {
 }
 
 // Enhanced Radar Chart Component
-function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, selectedCategory, setSelectedCategory}) {
+function SkillRadarChart({
+  skills,
+  isDark,
+  hoveredCategory,
+  setHoveredCategory,
+  selectedCategory,
+  setSelectedCategory
+}) {
   const [animated, setAnimated] = useState(false);
   const [hoveredPoint, setHoveredPoint] = useState(null);
   const svgRef = useRef(null);
@@ -162,10 +220,12 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
     });
 
     return Object.entries(skillsByCategory).map(([category, skillList]) => {
-      const avgMastery = Math.round(skillList.reduce((sum, s) => sum + s.mastery, 0) / skillList.length);
+      const avgMastery = Math.round(
+        skillList.reduce((sum, s) => sum + s.mastery, 0) / skillList.length
+      );
       return {
-        category, 
-        avgMastery, 
+        category,
+        avgMastery,
         skillCount: skillList.length,
         skills: skillList,
         ...skillList[0]
@@ -178,28 +238,34 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
   const maxRadius = 280;
 
   // Create path for radar shape with smooth curves
-  const createRadarPath = useCallback((masteryData) => {
-    const points = masteryData.map(({angle, avgMastery}) => {
-      const radian = (angle * Math.PI) / 180;
-      const radius = (maxRadius / 100) * avgMastery;
-      const x = centerX + Math.cos(radian) * radius;
-      const y = centerY + Math.sin(radian) * radius;
-      return {x, y, angle, avgMastery};
-    });
+  const createRadarPath = useCallback(
+    masteryData => {
+      const points = masteryData.map(({angle, avgMastery}) => {
+        const radian = (angle * Math.PI) / 180;
+        const radius = (maxRadius / 100) * avgMastery;
+        const x = centerX + Math.cos(radian) * radius;
+        const y = centerY + Math.sin(radian) * radius;
+        return {x, y, angle, avgMastery};
+      });
 
-    // Create smooth path using quadratic curves
-    let path = `M ${points[0].x} ${points[0].y}`;
-    for (let i = 0; i < points.length; i++) {
-      const next = points[(i + 1) % points.length];
-      const midX = (points[i].x + next.x) / 2;
-      const midY = (points[i].y + next.y) / 2;
-      path += ` Q ${points[i].x} ${points[i].y} ${midX} ${midY}`;
-    }
-    path += ' Z';
-    return path;
-  }, [centerX, centerY, maxRadius]);
+      // Create smooth path using quadratic curves
+      let path = `M ${points[0].x} ${points[0].y}`;
+      for (let i = 0; i < points.length; i++) {
+        const next = points[(i + 1) % points.length];
+        const midX = (points[i].x + next.x) / 2;
+        const midY = (points[i].y + next.y) / 2;
+        path += ` Q ${points[i].x} ${points[i].y} ${midX} ${midY}`;
+      }
+      path += " Z";
+      return path;
+    },
+    [centerX, centerY, maxRadius]
+  );
 
-  const radarPath = useMemo(() => createRadarPath(categoryAverages), [categoryAverages, createRadarPath]);
+  const radarPath = useMemo(
+    () => createRadarPath(categoryAverages),
+    [categoryAverages, createRadarPath]
+  );
 
   // Handle mouse move for tooltip
   const handleMouseMove = useCallback((e, category) => {
@@ -217,10 +283,10 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
 
   return (
     <div className="radar-chart-container">
-      <svg 
-        ref={svgRef} 
-        className="radar-svg" 
-        viewBox="0 0 700 700" 
+      <svg
+        ref={svgRef}
+        className="radar-svg"
+        viewBox="0 0 700 700"
         preserveAspectRatio="xMidYMid meet"
         onMouseLeave={() => {
           setHoveredCategory(null);
@@ -230,23 +296,30 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
         <defs>
           {/* Gradient definitions */}
           {categoryAverages.map(({color, category}) => (
-            <linearGradient key={category} id={`gradient-${category.replace(/\s+/g, '-')}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              key={category}
+              id={`gradient-${category.replace(/\s+/g, "-")}`}
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor={color} stopOpacity="0.3" />
               <stop offset="100%" stopColor={color} stopOpacity="0.1" />
             </linearGradient>
           ))}
           {/* Glow filter */}
           <filter id="glow">
-            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
             <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
 
         {/* Grid circles with animation */}
-        {[1, 2, 3, 4, 5].map((i) => {
+        {[1, 2, 3, 4, 5].map(i => {
           const radius = (maxRadius / 5) * i;
           return (
             <circle
@@ -255,7 +328,11 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
               cy={centerY}
               r={radius}
               fill="none"
-              stroke={isDark ? "rgba(102, 126, 234, 0.08)" : "rgba(107, 91, 149, 0.08)"}
+              stroke={
+                isDark
+                  ? "rgba(102, 126, 234, 0.08)"
+                  : "rgba(107, 91, 149, 0.08)"
+              }
               strokeWidth="1"
               className="grid-circle"
               style={{animationDelay: `${i * 100}ms`}}
@@ -275,7 +352,11 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
               y1={centerY}
               x2={x}
               y2={y}
-              stroke={isDark ? "rgba(102, 126, 234, 0.15)" : "rgba(107, 91, 149, 0.15)"}
+              stroke={
+                isDark
+                  ? "rgba(102, 126, 234, 0.15)"
+                  : "rgba(107, 91, 149, 0.15)"
+              }
               strokeWidth="1"
               className="category-line"
             />
@@ -285,7 +366,9 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
         {/* Radar shape with gradient */}
         <path
           d={radarPath}
-          fill={isDark ? "rgba(102, 126, 234, 0.25)" : "rgba(107, 91, 149, 0.25)"}
+          fill={
+            isDark ? "rgba(102, 126, 234, 0.25)" : "rgba(107, 91, 149, 0.25)"
+          }
           stroke={isDark ? "#8b9dff" : "#6b5b95"}
           strokeWidth="3"
           className={`radar-path ${animated ? "animated" : ""}`}
@@ -296,7 +379,7 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
         />
 
         {/* Category points with interactions */}
-        {categoryAverages.map((category) => {
+        {categoryAverages.map(category => {
           const radian = (category.angle * Math.PI) / 180;
           const radius = (maxRadius / 100) * category.avgMastery;
           const x = centerX + Math.cos(radian) * radius;
@@ -308,14 +391,18 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
           const isSelected = selectedCategory === category.category;
 
           return (
-            <g 
+            <g
               key={category.category}
               className="category-group"
               onMouseEnter={() => setHoveredPoint(category.category)}
-              onMouseMove={(e) => handleMouseMove(e, category)}
-              onClick={() => setSelectedCategory(
-                selectedCategory === category.category ? null : category.category
-              )}
+              onMouseMove={e => handleMouseMove(e, category)}
+              onClick={() =>
+                setSelectedCategory(
+                  selectedCategory === category.category
+                    ? null
+                    : category.category
+                )
+              }
             >
               {/* Invisible larger hit area */}
               <circle
@@ -325,7 +412,7 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
                 fill="transparent"
                 className="hit-area"
               />
-              
+
               {/* Category point */}
               <circle
                 cx={x}
@@ -334,13 +421,15 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
                 fill={category.color}
                 stroke="white"
                 strokeWidth={isSelected ? "3" : "2"}
-                className={`category-point ${isHovered ? "hovered" : ""} ${isSelected ? "selected" : ""}`}
+                className={`category-point ${isHovered ? "hovered" : ""} ${
+                  isSelected ? "selected" : ""
+                }`}
                 style={{
                   filter: isHovered || isSelected ? "url(#glow)" : "none",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                 }}
               />
-              
+
               {/* Pulse effect for selected */}
               {isSelected && (
                 <circle
@@ -362,7 +451,9 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
                 fill={isDark ? "#8b9dff" : "#6b5b95"}
                 fontSize="13"
                 fontWeight={isHovered || isSelected ? "700" : "600"}
-                className={`category-label ${isHovered || isSelected ? "highlighted" : ""}`}
+                className={`category-label ${
+                  isHovered || isSelected ? "highlighted" : ""
+                }`}
                 style={{
                   transition: "all 0.3s ease"
                 }}
@@ -379,7 +470,9 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
                 fill={category.color}
                 fontSize={isHovered || isSelected ? "13" : "11"}
                 fontWeight="700"
-                className={`mastery-value ${isHovered || isSelected ? "visible" : ""}`}
+                className={`mastery-value ${
+                  isHovered || isSelected ? "visible" : ""
+                }`}
                 style={{
                   opacity: isHovered || isSelected ? 1 : 0.7,
                   transition: "all 0.3s ease"
@@ -419,16 +512,28 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
       {/* Selected category details */}
       {selectedCategory && (
         <div className="category-details">
-          <h4>{categoryAverages.find(c => c.category === selectedCategory)?.category}</h4>
+          <h4>
+            {
+              categoryAverages.find(c => c.category === selectedCategory)
+                ?.category
+            }
+          </h4>
           <div className="details-mastery">
-            {categoryAverages.find(c => c.category === selectedCategory)?.avgMastery}% Average Mastery
+            {
+              categoryAverages.find(c => c.category === selectedCategory)
+                ?.avgMastery
+            }
+            % Average Mastery
           </div>
           <div className="details-skills">
-            {categoryAverages.find(c => c.category === selectedCategory)?.skills.slice(0, 5).map((skill, i) => (
-              <span key={i} className="skill-badge">
-                {skill.name} ({skill.mastery}%)
-              </span>
-            ))}
+            {categoryAverages
+              .find(c => c.category === selectedCategory)
+              ?.skills.slice(0, 5)
+              .map((skill, i) => (
+                <span key={i} className="skill-badge">
+                  {skill.name} ({skill.mastery}%)
+                </span>
+              ))}
           </div>
         </div>
       )}
@@ -437,11 +542,21 @@ function SkillRadarChart({skills, isDark, hoveredCategory, setHoveredCategory, s
 }
 
 // Enhanced Network Graph Component
-function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}) {
+function SkillNetworkGraph({
+  skills,
+  isDark,
+  hoveredCategory,
+  setHoveredCategory
+}) {
   const containerRef = useRef(null);
   const svgRef = useRef(null);
   const [hoveredNode, setHoveredNode] = useState(null);
-  const [viewBox, setViewBox] = useState({x: 0, y: 0, width: 1000, height: 700});
+  const [viewBox, setViewBox] = useState({
+    x: 0,
+    y: 0,
+    width: 1000,
+    height: 700
+  });
 
   // Memoize network data with stable positions
   const networkData = useMemo(() => {
@@ -464,8 +579,10 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
 
     categories.forEach((category, catIndex) => {
       const categoryAngle = (catIndex / categories.length) * Math.PI * 2;
-      const categoryCenterX = centerX + Math.cos(categoryAngle) * categoryRadius;
-      const categoryCenterY = centerY + Math.sin(categoryAngle) * categoryRadius;
+      const categoryCenterX =
+        centerX + Math.cos(categoryAngle) * categoryRadius;
+      const categoryCenterY =
+        centerY + Math.sin(categoryAngle) * categoryRadius;
       const skills = categoryGroups[category];
       const skillRadius = Math.min(80, skills.length * 8);
 
@@ -497,46 +614,45 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
   }, [skills]);
 
   // Handle zoom with mouse wheel
-  const handleWheel = useCallback((e) => {
-    e.preventDefault();
-    if (!svgRef.current) return;
-    
-    const rect = svgRef.current.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    
-    const scale = e.deltaY > 0 ? 0.9 : 1.1;
-    const newWidth = viewBox.width * scale;
-    const newHeight = viewBox.height * scale;
-    
-    // Constrain zoom
-    if (newWidth < 500 || newWidth > 2000) return;
-    
-    const svgWidth = rect.width;
-    const svgHeight = rect.height;
-    const xPercent = mouseX / svgWidth;
-    const yPercent = mouseY / svgHeight;
-    
-    const newX = viewBox.x - (newWidth - viewBox.width) * xPercent;
-    const newY = viewBox.y - (newHeight - viewBox.height) * yPercent;
-    
-    setViewBox({
-      x: newX,
-      y: newY,
-      width: newWidth,
-      height: newHeight
-    });
-  }, [viewBox]);
+  const handleWheel = useCallback(
+    e => {
+      e.preventDefault();
+      if (!svgRef.current) return;
+
+      const rect = svgRef.current.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      const scale = e.deltaY > 0 ? 0.9 : 1.1;
+      const newWidth = viewBox.width * scale;
+      const newHeight = viewBox.height * scale;
+
+      // Constrain zoom
+      if (newWidth < 500 || newWidth > 2000) return;
+
+      const svgWidth = rect.width;
+      const svgHeight = rect.height;
+      const xPercent = mouseX / svgWidth;
+      const yPercent = mouseY / svgHeight;
+
+      const newX = viewBox.x - (newWidth - viewBox.width) * xPercent;
+      const newY = viewBox.y - (newHeight - viewBox.height) * yPercent;
+
+      setViewBox({
+        x: newX,
+        y: newY,
+        width: newWidth,
+        height: newHeight
+      });
+    },
+    [viewBox]
+  );
 
   return (
-    <div 
-      className="network-container" 
-      ref={containerRef}
-      onWheel={handleWheel}
-    >
-      <svg 
+    <div className="network-container" ref={containerRef} onWheel={handleWheel}>
+      <svg
         ref={svgRef}
-        className="network-svg" 
+        className="network-svg"
         viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
         preserveAspectRatio="xMidYMid meet"
       >
@@ -546,13 +662,13 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
             <stop offset="0%" stopColor="rgba(107, 91, 149, 0.2)" />
             <stop offset="100%" stopColor="rgba(107, 91, 149, 0.05)" />
           </linearGradient>
-          
+
           {/* Glow filter for nodes */}
           <filter id="nodeGlow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
             <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
@@ -563,7 +679,8 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
           const targetNode = networkData.nodes.find(n => n.id === link.target);
           if (!sourceNode || !targetNode) return null;
 
-          const isHighlighted = hoveredNode === link.source || hoveredNode === link.target;
+          const isHighlighted =
+            hoveredNode === link.source || hoveredNode === link.target;
 
           return (
             <line
@@ -572,7 +689,9 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
               y1={sourceNode.y}
               x2={targetNode.x}
               y2={targetNode.y}
-              stroke={isDark ? "rgba(102, 126, 234, 0.2)" : "rgba(107, 91, 149, 0.2)"}
+              stroke={
+                isDark ? "rgba(102, 126, 234, 0.2)" : "rgba(107, 91, 149, 0.2)"
+              }
               strokeWidth={isHighlighted ? "2" : "1"}
               className={`network-link ${isHighlighted ? "highlighted" : ""}`}
               style={{
@@ -582,7 +701,7 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
             />
           );
         })}
-        
+
         {/* Draw nodes */}
         {networkData.nodes.map((node, index) => {
           const size = (node.mastery / 100) * 10 + 5;
@@ -590,8 +709,8 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
           const nodeOpacity = isHovered ? 1 : 0.8;
 
           return (
-            <g 
-              key={index} 
+            <g
+              key={index}
               className="network-node"
               onMouseEnter={() => setHoveredNode(node.id)}
               onMouseLeave={() => setHoveredNode(null)}
@@ -607,7 +726,7 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
                   className="node-glow"
                 />
               )}
-              
+
               {/* Node circle */}
               <circle
                 cx={node.x}
@@ -622,7 +741,7 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
                   cursor: "pointer"
                 }}
               />
-              
+
               {/* Node label */}
               <text
                 x={node.x}
@@ -636,7 +755,9 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
                   transition: "all 0.3s ease"
                 }}
               >
-                {node.id.length > 15 ? node.id.substring(0, 13) + "..." : node.id}
+                {node.id.length > 15
+                  ? node.id.substring(0, 13) + "..."
+                  : node.id}
               </text>
 
               {/* Mastery badge on hover */}
@@ -660,7 +781,7 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
 
       {/* Zoom controls */}
       <div className="network-controls">
-        <button 
+        <button
           className="zoom-btn"
           onClick={() => {
             const scale = 0.8;
@@ -675,7 +796,7 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
         >
           +
         </button>
-        <button 
+        <button
           className="zoom-btn"
           onClick={() => {
             const scale = 1.25;
@@ -690,7 +811,7 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
         >
           −
         </button>
-        <button 
+        <button
           className="zoom-btn"
           onClick={() => setViewBox({x: 0, y: 0, width: 1000, height: 700})}
           aria-label="Reset"
@@ -703,7 +824,12 @@ function SkillNetworkGraph({skills, isDark, hoveredCategory, setHoveredCategory}
 }
 
 // Enhanced Mastery Rings Component
-function SkillMasteryRings({skills, isDark, hoveredCategory, setHoveredCategory}) {
+function SkillMasteryRings({
+  skills,
+  isDark,
+  hoveredCategory,
+  setHoveredCategory
+}) {
   const [animatedRings, setAnimatedRings] = useState(new Set());
   const [hoveredRing, setHoveredRing] = useState(null);
 
@@ -724,7 +850,8 @@ function SkillMasteryRings({skills, isDark, hoveredCategory, setHoveredCategory}
     Object.keys(mastery).forEach(category => {
       const categorySkills = mastery[category].skills;
       mastery[category].avgMastery = Math.round(
-        categorySkills.reduce((sum, s) => sum + s.mastery, 0) / categorySkills.length
+        categorySkills.reduce((sum, s) => sum + s.mastery, 0) /
+          categorySkills.length
       );
     });
 
@@ -751,8 +878,8 @@ function SkillMasteryRings({skills, isDark, hoveredCategory, setHoveredCategory}
         const offset = circumference * (1 - data.avgMastery / 100);
 
         return (
-          <div 
-            key={category} 
+          <div
+            key={category}
             className={`mastery-ring-group ${isHovered ? "hovered" : ""}`}
             onMouseEnter={() => {
               setHoveredRing(category);
@@ -777,7 +904,11 @@ function SkillMasteryRings({skills, isDark, hoveredCategory, setHoveredCategory}
                   cy="60"
                   r="50"
                   fill="none"
-                  stroke={isDark ? "rgba(102, 126, 234, 0.1)" : "rgba(107, 91, 149, 0.1)"}
+                  stroke={
+                    isDark
+                      ? "rgba(102, 126, 234, 0.1)"
+                      : "rgba(107, 91, 149, 0.1)"
+                  }
                   strokeWidth="8"
                 />
                 {/* Progress circle */}
@@ -794,8 +925,11 @@ function SkillMasteryRings({skills, isDark, hoveredCategory, setHoveredCategory}
                   strokeLinecap="round"
                   transform="rotate(-90 60 60)"
                   style={{
-                    transition: "stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                    filter: isHovered ? "drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))" : "none"
+                    transition:
+                      "stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                    filter: isHovered
+                      ? "drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))"
+                      : "none"
                   }}
                 />
                 {/* Glow effect on hover */}
@@ -823,8 +957,8 @@ function SkillMasteryRings({skills, isDark, hoveredCategory, setHoveredCategory}
             </div>
             <div className="ring-skills">
               {data.skills.slice(0, 4).map((skill, skillIndex) => (
-                <div 
-                  key={skillIndex} 
+                <div
+                  key={skillIndex}
                   className="ring-skill-item"
                   style={{
                     opacity: isHovered ? 1 : 0.8,
@@ -832,11 +966,13 @@ function SkillMasteryRings({skills, isDark, hoveredCategory, setHoveredCategory}
                     transition: "all 0.3s ease"
                   }}
                 >
-                  <div 
-                    className="skill-dot" 
+                  <div
+                    className="skill-dot"
                     style={{
                       background: data.color,
-                      boxShadow: isHovered ? `0 0 8px ${data.color}` : "0 2px 4px rgba(0, 0, 0, 0.2)"
+                      boxShadow: isHovered
+                        ? `0 0 8px ${data.color}`
+                        : "0 2px 4px rgba(0, 0, 0, 0.2)"
                     }}
                   ></div>
                   <span className="skill-name">{skill.name}</span>

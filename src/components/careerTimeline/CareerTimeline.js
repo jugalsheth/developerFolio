@@ -63,9 +63,7 @@ export default function CareerTimeline({experiences}) {
                   <div>
                     <h3
                       className={
-                        isDark
-                          ? "dark-mode timeline-role"
-                          : "timeline-role"
+                        isDark ? "dark-mode timeline-role" : "timeline-role"
                       }
                     >
                       {experience.role}
@@ -89,7 +87,11 @@ export default function CareerTimeline({experiences}) {
                   </span>
                 </div>
 
-                <div className={`timeline-expandable ${expandedIndex === index ? "show" : ""}`}>
+                <div
+                  className={`timeline-expandable ${
+                    expandedIndex === index ? "show" : ""
+                  }`}
+                >
                   <p
                     className={
                       isDark
@@ -129,4 +131,3 @@ export default function CareerTimeline({experiences}) {
     </div>
   );
 }
-

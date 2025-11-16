@@ -30,9 +30,11 @@ export default function Button({
     ${animated ? "button-animated" : ""}
     ${disabled || loading ? "button-disabled" : ""}
     ${className}
-  `.trim().replace(/\s+/g, " ");
+  `
+    .trim()
+    .replace(/\s+/g, " ");
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     if (disabled || loading) {
       e.preventDefault();
       return;

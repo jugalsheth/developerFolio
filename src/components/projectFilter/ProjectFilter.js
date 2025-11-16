@@ -14,11 +14,19 @@ export default function ProjectFilter({activeFilter, setActiveFilter}) {
   ];
 
   return (
-    <div className={isDark ? "project-filter-container dark-mode" : "project-filter-container"}>
+    <div
+      className={
+        isDark
+          ? "project-filter-container dark-mode"
+          : "project-filter-container"
+      }
+    >
       {filters.map(filter => (
         <button
           key={filter.id}
-          className={`filter-btn ${activeFilter === filter.id ? "active" : ""} ${isDark ? "dark-mode" : ""}`}
+          className={`filter-btn ${
+            activeFilter === filter.id ? "active" : ""
+          } ${isDark ? "dark-mode" : ""}`}
           onClick={() => setActiveFilter(filter.id)}
         >
           {filter.label}
@@ -27,4 +35,3 @@ export default function ProjectFilter({activeFilter, setActiveFilter}) {
     </div>
   );
 }
-

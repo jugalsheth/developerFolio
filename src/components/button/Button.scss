@@ -86,14 +86,22 @@
 
   // Variants
   &.button-primary {
-    background: linear-gradient(135deg, $buttonColor 0%, darken($buttonColor, 10%) 100%);
+    background: linear-gradient(
+      135deg,
+      $buttonColor 0%,
+      darken($buttonColor, 10%) 100%
+    );
     color: $textColorDark;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
     &:hover:not(.button-disabled) {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      background: linear-gradient(135deg, lighten($buttonColor, 5%) 0%, $buttonColor 100%);
+      background: linear-gradient(
+        135deg,
+        lighten($buttonColor, 5%) 0%,
+        $buttonColor 100%
+      );
     }
 
     &:active:not(.button-disabled) {

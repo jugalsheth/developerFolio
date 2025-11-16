@@ -9,19 +9,22 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      quote: "Jugal's ability to translate complex data requirements into production-ready systems is exceptional. The procurement platform he built serves 200+ users daily with zero complaints.",
+      quote:
+        "Jugal's ability to translate complex data requirements into production-ready systems is exceptional. The procurement platform he built serves 200+ users daily with zero complaints.",
       name: "Alex Chen",
       role: "Director of Engineering",
       company: "VaynerX"
     },
     {
-      quote: "Working with Jugal on real-time pipelines was a game-changer. He optimized our ETL processes by 40% and made our data infrastructure truly scalable.",
+      quote:
+        "Working with Jugal on real-time pipelines was a game-changer. He optimized our ETL processes by 40% and made our data infrastructure truly scalable.",
       name: "Sarah Martinez",
       role: "VP of Data",
       company: "VaynerMedia"
     },
     {
-      quote: "His full-stack capabilities are rare in data engineering. Jugal doesn't just build pipelines—he creates complete data products that business users actually love.",
+      quote:
+        "His full-stack capabilities are rare in data engineering. Jugal doesn't just build pipelines—he creates complete data products that business users actually love.",
       name: "Michael Johnson",
       role: "Product Manager",
       company: "Tech Startup"
@@ -33,37 +36,65 @@ export default function Testimonials() {
   };
 
   const prevTestimonial = () => {
-    setActiveIndex((activeIndex - 1 + testimonials.length) % testimonials.length);
+    setActiveIndex(
+      (activeIndex - 1 + testimonials.length) % testimonials.length
+    );
   };
 
   return (
     <div className="testimonials-container">
       <Fade bottom duration={1000} distance="20px">
-        <h2 className={isDark ? "dark-mode testimonials-title" : "testimonials-title"}>
+        <h2
+          className={
+            isDark ? "dark-mode testimonials-title" : "testimonials-title"
+          }
+        >
           What People Say
         </h2>
-        <p className={isDark ? "dark-mode testimonials-subtitle subTitle" : "testimonials-subtitle subTitle"}>
+        <p
+          className={
+            isDark
+              ? "dark-mode testimonials-subtitle subTitle"
+              : "testimonials-subtitle subTitle"
+          }
+        >
           Feedback from colleagues and collaborators
         </p>
       </Fade>
 
       <div className="testimonials-carousel">
         <Fade key={activeIndex} duration={600}>
-          <div className={isDark ? "testimonial-card dark-mode" : "testimonial-card"}>
+          <div
+            className={
+              isDark ? "testimonial-card dark-mode" : "testimonial-card"
+            }
+          >
             <div className="quote-icon">"</div>
-            <p className={isDark ? "dark-mode testimonial-quote" : "testimonial-quote"}>
+            <p
+              className={
+                isDark ? "dark-mode testimonial-quote" : "testimonial-quote"
+              }
+            >
               {testimonials[activeIndex].quote}
             </p>
             <div className="testimonial-author">
               <div className="author-avatar">
-                {testimonials[activeIndex].name.split(" ").map(n => n[0]).join("")}
+                {testimonials[activeIndex].name
+                  .split(" ")
+                  .map(n => n[0])
+                  .join("")}
               </div>
               <div className="author-info">
-                <div className={isDark ? "dark-mode author-name" : "author-name"}>
+                <div
+                  className={isDark ? "dark-mode author-name" : "author-name"}
+                >
                   {testimonials[activeIndex].name}
                 </div>
-                <div className={isDark ? "dark-mode author-role" : "author-role"}>
-                  {testimonials[activeIndex].role} • {testimonials[activeIndex].company}
+                <div
+                  className={isDark ? "dark-mode author-role" : "author-role"}
+                >
+                  {testimonials[activeIndex].role} •{" "}
+                  {testimonials[activeIndex].company}
                 </div>
               </div>
             </div>
@@ -84,7 +115,9 @@ export default function Testimonials() {
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                className={`dot ${index === activeIndex ? "active" : ""} ${isDark ? "dark-mode" : ""}`}
+                className={`dot ${index === activeIndex ? "active" : ""} ${
+                  isDark ? "dark-mode" : ""
+                }`}
                 onClick={() => setActiveIndex(index)}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -103,4 +136,3 @@ export default function Testimonials() {
     </div>
   );
 }
-

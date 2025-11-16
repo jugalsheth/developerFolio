@@ -17,14 +17,22 @@ export default function Skills() {
   };
 
   return (
-    <div className={isDark ? "dark-mode skills-section" : "skills-section"} id="skills">
+    <div
+      className={isDark ? "dark-mode skills-section" : "skills-section"}
+      id="skills"
+    >
       <Fade bottom duration={1000} distance="20px">
         <div className="skills-header">
-          <h1 className={isDark ? "dark-mode skills-heading" : "skills-heading"}>
+          <h1
+            className={isDark ? "dark-mode skills-heading" : "skills-heading"}
+          >
             {skillsSection.title || "Skills & Expertise"}
           </h1>
-          <p className={isDark ? "dark-mode skills-subtitle" : "skills-subtitle"}>
-            {skillsSection.subTitle || "Mastering the tools and technologies that power modern data systems"}
+          <p
+            className={isDark ? "dark-mode skills-subtitle" : "skills-subtitle"}
+          >
+            {skillsSection.subTitle ||
+              "Mastering the tools and technologies that power modern data systems"}
           </p>
         </div>
       </Fade>
@@ -37,8 +45,8 @@ export default function Skills() {
           <div className="skills-highlights">
             <div className="highlights-list">
               {skillsSection.skills.map((skill, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className={`highlight-item ${isDark ? "dark-mode" : ""}`}
                   style={{animationDelay: `${i * 80}ms`}}
                 >

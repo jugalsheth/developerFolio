@@ -18,7 +18,8 @@ const illustration = {
 const greeting = {
   username: "Jugal Sheth",
   title: "Hi, I'm Jugal 👋",
-  subTitle: "Full-stack data engineer building production systems used by 200+ users. From real-time pipelines to NextJS apps, I ship what scales.",
+  subTitle:
+    "Full-stack data engineer building production systems used by 200+ users. From real-time pipelines to NextJS apps, I ship what scales.",
   resumeLink: true,
   githubProfile: "https://github.com/jugalsheth",
   displayGreeting: true,
@@ -42,7 +43,7 @@ const greeting = {
         type: "video",
         url: require("./assets/videos/video3_compressed.mp4"),
         caption: "Check out my latest project! ⚡"
-      },
+      }
     ],
     // Configuration options
     autoPlay: true // Auto-rotate through videos in each column (every 4 seconds)
@@ -63,7 +64,8 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "Skills & Expertise",
-  subTitle: "Mastering the tools and technologies that power modern data systems",
+  subTitle:
+    "Mastering the tools and technologies that power modern data systems",
   skills: [
     "⚡ Building reliable real-time data pipelines using Kafka + Spark",
     "⚡ Creating dashboards with Streamlit and custom visuals",
@@ -194,30 +196,52 @@ const bigProjects = {
     {
       image: require("./assets/images/etlgenie.png"),
       projectName: "Real-Time Analytics Dashboard",
-      projectDesc: "Live monitoring dashboard for data pipelines with real-time metrics, throughput visualization, and system resource tracking. Built with Streamlit and Plotly.",
-      embedUrl: "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app",
+      projectDesc:
+        "Live monitoring dashboard for data pipelines with real-time metrics, throughput visualization, and system resource tracking. Built with Streamlit and Plotly.",
+      embedUrl:
+        "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app",
       footerLink: [
-        { name: "Live Demo", url: "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app" },
-        { name: "GitHub", url: "https://github.com/jugalsheth/real-time-dashboard" }
+        {
+          name: "Live Demo",
+          url: "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app"
+        },
+        {
+          name: "GitHub",
+          url: "https://github.com/jugalsheth/real-time-dashboard"
+        }
       ]
     },
     {
       image: require("./assets/images/etlgenie.png"),
       projectName: "ETLGenie",
-      projectDesc: "GenAI-powered dbt pipeline generator - transforms natural language to production-ready SQL. Built with OpenAI API and Streamlit.",
-      footerLink: [{ name: "GitHub", url: "https://github.com/jugalsheth/etlgenie/tree/main" }]
+      projectDesc:
+        "GenAI-powered dbt pipeline generator - transforms natural language to production-ready SQL. Built with OpenAI API and Streamlit.",
+      footerLink: [
+        {
+          name: "GitHub",
+          url: "https://github.com/jugalsheth/etlgenie/tree/main"
+        }
+      ]
     },
     {
       image: require("./assets/images/querygenie.png"),
       projectName: "QueryGenie",
-      projectDesc: "AI SQL assistant turning plain English into optimized queries. Speeds up analysis 10x for non-technical stakeholders.",
-      footerLink: [{ name: "GitHub", url: "https://github.com/jugalsheth/querygenie" }]
+      projectDesc:
+        "AI SQL assistant turning plain English into optimized queries. Speeds up analysis 10x for non-technical stakeholders.",
+      footerLink: [
+        {name: "GitHub", url: "https://github.com/jugalsheth/querygenie"}
+      ]
     },
     {
       image: require("./assets/images/scriptwriter.png"),
       projectName: "Creative Script Writer",
       projectDesc: "Streamlit app that generates screenplays with OpenAI",
-      footerLink: [{ name: "GitHub", url: "https://github.com/jugalsheth/creative-script-writer" }]
+      footerLink: [
+        {
+          name: "GitHub",
+          url: "https://github.com/jugalsheth/creative-script-writer"
+        }
+      ]
     }
   ],
   display: true
@@ -232,7 +256,8 @@ const achievementSection = {
 
 const blogSection = {
   title: "Blogs",
-  subtitle: "Writing about tools, projects, and data engineering best practices",
+  subtitle:
+    "Writing about tools, projects, and data engineering best practices",
   displayMediumBlogs: "false",
   blogs: [],
   display: false
@@ -255,8 +280,9 @@ const podcastSection = {
 // Visual Resume Section - Comprehensive Data
 const visualResume = {
   display: true,
-  objective: "Highly experienced Senior Data/Analytics Engineer (5+ years) specializing in designing, scaling, and governing modern ETL/ELT data platforms (Snowflake, Airflow, dbt). Track record of architecting metric layers, championing best practices, and driving business impact—40% pipeline optimization, 12% forecasting accuracy. Seeking to empower strategic decision-making across content, finance, and marketing domains.",
-  
+  objective:
+    "Highly experienced Senior Data/Analytics Engineer (5+ years) specializing in designing, scaling, and governing modern ETL/ELT data platforms (Snowflake, Airflow, dbt). Track record of architecting metric layers, championing best practices, and driving business impact—40% pipeline optimization, 12% forecasting accuracy. Seeking to empower strategic decision-making across content, finance, and marketing domains.",
+
   impactMetrics: [
     {
       value: 40,
@@ -317,12 +343,7 @@ const visualResume = {
   ],
 
   skills: {
-    "Languages & Data Processing": [
-      "SQL",
-      "Python",
-      "R",
-      "Bash"
-    ],
+    "Languages & Data Processing": ["SQL", "Python", "R", "Bash"],
     "Data Warehousing & Modeling": [
       "Snowflake",
       "PostgreSQL",
@@ -386,7 +407,8 @@ const visualResume = {
       subtitle: "Production NextJS App · 200+ Active Users",
       date: "2024",
       image: require("./assets/images/etlgenie.png"),
-      description: "Enterprise procurement tool connecting Snowflake DWH to intuitive NextJS frontend, serving 200+ users from week one",
+      description:
+        "Enterprise procurement tool connecting Snowflake DWH to intuitive NextJS frontend, serving 200+ users from week one",
       bullets: [
         "Architected full-stack NextJS application with server-side rendering, deployed on AWS with zero-downtime CI/CD pipeline",
         "Designed RESTful API layer connecting Snowflake data warehouse via Snowflake Connector, enabling real-time procurement analytics",
@@ -394,7 +416,15 @@ const visualResume = {
         "Built interactive dashboards with Chart.js showing real-time spend analytics, reducing procurement approval time by 50%",
         "Became company-wide standard for internal tool development, demonstrating production-grade system design at scale"
       ],
-      technologies: ["NextJS", "Snowflake", "AWS", "TypeScript", "Node.js", "REST API", "CI/CD"],
+      technologies: [
+        "NextJS",
+        "Snowflake",
+        "AWS",
+        "TypeScript",
+        "Node.js",
+        "REST API",
+        "CI/CD"
+      ],
       links: []
     },
     {
@@ -402,46 +432,60 @@ const visualResume = {
       subtitle: "Multi-Channel Inventory Management System",
       date: "Oct 2025",
       image: require("./assets/images/etlgenie.png"),
-      description: "Production inventory reconciliation system deployed by 3 retail/logistics startups",
+      description:
+        "Production inventory reconciliation system deployed by 3 retail/logistics startups",
       bullets: [
         "Architected production PostgreSQL database with 15+ tables and Row-Level Security for multi-channel inventory reconciliation—deployed by 3 retail/logistics startups managing 10K+ SKUs across Amazon, Flipkart, and Myntra",
         "Engineered serverless DevOps pipeline on Vercel with Vite optimization and Supabase BaaS, achieving zero-downtime deployments, sub-second page loads, and 99.9% uptime",
         "Built analytics engine computing 40+ real-time KPIs and automated reorder workflows with barcode-driven GRN systems, reducing manual intervention by 80%"
       ],
-      technologies: ["PostgreSQL", "Vercel", "Vite", "Supabase", "Row-Level Security"],
-      links: [
-        { name: "GitHub", url: "https://github.com/jugalsheth" }
-      ]
+      technologies: [
+        "PostgreSQL",
+        "Vercel",
+        "Vite",
+        "Supabase",
+        "Row-Level Security"
+      ],
+      links: [{name: "GitHub", url: "https://github.com/jugalsheth"}]
     },
     {
       name: "GeoPulse AI",
       subtitle: "LLM-Powered Analytics Layer",
       date: "Feb 2025",
       image: require("./assets/images/querygenie.png"),
-      description: "AI-powered financial news analysis for market performance forecasting",
+      description:
+        "AI-powered financial news analysis for market performance forecasting",
       bullets: [
         "Developed an OpenAI-powered Streamlit app analyzing global financial news to forecast market performance",
         "Designed dbt-based modular pipelines with explainable metrics, ensuring trustable ML-driven dashboards"
       ],
       technologies: ["OpenAI", "Streamlit", "dbt", "Python", "NLP"],
-      links: [
-        { name: "GitHub", url: "https://github.com/jugalsheth/querygenie" }
-      ]
+      links: [{name: "GitHub", url: "https://github.com/jugalsheth/querygenie"}]
     },
     {
       name: "ETL Real-Time Platform",
       subtitle: "Kafka, Spark, Snowflake",
       date: "Jan 2025",
       image: require("./assets/images/scriptwriter.png"),
-      description: "Real-time order ingestion platform with SLA monitoring and alerts",
+      description:
+        "Real-time order ingestion platform with SLA monitoring and alerts",
       bullets: [
         "Simulated live order ingestion via Kafka, PySpark, and Snowflake with SLA monitoring, alerts, and observability",
         "Delivered dashboards for latency tracking, low-stock alerts, and business-critical event monitoring",
         "Emphasized fault tolerance and schema evolution, showcasing working knowledge of data warehouse technologies"
       ],
-      technologies: ["Kafka", "PySpark", "Snowflake", "Airflow", "Real-time Processing"],
+      technologies: [
+        "Kafka",
+        "PySpark",
+        "Snowflake",
+        "Airflow",
+        "Real-time Processing"
+      ],
       links: [
-        { name: "GitHub", url: "https://github.com/jugalsheth/etlgenie/tree/main" }
+        {
+          name: "GitHub",
+          url: "https://github.com/jugalsheth/etlgenie/tree/main"
+        }
       ]
     }
   ]

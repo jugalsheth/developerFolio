@@ -1,11 +1,15 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
-import { Fade } from "react-reveal";
+import React, {useState, useEffect, useContext, useRef} from "react";
+import {Fade} from "react-reveal";
 import "./InstagramReelsGrid.scss";
 import "./InstagramReelsGrid.css";
 import StyleContext from "../../contexts/StyleContext";
 
-export default function InstagramReelsGrid({ reels = [], autoPlay = true, instagramAccount = "https://www.instagram.com/jugalsheth/" }) {
-  const { isDark } = useContext(StyleContext);
+export default function InstagramReelsGrid({
+  reels = [],
+  autoPlay = true,
+  instagramAccount = "https://www.instagram.com/jugalsheth/"
+}) {
+  const {isDark} = useContext(StyleContext);
   const [activeReels, setActiveReels] = useState([0, 0, 0]); // One active reel per column
   const containerRef = useRef(null);
   const intervalRef = useRef(null);
@@ -65,7 +69,7 @@ export default function InstagramReelsGrid({ reels = [], autoPlay = true, instag
   }
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`instagram-reels-grid ${isDark ? "dark-mode" : ""}`}
     >
@@ -74,12 +78,12 @@ export default function InstagramReelsGrid({ reels = [], autoPlay = true, instag
           {column.map((reel, reelIndex) => {
             const isActive = activeReels[colIndex] === reelIndex;
             const globalIndex = colIndex + reelIndex * 3;
-            
+
             return (
-              <Fade 
-                key={globalIndex} 
-                bottom 
-                duration={600} 
+              <Fade
+                key={globalIndex}
+                bottom
+                duration={600}
                 delay={colIndex * 100}
                 when={isActive}
               >
@@ -98,7 +102,7 @@ export default function InstagramReelsGrid({ reels = [], autoPlay = true, instag
                   <div className="reel-container">
                     {reel.type === "video" && reel.url && (
                       <video
-                        ref={(el) => {
+                        ref={el => {
                           const videoKey = `${colIndex}-${reelIndex}`;
                           if (el) {
                             videoRefs.current[videoKey] = el;
@@ -113,22 +117,27 @@ export default function InstagramReelsGrid({ reels = [], autoPlay = true, instag
                         preload="auto"
                       />
                     )}
-                    
+
                     {/* Overlay gradient */}
                     <div className="reel-overlay" />
-                    
+
                     {/* Caption */}
                     {reel.caption && isActive && (
                       <div className="reel-caption">
                         <p>{reel.caption}</p>
                       </div>
                     )}
-                    
+
                     {/* Play indicator */}
                     {!isActive && (
                       <div className="play-indicator">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                          <path d="M8 5v14l11-7z"/>
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="white"
+                        >
+                          <path d="M8 5v14l11-7z" />
                         </svg>
                       </div>
                     )}
@@ -142,4 +151,3 @@ export default function InstagramReelsGrid({ reels = [], autoPlay = true, instag
     </div>
   );
 }
-
