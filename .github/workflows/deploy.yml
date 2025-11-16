@@ -24,10 +24,8 @@ jobs:
       - name: Setup Node.js 🔧
         uses: actions/setup-node@v3.8.1
         with:
+          # Use a stable Node.js 18.x with the bundled npm version
           node-version: 18.x
-
-      - name: Update npm 🚀
-        run: npm install -g npm@latest
 
       - name: Install and Build 🔧 # Build the Project
         run: |
