@@ -1,16 +1,19 @@
 import React, {useState, useEffect, useContext, useRef} from "react";
 import "./ConnectModal.scss";
 import StyleContext from "../../contexts/StyleContext";
-import {contactInfo, socialMediaLinks} from "../../portfolio";
+import {contactInfo, socialMediaLinks, calendlyConfig} from "../../portfolio";
+import {trackButtonClick, trackCalendlyEvent, trackFormSubmission} from "../../utils/analytics";
 import {Fade} from "react-reveal";
 
 export default function ConnectModal({isOpen, onClose}) {
   const {isDark} = useContext(StyleContext);
   const [activeTab, setActiveTab] = useState("email");
+  const [showCalendly, setShowCalendly] = useState(false);
   const [formData, setFormData] = useState({name: "", email: "", message: ""});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const modalRef = useRef(null);
+  const calendlyRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -22,12 +25,51 @@ export default function ConnectModal({isOpen, onClose}) {
       firstFocusable?.focus();
     } else {
       document.body.style.overflow = "";
+      setShowCalendly(false);
     }
 
     return () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  // Load and initialize Calendly widget
+  useEffect(() => {
+    if (showCalendly && calendlyConfig?.enabled && calendlyConfig?.url) {
+      trackCalendlyEvent('opened');
+      
+      // Initialize Calendly inline widget if script is loaded
+      const initCalendly = () => {
+        if (window.Calendly && calendlyRef.current) {
+          window.Calendly.initInlineWidget({
+            url: calendlyConfig.url,
+            parentElement: calendlyRef.current
+          });
+        }
+      };
+
+      // Check if Calendly script is already loaded
+      if (window.Calendly) {
+        initCalendly();
+      } else {
+        // Wait for script to load (it's loaded in index.html)
+        const checkCalendly = setInterval(() => {
+          if (window.Calendly) {
+            clearInterval(checkCalendly);
+            initCalendly();
+          }
+        }, 100);
+
+        // Timeout after 5 seconds
+        setTimeout(() => {
+          clearInterval(checkCalendly);
+          if (!window.Calendly) {
+            console.warn('Calendly script failed to load');
+          }
+        }, 5000);
+      }
+    }
+  }, [showCalendly]);
 
   useEffect(() => {
     const handleEscape = e => {
@@ -61,6 +103,9 @@ export default function ConnectModal({isOpen, onClose}) {
         `This message was sent from your portfolio website.`
     );
 
+    // Track form submission
+    trackFormSubmission('contact_form', true);
+
     // Open email client with pre-filled data
     window.location.href = `mailto:${contactInfo.email_address}?subject=${subject}&body=${body}`;
 
@@ -74,37 +119,65 @@ export default function ConnectModal({isOpen, onClose}) {
     }, 2000);
   };
 
+  const handleCalendlyClick = () => {
+    setShowCalendly(true);
+    setActiveTab("calendly");
+    trackButtonClick('schedule_meeting', 'connect_modal');
+  };
+
   const connectionOptions = [
     {
       id: "email",
       label: "Email",
       icon: "✉️",
       color: "#3b82f6",
-      action: () =>
-        (window.location.href = `mailto:${contactInfo.email_address}`)
+      action: () => {
+        trackButtonClick('email', 'connect_modal');
+        window.location.href = `mailto:${contactInfo.email_address}`;
+      }
     },
     {
       id: "linkedin",
       label: "LinkedIn",
       icon: "💼",
       color: "#0077b5",
-      action: () => window.open(socialMediaLinks.linkedin, "_blank")
+      action: () => {
+        trackButtonClick('linkedin', 'connect_modal');
+        window.open(socialMediaLinks.linkedin, "_blank");
+      }
     },
     {
       id: "github",
       label: "GitHub",
       icon: "💻",
       color: "#333",
-      action: () => window.open(socialMediaLinks.github, "_blank")
+      action: () => {
+        trackButtonClick('github', 'connect_modal');
+        window.open(socialMediaLinks.github, "_blank");
+      }
     },
     {
       id: "phone",
       label: "Phone",
       icon: "📞",
       color: "#10b981",
-      action: () => (window.location.href = `tel:${contactInfo.number}`)
+      action: () => {
+        trackButtonClick('phone', 'connect_modal');
+        window.location.href = `tel:${contactInfo.number}`;
+      }
     }
   ];
+
+  // Add Calendly option if enabled
+  if (calendlyConfig?.enabled && calendlyConfig?.url) {
+    connectionOptions.push({
+      id: "calendly",
+      label: "Schedule Meeting",
+      icon: "📅",
+      color: "#0069ff",
+      action: handleCalendlyClick
+    });
+  }
 
   return (
     <div
@@ -168,6 +241,33 @@ export default function ConnectModal({isOpen, onClose}) {
               </button>
             ))}
           </div>
+
+          {/* Calendly Embed Section */}
+          {showCalendly && calendlyConfig?.enabled && calendlyConfig?.url && (
+            <div className="calendly-embed-section">
+              <div className="calendly-header">
+                <h3 className="calendly-title">Schedule a Meeting</h3>
+                <button
+                  className="calendly-close-btn"
+                  onClick={() => {
+                    setShowCalendly(false);
+                    setActiveTab("email");
+                  }}
+                  aria-label="Close Calendly"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+              <div
+                className="calendly-inline-widget"
+                style={{minWidth: "320px", height: "630px"}}
+                ref={calendlyRef}
+              ></div>
+            </div>
+          )}
 
           {/* Quick Contact Form */}
           <div className="modal-form-section">

@@ -199,7 +199,7 @@ const bigProjects = {
       projectDesc:
         "Live monitoring dashboard for data pipelines with real-time metrics, throughput visualization, and system resource tracking. Built with Streamlit and Plotly.",
       embedUrl:
-        "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app",
+        "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app?embed=true",
       footerLink: [
         {
           name: "Live Demo",
@@ -499,9 +499,16 @@ const resumeSection = {
 
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
-  subtitle: "Let’s collaborate or connect – happy to chat!",
+  subtitle: "Let's collaborate or connect – happy to chat!",
   number: "+1 (857) 869-8235",
   email_address: "jugal.sheth63@gmail.com"
+};
+
+// Calendly Configuration
+// Get your Calendly URL from: https://calendly.com/yourname/event-name
+const calendlyConfig = {
+  url: "https://calendly.com/jugal-sheth63/30min", // Replace with your Calendly event URL
+  enabled: true // Set to false to disable Calendly integration
 };
 
 const twitterDetails = {
@@ -530,5 +537,6 @@ export {
   twitterDetails,
   isHireable,
   resumeSection,
-  visualResume
+  visualResume,
+  calendlyConfig
 };
