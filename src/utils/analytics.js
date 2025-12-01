@@ -1,6 +1,6 @@
 /**
  * Analytics utility functions for GA4 and Google Ads tracking
- * 
+ *
  * Usage:
  * - trackEvent('button_click', { button_name: 'Schedule Meeting' })
  * - trackConversion('schedule_meeting_completed')
@@ -8,7 +8,7 @@
 
 // Check if gtag is available
 const isGtagAvailable = () => {
-  return typeof window !== 'undefined' && typeof window.gtag === 'function';
+  return typeof window !== "undefined" && typeof window.gtag === "function";
 };
 
 /**
@@ -18,18 +18,21 @@ const isGtagAvailable = () => {
  */
 export const trackEvent = (eventName, eventParams = {}) => {
   if (!isGtagAvailable()) {
-    console.warn('gtag is not available. Analytics event not tracked:', eventName);
+    console.warn(
+      "gtag is not available. Analytics event not tracked:",
+      eventName
+    );
     return;
   }
 
   try {
-    window.gtag('event', eventName, {
+    window.gtag("event", eventName, {
       ...eventParams,
-      event_category: eventParams.category || 'engagement',
+      event_category: eventParams.category || "engagement",
       event_label: eventParams.label || eventName
     });
   } catch (error) {
-    console.error('Error tracking GA4 event:', error);
+    console.error("Error tracking GA4 event:", error);
   }
 };
 
@@ -39,27 +42,34 @@ export const trackEvent = (eventName, eventParams = {}) => {
  * @param {string} conversionId - Google Ads conversion ID (optional, can be set in index.html)
  * @param {object} additionalParams - Additional conversion parameters
  */
-export const trackConversion = (conversionLabel, conversionId = null, additionalParams = {}) => {
+export const trackConversion = (
+  conversionLabel,
+  conversionId = null,
+  additionalParams = {}
+) => {
   if (!isGtagAvailable()) {
-    console.warn('gtag is not available. Conversion not tracked:', conversionLabel);
+    console.warn(
+      "gtag is not available. Conversion not tracked:",
+      conversionLabel
+    );
     return;
   }
 
   try {
     if (conversionId) {
-      window.gtag('event', 'conversion', {
-        'send_to': `${conversionId}/${conversionLabel}`,
+      window.gtag("event", "conversion", {
+        send_to: `${conversionId}/${conversionLabel}`,
         ...additionalParams
       });
     } else {
       // If conversion ID is not provided, it should be set globally in index.html
-      window.gtag('event', 'conversion', {
-        'send_to': conversionLabel,
+      window.gtag("event", "conversion", {
+        send_to: conversionLabel,
         ...additionalParams
       });
     }
   } catch (error) {
-    console.error('Error tracking conversion:', error);
+    console.error("Error tracking conversion:", error);
   }
 };
 
@@ -74,12 +84,16 @@ export const trackPageView = (pagePath, pageTitle) => {
   }
 
   try {
-    window.gtag('config', process.env.REACT_APP_GA4_MEASUREMENT_ID || 'G-XXXXXXXXXX', {
-      page_path: pagePath,
-      page_title: pageTitle
-    });
+    window.gtag(
+      "config",
+      process.env.REACT_APP_GA4_MEASUREMENT_ID || "G-XXXXXXXXXX",
+      {
+        page_path: pagePath,
+        page_title: pageTitle
+      }
+    );
   } catch (error) {
-    console.error('Error tracking page view:', error);
+    console.error("Error tracking page view:", error);
   }
 };
 
@@ -88,11 +102,11 @@ export const trackPageView = (pagePath, pageTitle) => {
  * @param {string} buttonName - Name/identifier of the button
  * @param {string} location - Where the button is located (e.g., 'connect_modal')
  */
-export const trackButtonClick = (buttonName, location = 'unknown') => {
-  trackEvent('button_click', {
+export const trackButtonClick = (buttonName, location = "unknown") => {
+  trackEvent("button_click", {
     button_name: buttonName,
     location: location,
-    category: 'user_interaction'
+    category: "user_interaction"
   });
 };
 
@@ -102,10 +116,10 @@ export const trackButtonClick = (buttonName, location = 'unknown') => {
  * @param {boolean} success - Whether the submission was successful
  */
 export const trackFormSubmission = (formName, success = true) => {
-  trackEvent('form_submit', {
+  trackEvent("form_submit", {
     form_name: formName,
     success: success,
-    category: 'form_interaction'
+    category: "form_interaction"
   });
 };
 
@@ -113,19 +127,17 @@ export const trackFormSubmission = (formName, success = true) => {
  * Track Calendly scheduling events
  * @param {string} action - Action type (e.g., 'opened', 'scheduled', 'cancelled')
  */
-export const trackCalendlyEvent = (action) => {
-  trackEvent('calendly_interaction', {
+export const trackCalendlyEvent = action => {
+  trackEvent("calendly_interaction", {
     action: action,
-    category: 'scheduling'
+    category: "scheduling"
   });
 
   // Also track as conversion if scheduled
-  if (action === 'scheduled') {
+  if (action === "scheduled") {
     const conversionLabel = process.env.REACT_APP_GOOGLE_ADS_CONVERSION_LABEL;
     if (conversionLabel) {
       trackConversion(conversionLabel);
     }
   }
 };
-
-

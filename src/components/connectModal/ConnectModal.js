@@ -2,7 +2,11 @@ import React, {useState, useEffect, useContext, useRef} from "react";
 import "./ConnectModal.scss";
 import StyleContext from "../../contexts/StyleContext";
 import {contactInfo, socialMediaLinks, calendlyConfig} from "../../portfolio";
-import {trackButtonClick, trackCalendlyEvent, trackFormSubmission} from "../../utils/analytics";
+import {
+  trackButtonClick,
+  trackCalendlyEvent,
+  trackFormSubmission
+} from "../../utils/analytics";
 import {Fade} from "react-reveal";
 
 export default function ConnectModal({isOpen, onClose}) {
@@ -36,8 +40,8 @@ export default function ConnectModal({isOpen, onClose}) {
   // Load and initialize Calendly widget
   useEffect(() => {
     if (showCalendly && calendlyConfig?.enabled && calendlyConfig?.url) {
-      trackCalendlyEvent('opened');
-      
+      trackCalendlyEvent("opened");
+
       // Initialize Calendly inline widget if script is loaded
       const initCalendly = () => {
         if (window.Calendly && calendlyRef.current) {
@@ -64,7 +68,7 @@ export default function ConnectModal({isOpen, onClose}) {
         setTimeout(() => {
           clearInterval(checkCalendly);
           if (!window.Calendly) {
-            console.warn('Calendly script failed to load');
+            console.warn("Calendly script failed to load");
           }
         }, 5000);
       }
@@ -104,7 +108,7 @@ export default function ConnectModal({isOpen, onClose}) {
     );
 
     // Track form submission
-    trackFormSubmission('contact_form', true);
+    trackFormSubmission("contact_form", true);
 
     // Open email client with pre-filled data
     window.location.href = `mailto:${contactInfo.email_address}?subject=${subject}&body=${body}`;
@@ -122,7 +126,7 @@ export default function ConnectModal({isOpen, onClose}) {
   const handleCalendlyClick = () => {
     setShowCalendly(true);
     setActiveTab("calendly");
-    trackButtonClick('schedule_meeting', 'connect_modal');
+    trackButtonClick("schedule_meeting", "connect_modal");
   };
 
   const connectionOptions = [
@@ -132,7 +136,7 @@ export default function ConnectModal({isOpen, onClose}) {
       icon: "✉️",
       color: "#3b82f6",
       action: () => {
-        trackButtonClick('email', 'connect_modal');
+        trackButtonClick("email", "connect_modal");
         window.location.href = `mailto:${contactInfo.email_address}`;
       }
     },
@@ -142,7 +146,7 @@ export default function ConnectModal({isOpen, onClose}) {
       icon: "💼",
       color: "#0077b5",
       action: () => {
-        trackButtonClick('linkedin', 'connect_modal');
+        trackButtonClick("linkedin", "connect_modal");
         window.open(socialMediaLinks.linkedin, "_blank");
       }
     },
@@ -152,7 +156,7 @@ export default function ConnectModal({isOpen, onClose}) {
       icon: "💻",
       color: "#333",
       action: () => {
-        trackButtonClick('github', 'connect_modal');
+        trackButtonClick("github", "connect_modal");
         window.open(socialMediaLinks.github, "_blank");
       }
     },
@@ -162,7 +166,7 @@ export default function ConnectModal({isOpen, onClose}) {
       icon: "📞",
       color: "#10b981",
       action: () => {
-        trackButtonClick('phone', 'connect_modal');
+        trackButtonClick("phone", "connect_modal");
         window.location.href = `tel:${contactInfo.number}`;
       }
     }
@@ -255,7 +259,12 @@ export default function ConnectModal({isOpen, onClose}) {
                   }}
                   aria-label="Close Calendly"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>

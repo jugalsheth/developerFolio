@@ -2,7 +2,7 @@
  * useReveal Hook - Lightweight replacement for react-reveal
  * Uses Intersection Observer for performant scroll animations
  */
-import { useEffect, useRef, useState } from 'react';
+import {useEffect, useRef, useState} from "react";
 
 /**
  * Custom hook for reveal animations on scroll
@@ -17,9 +17,9 @@ import { useEffect, useRef, useState } from 'react';
 export const useReveal = (options = {}) => {
   const {
     threshold = 0.1,
-    rootMargin = '0px',
+    rootMargin = "0px",
     triggerOnce = true,
-    direction = 'bottom'
+    direction = "bottom"
     // duration is used in Reveal component, not in this hook
   } = options;
 
@@ -41,7 +41,7 @@ export const useReveal = (options = {}) => {
           setIsVisible(false);
         }
       },
-      { threshold, rootMargin }
+      {threshold, rootMargin}
     );
 
     observer.observe(element);
@@ -66,38 +66,66 @@ export const useReveal = (options = {}) => {
  * Higher-order component for easy migration from react-reveal
  * Usage: <Reveal bottom duration={1000}><Component /></Reveal>
  */
-export const Reveal = ({ 
-  children, 
-  bottom = false, 
-  top = false, 
-  left = false, 
+export const Reveal = ({
+  children,
+  bottom = false,
+  top = false,
+  left = false,
   right = false,
   duration = 1000,
-  distance = '40px',
-  ...props 
+  distance = "40px",
+  ...props
 }) => {
-  const direction = bottom ? 'bottom' : top ? 'top' : left ? 'left' : right ? 'right' : 'bottom';
-  const [ref, , className] = useReveal({ 
-    direction, 
+  const direction = bottom
+    ? "bottom"
+    : top
+    ? "top"
+    : left
+    ? "left"
+    : right
+    ? "right"
+    : "bottom";
+  const [ref, , className] = useReveal({
+    direction,
     duration,
-    ...props 
+    ...props
   });
 
   return (
-    <div ref={ref} className={className} style={{ '--reveal-duration': `${duration}ms` }}>
+    <div
+      ref={ref}
+      className={className}
+      style={{"--reveal-duration": `${duration}ms`}}
+    >
       {children}
     </div>
   );
 };
 
 // Export individual direction components for easier migration
-export const Fade = ({ children, bottom = false, top = false, left = false, right = false, duration = 1000, distance = '40px', ...props }) => {
+export const Fade = ({
+  children,
+  bottom = false,
+  top = false,
+  left = false,
+  right = false,
+  duration = 1000,
+  distance = "40px",
+  ...props
+}) => {
   return (
-    <Reveal bottom={bottom} top={top} left={left} right={right} duration={duration} distance={distance} {...props}>
+    <Reveal
+      bottom={bottom}
+      top={top}
+      left={left}
+      right={right}
+      duration={duration}
+      distance={distance}
+      {...props}
+    >
       {children}
     </Reveal>
   );
 };
 
 export const Slide = Fade; // Alias for compatibility
-
