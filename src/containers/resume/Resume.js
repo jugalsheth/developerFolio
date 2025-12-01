@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import "./Resume.scss";
-import {Fade} from "../../utils/useReveal";
+import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 import ImpactMetrics from "../../components/impactMetrics/ImpactMetrics";
 import CareerTimeline from "../../components/careerTimeline/CareerTimeline";
