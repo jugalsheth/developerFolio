@@ -1,0 +1,53 @@
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 12px 20px;
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.dark-mode {
+    background: rgba(26, 32, 44, 0.98);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .sticky-cta-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+
+      .sticky-cta-primary,
+      .sticky-cta-secondary {
+        width: 100%;
+      }
+    }
+  }
+
+  .sticky-cta-primary,
+  .sticky-cta-secondary {
+    min-width: 180px;
+
+    @media (max-width: 768px) {
+      min-width: 100%;
+    }
+  }
+}
+
+

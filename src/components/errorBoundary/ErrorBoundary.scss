@@ -1,0 +1,68 @@
+@import "../../_globalColor";
+
+.error-boundary {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: $lightBackground2;
+  border-radius: 12px;
+  margin: 20px 0;
+
+  .dark-mode & {
+    background: rgba(107, 91, 149, 0.1);
+  }
+}
+
+.error-boundary-content {
+  text-align: center;
+  max-width: 500px;
+
+  h2 {
+    font-size: 1.8rem;
+    color: $textColor;
+    margin-bottom: 16px;
+    font-weight: 600;
+
+    .dark-mode & {
+      color: $textColorDark;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    color: $subTitle;
+    margin-bottom: 24px;
+    line-height: 1.6;
+
+    .dark-mode & {
+      color: $subTitleDark;
+    }
+  }
+}
+
+.error-boundary-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, $primaryColor 0%, $buttonHover 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 91, 149, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(107, 91, 149, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+
+
