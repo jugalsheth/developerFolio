@@ -535,9 +535,92 @@
   }
 }
 
+// Calendly Embed Section
+.calendly-embed-section {
+  padding: 2rem;
+  border-top: 1px solid rgba(107, 91, 149, 0.1);
+  margin-top: 1rem;
+
+  .dark-mode & {
+    border-top-color: rgba(102, 126, 234, 0.2);
+  }
+}
+
+.calendly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendly-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: $textColor;
+
+  .dark-mode & {
+    color: $textColorDark;
+  }
+}
+
+.calendly-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(107, 91, 149, 0.1);
+  color: $textColor;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background: rgba(107, 91, 149, 0.2);
+    transform: rotate(90deg) scale(1.1);
+  }
+
+  .dark-mode & {
+    background: rgba(102, 126, 234, 0.15);
+    color: $textColorDark;
+
+    &:hover {
+      background: rgba(102, 126, 234, 0.25);
+    }
+  }
+}
+
+.calendly-inline-widget {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  .dark-mode & {
+    background: rgba(30, 39, 46, 0.95);
+  }
+
+  // Ensure Calendly widget is responsive
+  iframe {
+    width: 100% !important;
+    border: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
 }
+
+
+

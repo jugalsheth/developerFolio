@@ -1,13 +1,13 @@
 import React, {useState, useContext} from "react";
 import "./Resume.scss";
-import {Fade} from "react-reveal";
+import {Fade} from "../../utils/useReveal";
 import StyleContext from "../../contexts/StyleContext";
 import ImpactMetrics from "../../components/impactMetrics/ImpactMetrics";
 import CareerTimeline from "../../components/careerTimeline/CareerTimeline";
 import SkillsMatrix from "../../components/skillsMatrix/SkillsMatrix";
 import ProjectShowcase from "../../components/projectShowcase/ProjectShowcase";
 import Button from "../../components/button/Button";
-import {visualResume, workExperiences} from "../../portfolio";
+import {visualResume, workExperiences, contactInfo} from "../../portfolio";
 
 export default function Resume() {
   const {isDark} = useContext(StyleContext);
@@ -118,6 +118,19 @@ export default function Resume() {
               of my experience, skills, and achievements.
             </p>
             <div className="download-buttons">
+              {contactInfo.calendlyUrl ? (
+                <Button
+                  text="Schedule a Meeting"
+                  variant="gradient"
+                  size="large"
+                  icon="📅"
+                  iconPosition="left"
+                  href={contactInfo.calendlyUrl}
+                  newTab
+                />
+              ) : (
+                <Button text="Contact Me" href="#contact" />
+              )}
               <a
                 href={require("../greeting/resume.pdf")}
                 download="Jugal_Sheth_Resume.pdf"
@@ -125,7 +138,6 @@ export default function Resume() {
               >
                 Download Resume PDF
               </a>
-              <Button text="Contact Me" href="#contact" />
             </div>
           </div>
         </Fade>
