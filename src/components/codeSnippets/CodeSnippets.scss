@@ -198,9 +198,8 @@
 }
 
 .code-language {
-  position: sticky;
-  top: 0;
-  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  background: #2d2d2d;
   color: #4caf50;
   padding: 8px 20px;
   font-size: 0.85rem;

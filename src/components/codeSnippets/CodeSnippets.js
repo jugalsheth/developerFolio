@@ -11,6 +11,7 @@ export default function CodeSnippets() {
   const snippets = [
     {
       title: "Snowflake Query Optimization",
+      tabLabel: "SQL \u00b7 Query Tuning",
       language: "sql",
       description: "Clustering keys and result caching for cost optimization",
       code: `-- Before: 45s execution time
@@ -35,6 +36,7 @@ GROUP BY customer_id;
     },
     {
       title: "dbt Incremental Macro",
+      tabLabel: "SQL \u00b7 dbt Macro",
       language: "sql",
       description: "Reusable macro for incremental model processing",
       code: `{% macro incremental_strategy() %}
@@ -60,6 +62,7 @@ FROM {{ source('raw', 'orders') }}
     },
     {
       title: "NextJS API Route with Snowflake",
+      tabLabel: "JS \u00b7 Snowflake API",
       language: "javascript",
       description: "Serverless API connecting to Snowflake data warehouse",
       code: `import snowflake from 'snowflake-sdk';
@@ -94,6 +97,7 @@ export default async function handler(req, res) {
     },
     {
       title: "Airflow DAG with SLA Monitoring",
+      tabLabel: "Python \u00b7 Airflow DAG",
       language: "python",
       description: "Production-grade DAG with alerting and retries",
       code: `from airflow import DAG
@@ -169,7 +173,7 @@ with DAG(
             }`}
             onClick={() => setActiveTab(index)}
           >
-            {snippet.language.toUpperCase()}
+            {snippet.tabLabel}
           </button>
         ))}
       </div>

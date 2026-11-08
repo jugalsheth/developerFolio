@@ -18,8 +18,6 @@ import GameMode from "../components/gameMode/GameMode";
 import CareerJourney from "../components/careerJourney/CareerJourney";
 import GrowthTrajectory from "../components/growthTrajectory/GrowthTrajectory";
 import PortfolioAnalytics from "../components/portfolioAnalytics/PortfolioAnalytics";
-import LiveVisitors from "../components/liveVisitors/LiveVisitors";
-import ConfettiCelebration from "../components/confettiCelebration/ConfettiCelebration";
 import EasterEggs from "../components/easterEggs/EasterEggs";
 import {splashScreen} from "../portfolio";
 import {StyleProvider} from "../contexts/StyleContext";
@@ -107,8 +105,6 @@ const Main = () => {
             <ClickRipple />
             <SectionReveal />
             <GameMode />
-            <LiveVisitors />
-            <ConfettiCelebration />
             <EasterEggs />
             <StickyNav />
             <ScrollToTopButton />
