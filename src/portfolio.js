@@ -4,7 +4,7 @@ import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your
 // Splash Screen
 
 const splashScreen = {
-  enabled: true,
+  enabled: false,
   animation: splashAnimation,
   duration: 2000
 };
@@ -194,12 +194,9 @@ const bigProjects = {
   subtitle: "Showcasing real-time data platforms and GenAI tools",
   projects: [
     {
-      image: require("./assets/images/etlgenie.png"),
       projectName: "Real-Time Analytics Dashboard",
       projectDesc:
         "Live monitoring dashboard for data pipelines with real-time metrics, throughput visualization, and system resource tracking. Built with Streamlit and Plotly.",
-      embedUrl:
-        "https://real-time-dashboard-vjf78bbxheqjjwefbgutyw.streamlit.app?embed=true",
       footerLink: [
         {
           name: "Live Demo",
@@ -212,7 +209,6 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/etlgenie.png"),
       projectName: "ETLGenie",
       projectDesc:
         "GenAI-powered dbt pipeline generator - transforms natural language to production-ready SQL. Built with OpenAI API and Streamlit.",
@@ -406,7 +402,6 @@ const visualResume = {
       name: "Procurement Intelligence Platform",
       subtitle: "Production NextJS App · 200+ Active Users",
       date: "2024",
-      image: require("./assets/images/etlgenie.png"),
       description:
         "Enterprise procurement tool connecting Snowflake DWH to intuitive NextJS frontend, serving 200+ users from week one",
       bullets: [
@@ -431,7 +426,6 @@ const visualResume = {
       name: "SKU Master Ware",
       subtitle: "Multi-Channel Inventory Management System",
       date: "Oct 2025",
-      image: require("./assets/images/etlgenie.png"),
       description:
         "Production inventory reconciliation system deployed by 3 retail/logistics startups",
       bullets: [
@@ -517,7 +511,7 @@ const twitterDetails = {
   display: false
 };
 
-const isHireable = true;
+const isHireable = false;
 
 export {
   illustration,

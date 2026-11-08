@@ -95,16 +95,18 @@ export default function ProjectShowcase({projects}) {
                   : "project-showcase-card"
               }
             >
-              <div className="project-image-container">
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="project-showcase-image"
-                />
-                <div className="project-overlay">
-                  <span className="project-date">{project.date}</span>
+              {project.image ? (
+                <div className="project-image-container">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="project-showcase-image"
+                  />
+                  <div className="project-overlay">
+                    <span className="project-date">{project.date}</span>
+                  </div>
                 </div>
-              </div>
+              ) : null}
 
               <div className="project-content">
                 <h3
