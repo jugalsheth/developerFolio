@@ -511,7 +511,7 @@ const twitterDetails = {
   display: false
 };
 
-const isHireable = true;
+const isHireable = false;
 
 export {
   illustration,
